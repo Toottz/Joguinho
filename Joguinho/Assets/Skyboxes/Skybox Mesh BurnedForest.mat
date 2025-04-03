@@ -7,10 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkyBoxDay
-  m_Shader: {fileID: 103, guid: 0000000000000000f000000000000000, type: 0}
-  m_Parent: {fileID: 0}
-  m_ModifiedSerializedProperties: 0
+  m_Name: Skybox Mesh BurnedForest
+  m_Shader: {fileID: -6465566751694194690, guid: ca4c274b730d97d419a75fcdaf008082, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -19,7 +17,6 @@ Material:
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
-  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -63,12 +60,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SpecGlossMap:
-        m_Texture: {fileID: 0}
+    - _SampleTexture2D_7ebda978c94a4922933428d6f8782dad_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 684954e80e33ba04ca7b486bf4e57ab9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _Tex:
-        m_Texture: {fileID: 8900000, guid: 3ec9c887c7ed31d4a9b022b646ec1d8c, type: 3}
+    - _SampleTexture2D_7ebda978c94a4922933428d6f8782dad_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: 684954e80e33ba04ca7b486bf4e57ab9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_d9508f3706d644f8a340031c91fcfee7_Texture_1_Texture2D:
+        m_Texture: {fileID: 2800000, guid: b76d5209b25f95c43aef6eb02e951ddd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SpecGlossMap:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -87,6 +92,14 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
+    - _Altura_Chao: 0.01
+    - _Altura_estrelas: 1845.3
+    - _Aurora_Blend: 1.87
+    - _Aurora_Distortion_Speed: 0.2
+    - _Aurora_Intensity: 0
+    - _Aurora_Noise_Scale: 490.1
+    - _Aurora_Power: 0
+    - _Aurora_Twirl_Strengh: -2.12
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
@@ -98,33 +111,54 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
+    - _Eixo_X_Lua: -15
+    - _Eixo_Y_Lua: -17.5
     - _EnvironmentReflections: 1
-    - _Exposure: 0.5
+    - _Final_Noise: 29.98
+    - _Final_Noise_Power: 1.67
+    - _Forca_estrela: 200
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _Gradient_Offset: -1
+    - _Hue: 0
+    - _Luz_estrela: 3646.4
     - _Metallic: 0
+    - _Noise_Scale: 100
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Rotation: 325
+    - _Sky_Noise_Strengh: 7.42
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
+    - _Tamanho_Horizonte: 6.4
+    - _Tiling_Lua: 20
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _Zenith_blend: 0.01
     m_Colors:
+    - _Aurora_Distortion_Min_Max: {r: 10, g: 12, b: 0, a: 0}
+    - _Aurora_Scroll_speed: {r: 0, g: 0.05, b: 0, a: 0}
+    - _Aurora_Tiling: {r: 0, g: 10, b: 0, a: 0}
+    - _Aurora_Twirl_Offset: {r: 0, g: 15.79, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Cor_Chao: {r: 0, g: 0, b: 0, a: 0}
+    - _Cor_Horizonte: {r: 0.38823533, g: 0.73333335, b: 0.9215687, a: 0}
+    - _Cor_ceu: {r: 0.003921569, g: 0.41176474, b: 0.7019608, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Offset_Lua: {r: 42.84, g: 2.1, b: 0, a: 0}
+    - _Sky_Noise_Color: {r: 0.048, g: 0.048, b: 0.048, a: 1}
+    - _Sky_Noise_Tiling: {r: 0.94, g: 2, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Tint: {r: 1, g: 1, b: 1, a: 0.5}
   m_BuildTextureStacks: []
---- !u!114 &858027106454977104
+--- !u!114 &8913705745032886475
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
