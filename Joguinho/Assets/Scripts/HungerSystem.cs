@@ -1,50 +1,51 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
 public class HungerSystem : MonoBehaviour
 {
-    public Image hungerBar; // Referência ao círculo de fome
-    public Color fullHungerColor = Color.green; // Cor cheia
-    public Color emptyHungerColor = new Color(0, 0, 0, 0); // Sem cor (transparente)
-    
+    public Image hungerBar; // imagem circular da UI
     public float maxHunger = 100f;
-    public float hungerDecreaseRate = 5f;
-    public float timeBetweenDecreases = 60f;
+    public float hungerDecreaseRate = 5f; // quanto vai descer por ciclo
+    public float timeBetweenDecreases = 60f; // tempo em segundos
 
     private float currentHunger;
+    private float timer;
 
     void Start()
     {
         currentHunger = maxHunger;
         UpdateHungerUI();
-        StartCoroutine(DecreaseHungerOverTime());
     }
 
-    IEnumerator DecreaseHungerOverTime()
+    void Update()
     {
-        while (currentHunger > 0)
+        // Contador de tempo entre quedas
+        timer += Time.deltaTime;
+
+        if (timer >= timeBetweenDecreases)
         {
-            yield return new WaitForSeconds(timeBetweenDecreases);
-            currentHunger -= hungerDecreaseRate;
-            currentHunger = Mathf.Clamp(currentHunger, 0, maxHunger);
-            UpdateHungerUI();
+            timer = 0f;
+            DecreaseHunger(hungerDecreaseRate);
         }
     }
 
-    public void EatFood(float foodValue)
+    public void EatFood(float amount)
     {
-        currentHunger += foodValue;
-        currentHunger = Mathf.Clamp(currentHunger, 0, maxHunger);
+        currentHunger += amount;
+        currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger);
         UpdateHungerUI();
     }
 
-    void UpdateHungerUI()
+    void DecreaseHunger(float amount)
+    {
+        currentHunger -= amount;
+        currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger);
+        UpdateHungerUI();
+    }
+
+     void UpdateHungerUI()
     {
         float fillAmount = currentHunger / maxHunger;
         hungerBar.fillAmount = fillAmount;
-
-        // Interpolação de cor entre fome cheia e vazia
-        hungerBar.color = Color.Lerp(emptyHungerColor, fullHungerColor, fillAmount);
     }
 }

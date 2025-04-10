@@ -1,23 +1,23 @@
 using UnityEngine;
 
-public class Hamburger : MonoBehaviour
+public class Agua : MonoBehaviour
 {
-    public float hungerRestoreAmount = 100f;
+    public float sedeRestoreAmount = 100f;
     private bool isPlayerNearby = false;
     private GameObject player;
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.F)) // Pressionar "F" para comer
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.F)) // Pressionar "F" para beber
         {
-            HungerSystem hungerSystem = player.GetComponent<HungerSystem>();
-            if (hungerSystem != null)
+            SedeSystem sedeSystem = player.GetComponent<SedeSystem>();
+            if (sedeSystem != null)
             {
-                hungerSystem.EatFood(hungerRestoreAmount);
+                sedeSystem.EatFood(sedeRestoreAmount);
             }
 
-            InteracaoUIManager.Instance.EsconderTexto(); // Esconde o texto ao comer
-            Destroy(gameObject); // Remove o hambúrguer
+            InteracaoUIManager.Instance.EsconderTexto(); // Esconde o texto ao beber
+            Destroy(gameObject);
         }
     }
 
@@ -27,7 +27,7 @@ public class Hamburger : MonoBehaviour
         {
             isPlayerNearby = true;
             player = other.gameObject;
-            InteracaoUIManager.Instance.MostrarTexto("Pressione 'F' para comer");
+            InteracaoUIManager.Instance.MostrarTexto("Pressione 'F' para beber");
         }
     }
 

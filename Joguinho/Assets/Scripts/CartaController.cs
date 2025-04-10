@@ -58,6 +58,8 @@ public class CartaController : MonoBehaviour
                 indiceFala = 0;
                 mostrandoDialogo = true;
                 MostrarFalaAtual();
+                
+                PlayerWallet.Instance.AdicionarDinheiro(10f);
 
                 temCarta = false;
                 cartaUI.gameObject.SetActive(false);

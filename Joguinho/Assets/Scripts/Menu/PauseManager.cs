@@ -52,6 +52,13 @@ public class PauseManager : MonoBehaviour
             celularUI.SetActive(false); 
     }
 
+    public void VoltarAoMenuPrincipal()
+    {
+        Time.timeScale = 1f; 
+        SceneManager.LoadScene("Menu"); 
+    }
+
+
     public void QuitGame()
     {
         Debug.Log("Saindo do jogo...");

@@ -11,4 +11,20 @@ public class NPCController : MonoBehaviour
 
     [Header("Diálogo quando recebe a carta correta")]
     public List<Fala> dialogoCompleto = new List<Fala>();
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para entregar");
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InteracaoUIManager.Instance.EsconderTexto();
+        }
+    }
 }

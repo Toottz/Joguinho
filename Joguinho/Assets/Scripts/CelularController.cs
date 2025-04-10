@@ -75,5 +75,23 @@ public class CelularController : MonoBehaviour
                 tela.SetActive(false); // Desativa todas as telas de apps
         }
     }
+    public void AbrirAppCaramelinho()
+    {
+        if (menuApps != null)
+            menuApps.SetActive(false);
 
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        foreach (GameObject tela in telasApps)
+            if (tela != null)
+                tela.SetActive(false);
+
+        foreach (GameObject tela in telasApps)
+            if (tela != null && tela.name == "TelaSlotCaramelinho") // nome exato da tela
+            {
+                tela.SetActive(true);
+                break;
+            }
+    }
 }

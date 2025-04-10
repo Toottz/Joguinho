@@ -6,19 +6,58 @@ public class CelularUIManager : MonoBehaviour
 {
     public GameObject menuApps;
     public GameObject telaMensagens;
-    public GameObject celularImagem; // <- A imagem do celular (bordas, etc)
+    public GameObject celularImagem;
+    public GameObject telaCaramelinho;
+
+    public GameObject[] telasApps; // Certifique-se de preencher isso no Inspector com todas as telas de apps, incluindo "TelaSlotCaramelinho"
 
     public void AbrirMensagens()
     {
-        menuApps.SetActive(false);         // Esconde menu de apps
-        celularImagem.SetActive(false);    // Esconde a borda do celular (se tiver)
-        telaMensagens.SetActive(true);     // Mostra só a tela do app
+        menuApps.SetActive(false);
+        celularImagem.SetActive(false);
+        telaMensagens.SetActive(true);
+    }
+
+    public void AbrirCaramelinho()
+    {
+        menuApps.SetActive(false);
+        celularImagem.SetActive(false);
+
+        // Desativa todas as outras telas
+        foreach (GameObject tela in telasApps)
+        {
+            if (tela != null)
+                tela.SetActive(false);
+        }
+
+        // Ativa somente a tela do Caramelinho
+        foreach (GameObject tela in telasApps)
+        {
+            if (tela != null && tela.name == "TelaSlotCaramelinho")
+            {
+                tela.SetActive(true);
+                Debug.Log("📱 Caramelinho aberto!");
+                break;
+            }
+        }
     }
 
     public void VoltarAoMenu()
     {
-        telaMensagens.SetActive(false);    // Esconde o app
-        celularImagem.SetActive(true);     // Mostra a carcaça do celular de novo
-        menuApps.SetActive(true);          // Volta para o menu de apps
+        telaMensagens.SetActive(false);
+        telaCaramelinho.SetActive(false);
+
+        // Desativa todas as telas de app se estiver usando array
+        if (telasApps != null)
+        {
+            foreach (GameObject tela in telasApps)
+            {
+                if (tela != null)
+                    tela.SetActive(false);
+            }
+        }
+
+        celularImagem.SetActive(true);
+        menuApps.SetActive(true);
     }
 }
