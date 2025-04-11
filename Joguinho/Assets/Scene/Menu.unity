@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92e9561ddfd3f94f9625a432dd543f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  proximaFase: Dia1
+  proximaFase: Teste
   painelMenuInicial: {fileID: 1580078376}
   painelOpcoes: {fileID: 0}
 --- !u!4 &1641690785

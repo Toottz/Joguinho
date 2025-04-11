@@ -5,9 +5,6 @@ using UnityEngine;
 public class CelularController : MonoBehaviour
 {
     public GameObject celularUI;
-    public GameObject menuApps; 
-    public GameObject[] telasApps; 
-    public GameObject celularImagem;
     public MensagensController mensagensController;
     public MonoBehaviour cameraLookScript;
 
@@ -28,8 +25,8 @@ public class CelularController : MonoBehaviour
                 if (cameraLookScript != null)
                     cameraLookScript.enabled = false;
 
-                // Volta para o menu principal ao abrir
-                VoltarParaMenuApps();
+                // Garante que volta ao menu ao abrir
+                FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
             }
             else
             {
@@ -38,6 +35,9 @@ public class CelularController : MonoBehaviour
 
                 if (cameraLookScript != null)
                     cameraLookScript.enabled = true;
+
+                // Garante que todos os apps são fechados
+                FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
             }
 
             if (mensagensController != null)
@@ -54,44 +54,17 @@ public class CelularController : MonoBehaviour
     {
         celularAberto = false;
         celularUI.SetActive(false);
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         if (cameraLookScript != null)
             cameraLookScript.enabled = true;
-    }
 
-    public void VoltarParaMenuApps()
-    {
-        if (celularImagem != null)
-            celularImagem.SetActive(true); // Garante que a imagem do celular esteja visível
+        if (mensagensController != null)
+            mensagensController.AoFecharCelular();
 
-        if (menuApps != null)
-            menuApps.SetActive(true); // Reativa o menu de apps
-
-        foreach (GameObject tela in telasApps)
-        {
-            if (tela != null)
-                tela.SetActive(false); // Desativa todas as telas de apps
-        }
-    }
-    public void AbrirAppCaramelinho()
-    {
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        foreach (GameObject tela in telasApps)
-            if (tela != null)
-                tela.SetActive(false);
-
-        foreach (GameObject tela in telasApps)
-            if (tela != null && tela.name == "TelaSlotCaramelinho") // nome exato da tela
-            {
-                tela.SetActive(true);
-                break;
-            }
+        // Garante que volta ao menu e desativa tudo
+        FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
     }
 }
