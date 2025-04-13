@@ -6,7 +6,7 @@ public class CelularController : MonoBehaviour
 {
     public GameObject celularUI;
     public MensagensController mensagensController;
-    public MonoBehaviour cameraLookScript;
+    public MonoBehaviour cameraLookScript; // Ex: FirstPersonLook
 
     private bool celularAberto = false;
 
@@ -22,10 +22,11 @@ public class CelularController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
 
-                if (cameraLookScript != null)
-                    cameraLookScript.enabled = false;
+                // Em vez de desativar o script, apenas bloqueia a câmera
+                if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+                    lookScript.bloquearCamera = false; // Deixa o mouse controlar fora do celular
+                
 
-                // Garante que volta ao menu ao abrir
                 FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
             }
             else
@@ -33,10 +34,9 @@ public class CelularController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
 
-                if (cameraLookScript != null)
-                    cameraLookScript.enabled = true;
+                if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+                    lookScript.bloquearCamera = false; // Garante que a câmera volte ao normal
 
-                // Garante que todos os apps são fechados
                 FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
             }
 
@@ -58,13 +58,17 @@ public class CelularController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        if (cameraLookScript != null)
-            cameraLookScript.enabled = true;
+        if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+            lookScript.bloquearCamera = false;
 
         if (mensagensController != null)
             mensagensController.AoFecharCelular();
 
-        // Garante que volta ao menu e desativa tudo
         FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
+    }
+
+    public bool CelularEstaAberto()
+    {
+    return celularAberto;
     }
 }

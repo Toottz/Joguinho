@@ -6,26 +6,38 @@ public class CelularUIManager : MonoBehaviour
 {
     public GameObject menuApps;
     public GameObject celularImagem;
+    public GameObject celularBorda;
 
     public GameObject telaMensagens;
     public GameObject telaCaramelinho;
     public GameObject telaConfiguracoes;
 
-    public GameObject[] telasApps; // Todas as telas de apps, incluindo a "TelaSlotCaramelinho"
+    public GameObject[] telasApps;
+
+    public MensagensAppManager mensagensAppManager;
 
     public void AbrirMensagens()
     {
         FecharTodasTelas();
+
         if (celularImagem != null)
             celularImagem.SetActive(false);
-        telaMensagens.SetActive(true);
+
+        if (telaMensagens != null)
+            telaMensagens.SetActive(true);
+
+        if (mensagensAppManager != null)
+            mensagensAppManager.ResetarParaListaContatos();
     }
 
     public void AbrirCaramelinho()
     {
         FecharTodasTelas();
+
         if (celularImagem != null)
             celularImagem.SetActive(false);
+        if (celularBorda != null)
+            celularBorda.SetActive(false);
 
         foreach (GameObject tela in telasApps)
         {
@@ -41,10 +53,12 @@ public class CelularUIManager : MonoBehaviour
     public void AbrirConfiguracoes()
     {
         FecharTodasTelas();
-        menuApps.SetActive(false);
+
+        if (menuApps != null)
+            menuApps.SetActive(false);
+
         if (telaConfiguracoes != null)
             telaConfiguracoes.SetActive(true);
-        // Mantenha a imagem do celular visível neste app
     }
 
     public void VoltarAoMenu()
@@ -53,9 +67,14 @@ public class CelularUIManager : MonoBehaviour
 
         if (celularImagem != null)
             celularImagem.SetActive(true);
-
+        if (celularBorda != null)
+            celularBorda.SetActive(true);
         if (menuApps != null)
             menuApps.SetActive(true);
+
+        // Novo: garante que nenhuma conversa continue aberta
+        if (mensagensAppManager != null)
+            mensagensAppManager.FechamentoCompletoMensagens();
     }
 
     private void FecharTodasTelas()
@@ -66,10 +85,8 @@ public class CelularUIManager : MonoBehaviour
                 tela.SetActive(false);
         }
 
-        // Também desativa diretamente as telas específicas, por segurança
         if (telaMensagens != null) telaMensagens.SetActive(false);
         if (telaCaramelinho != null) telaCaramelinho.SetActive(false);
         if (telaConfiguracoes != null) telaConfiguracoes.SetActive(false);
     }
 }
-
