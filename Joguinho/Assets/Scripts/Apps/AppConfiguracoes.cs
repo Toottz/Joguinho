@@ -7,12 +7,10 @@ public class AppConfiguracoes : MonoBehaviour
     public Slider sliderBrilhoJogo;
     public Slider sliderVolume;
 
-    public Image telaCelular; // A imagem da tela do celular (para simular brilho)
-    public Light luzPrincipal; // A luz da cena
-    public Image overlayEscurecer; // preto
-    public Image overlayClarear;   // branco
-
-
+    public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a tela do app)
+    public Light luzPrincipal;         // Luz principal da cena (se usada)
+    public Image overlayEscurecer;     // Imagem preta para escurecer o JOGO
+    public Image overlayClarear;       // Imagem branca para clarear o JOGO
 
     void Start()
     {
@@ -20,82 +18,92 @@ public class AppConfiguracoes : MonoBehaviour
         sliderBrilhoJogo.onValueChanged.AddListener(AjustarBrilhoJogo);
         sliderVolume.onValueChanged.AddListener(AjustarVolume);
 
-        // Valores padrão
+        // Valores padrão ao iniciar
         sliderBrilhoCelular.value = 1f;
         sliderBrilhoJogo.value = luzPrincipal != null ? luzPrincipal.intensity : 1f;
         sliderVolume.value = AudioListener.volume;
+
+        // Começa com brilho do celular total (sem escurecimento)
+        if (escurecerCelular != null)
+        {
+            var cor = escurecerCelular.color;
+            cor.a = 0f;
+            escurecerCelular.color = cor;
+        }
     }
 
     void AjustarBrilhoCelular(float valor)
     {
-        if (telaCelular != null)
+        // 1 = sem escurecimento | 0 = escuro total
+        if (escurecerCelular != null)
         {
-            Color cor = telaCelular.color;
-            cor.a = Mathf.Clamp01(valor);
-            telaCelular.color = cor;
+            float alpha = 0.7f - Mathf.Clamp01(valor);
+            var cor = escurecerCelular.color;
+            cor.a = alpha;
+            escurecerCelular.color = cor;
         }
     }
 
     void AjustarBrilhoJogo(float valor)
-{
-    float brilhoNormal = 1f;
-
-    // LIMITES personalizados
-    float maxEscurecer = 0.5f; // até 50% de opacidade preta
-    float maxClarear = 0.3f;   // até 30% de opacidade branca
-
-    if (valor < brilhoNormal)
     {
-        float escurecer = (1f - valor) * maxEscurecer;
+        float brilhoNormal = 1f;
 
-        if (overlayEscurecer != null)
+        // Limites máximos dos efeitos visuais
+        float maxEscurecer = 0.5f; // até 50% de opacidade preta
+        float maxClarear = 0.3f;   // até 30% de opacidade branca
+
+        if (valor < brilhoNormal)
         {
-            var c = overlayEscurecer.color;
-            c.a = escurecer;
-            overlayEscurecer.color = c;
+            float escurecer = (1f - valor) * maxEscurecer;
+
+            if (overlayEscurecer != null)
+            {
+                var c = overlayEscurecer.color;
+                c.a = escurecer;
+                overlayEscurecer.color = c;
+            }
+
+            if (overlayClarear != null)
+            {
+                var c = overlayClarear.color;
+                c.a = 0f;
+                overlayClarear.color = c;
+            }
         }
-
-        if (overlayClarear != null)
+        else if (valor > brilhoNormal)
         {
-            var c = overlayClarear.color;
-            c.a = 0f;
-            overlayClarear.color = c;
+            float clarear = (valor - 1f) * maxClarear;
+
+            if (overlayClarear != null)
+            {
+                var c = overlayClarear.color;
+                c.a = clarear;
+                overlayClarear.color = c;
+            }
+
+            if (overlayEscurecer != null)
+            {
+                var c = overlayEscurecer.color;
+                c.a = 0f;
+                overlayEscurecer.color = c;
+            }
+        }
+        else
+        {
+            if (overlayClarear != null)
+            {
+                var c = overlayClarear.color;
+                c.a = 0f;
+                overlayClarear.color = c;
+            }
+            if (overlayEscurecer != null)
+            {
+                var c = overlayEscurecer.color;
+                c.a = 0f;
+                overlayEscurecer.color = c;
+            }
         }
     }
-    else if (valor > brilhoNormal)
-    {
-        float clarear = (valor - 1f) * maxClarear;
-
-        if (overlayClarear != null)
-        {
-            var c = overlayClarear.color;
-            c.a = clarear;
-            overlayClarear.color = c;
-        }
-
-        if (overlayEscurecer != null)
-        {
-            var c = overlayEscurecer.color;
-            c.a = 0f;
-            overlayEscurecer.color = c;
-        }
-    }
-    else
-    {
-        if (overlayClarear != null)
-        {
-            var c = overlayClarear.color;
-            c.a = 0f;
-            overlayClarear.color = c;
-        }
-        if (overlayEscurecer != null)
-        {
-            var c = overlayEscurecer.color;
-            c.a = 0f;
-            overlayEscurecer.color = c;
-        }
-    }
-}
 
     void AjustarVolume(float valor)
     {
