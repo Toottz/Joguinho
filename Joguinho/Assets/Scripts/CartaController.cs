@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class CartaController : MonoBehaviour
 {
-    public Image cartaUI;               
-    public GameObject dialogoUI;        
-    public Text textoDialogo;           
+    public Image cartaUI;
+    public GameObject dialogoUI;
+    public Text textoDialogo;
 
     private string destinatarioAtual = "";
     private bool temCarta = false;
@@ -17,7 +18,8 @@ public class CartaController : MonoBehaviour
     private bool podeEntregar = false;
     private NPCController npcProximo;
 
-    // Dialogo interativo
+    private bool entregouCartaFinal = false;
+
     private int indiceFala = 0;
     private List<Fala> falasAtuais = new List<Fala>();
     private bool mostrandoDialogo = false;
@@ -32,24 +34,28 @@ public class CartaController : MonoBehaviour
 
     void Update()
     {
-        // Avancar dialogo com E
         if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
         {
             indiceFala++;
             MostrarFalaAtual();
-            return; 
+            return;
         }
 
-        // Pegar carta
         if (podePegar && Input.GetKeyDown(KeyCode.E) && !temCarta)
         {
             destinatarioAtual = cartaNoChao.nomeDestinatario;
+            entregouCartaFinal = cartaNoChao.cartaFinal;
+
+            if (entregouCartaFinal)
+                Debug.Log("📩 Pegou a carta final!");
+
             Destroy(cartaNoChao.gameObject);
+            cartaNoChao = null;
+
             temCarta = true;
             cartaUI.gameObject.SetActive(true);
         }
 
-        // Entregar carta
         if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo)
         {
             if (npcProximo.nomeNPC == destinatarioAtual)
@@ -58,24 +64,22 @@ public class CartaController : MonoBehaviour
                 indiceFala = 0;
                 mostrandoDialogo = true;
                 MostrarFalaAtual();
-                
-                PlayerWallet.Instance.AdicionarDinheiro(10f);
 
+                PlayerWallet.Instance.AdicionarDinheiro(25f);
                 temCarta = false;
                 cartaUI.gameObject.SetActive(false);
                 destinatarioAtual = "";
+
+                if (entregouCartaFinal)
+                {
+                    Debug.Log("🎯 Entregou a carta final! Voltando para o menu...");
+                    Invoke("VoltarParaMenu", 4f);
+                }
             }
             else
             {
                 MostrarDialogo(npcProximo.mensagemErrada);
             }
-        }
-
-        // Avancar dialogo
-        if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
-        {
-            indiceFala++;
-            MostrarFalaAtual();
         }
     }
 
@@ -113,7 +117,6 @@ public class CartaController : MonoBehaviour
     {
         if (indiceFala >= falasAtuais.Count)
         {
-            // Fim do diálogo
             EsconderDialogo();
             mostrandoDialogo = false;
             return;
@@ -138,5 +141,15 @@ public class CartaController : MonoBehaviour
     void EsconderDialogo()
     {
         dialogoUI.SetActive(false);
+    }
+
+    void VoltarParaMenu()
+    {
+        Debug.Log("🔁 Carregando cena do menu...");
+        Debug.Log($"Cena atual: {SceneManager.GetActiveScene().name}");
+        Debug.Log($"Total de cenas carregadas: {SceneManager.sceneCount}");
+
+        Time.timeScale = 1f; // Garante que o tempo esteja normal
+        SceneManager.LoadScene("Menu"); // ← Certifique-se que esse é o nome exato da cena
     }
 }

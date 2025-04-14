@@ -43,7 +43,7 @@ Material:
     - _Float: 0.85
     - _Float_1: 6.53
     - _Float_2: 3
-    - _Opacidade: 1
+    - _Opacidade: 0
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:

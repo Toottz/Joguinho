@@ -6,6 +6,9 @@ public class CartaOrder : MonoBehaviour
 {
     public string nomeDestinatario;
 
+    [Header("Especial")]
+    public bool cartaFinal = false; // ← Marque essa carta no Inspector como final
+
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
