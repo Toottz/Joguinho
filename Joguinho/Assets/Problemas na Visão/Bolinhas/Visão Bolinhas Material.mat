@@ -40,14 +40,17 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: -1
     - _BUILTIN_QueueOffset: 0
-    - _Float: 0.85
-    - _Float_1: 6.53
-    - _Float_2: 3
+    - _Croma_Opacidade: 1
+    - _Nevoa_Opacidade: 1
     - _Opacidade: 0
+    - _Piscando_Opacidade: 0
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _Scale_Nevoa: 50
+    - _Velocidade_Nevoa: 2
+    - _Velocidade_Piscando: 2
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _Cor_Nevoa: {r: 1, g: 0.8254717, b: 0.8254717, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &5528644523721658133
 MonoBehaviour:

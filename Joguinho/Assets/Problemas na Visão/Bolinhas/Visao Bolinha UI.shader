@@ -2,15 +2,12 @@ Shader "Unlit/Visao Bolinha UI"
 {
     Properties
     {
-        _Opacidade("Opacidade", Range(0, 4)) = 3.06
         [NoScaleOffset]_MainTex("MainTex", 2D) = "white" {}
         [HideInInspector]_QueueOffset("_QueueOffset", Float) = 0
         [HideInInspector]_QueueControl("_QueueControl", Float) = -1
         [HideInInspector][NoScaleOffset]unity_Lightmaps("unity_Lightmaps", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_LightmapsInd("unity_LightmapsInd", 2DArray) = "" {}
         [HideInInspector][NoScaleOffset]unity_ShadowMasks("unity_ShadowMasks", 2DArray) = "" {}
-        [HideInInspector]_BUILTIN_QueueOffset("Float", Float) = 0
-        [HideInInspector]_BUILTIN_QueueControl("Float", Float) = -1
     }
     SubShader
     {
@@ -217,7 +214,6 @@ Shader "Unlit/Visao Bolinha UI"
         
         // Graph Properties
         CBUFFER_START(UnityPerMaterial)
-        float _Opacidade;
         float4 _MainTex_TexelSize;
         CBUFFER_END
         
@@ -280,14 +276,14 @@ Shader "Unlit/Visao Bolinha UI"
             }
         }
         
-        void Unity_OneMinus_float(float In, out float Out)
-        {
-            Out = 1 - In;
-        }
-        
         void Unity_Power_float(float A, float B, out float Out)
         {
             Out = pow(A, B);
+        }
+        
+        void Unity_OneMinus_float(float In, out float Out)
+        {
+            Out = 1 - In;
         }
         
         void Unity_Clamp_float(float In, float Min, float Max, out float Out)
@@ -334,32 +330,27 @@ Shader "Unlit/Visao Bolinha UI"
         SurfaceDescription SurfaceDescriptionFunction(SurfaceDescriptionInputs IN)
         {
             SurfaceDescription surface = (SurfaceDescription)0;
-            UnityTexture2D _Property_71061f0c7fa447bc9d52433ab58f3cd3_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
-            float4 _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0 = SAMPLE_TEXTURE2D(_Property_71061f0c7fa447bc9d52433ab58f3cd3_Out_0.tex, _Property_71061f0c7fa447bc9d52433ab58f3cd3_Out_0.samplerstate, _Property_71061f0c7fa447bc9d52433ab58f3cd3_Out_0.GetTransformedUV(IN.uv0.xy));
-            float _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_R_4 = _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0.r;
-            float _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_G_5 = _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0.g;
-            float _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_B_6 = _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0.b;
-            float _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_A_7 = _SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0.a;
-            float _Multiply_e3b6330fc42b4ff98e961672dffa6bae_Out_2;
-            Unity_Multiply_float_float(IN.TimeParameters.x, 0.5, _Multiply_e3b6330fc42b4ff98e961672dffa6bae_Out_2);
-            float _Float_dcc264a58aac49e8b7b80c4f8549a39d_Out_0 = float(3);
-            float _Voronoi_8ed021397fee4e26b39be48f40a7615c_Out_3;
-            float _Voronoi_8ed021397fee4e26b39be48f40a7615c_Cells_4;
-            Unity_Voronoi_float(IN.uv0.xy, _Multiply_e3b6330fc42b4ff98e961672dffa6bae_Out_2, _Float_dcc264a58aac49e8b7b80c4f8549a39d_Out_0, _Voronoi_8ed021397fee4e26b39be48f40a7615c_Out_3, _Voronoi_8ed021397fee4e26b39be48f40a7615c_Cells_4);
-            float _OneMinus_302df2eb0a9443e3b9b6dd541778166e_Out_1;
-            Unity_OneMinus_float(_Voronoi_8ed021397fee4e26b39be48f40a7615c_Out_3, _OneMinus_302df2eb0a9443e3b9b6dd541778166e_Out_1);
-            float _Float_c63febb9cdff484da7dddbbeea0933c9_Out_0 = float(6.53);
-            float _Power_8704952c28fe4dbab6b3a12371aed34b_Out_2;
-            Unity_Power_float(_OneMinus_302df2eb0a9443e3b9b6dd541778166e_Out_1, _Float_c63febb9cdff484da7dddbbeea0933c9_Out_0, _Power_8704952c28fe4dbab6b3a12371aed34b_Out_2);
-            float _Property_0dcc7925547248eda1a7a076d41fce0e_Out_0 = _Opacidade;
-            float _Multiply_58f80451b51c4327903f881b5ecf8de9_Out_2;
-            Unity_Multiply_float_float(_Power_8704952c28fe4dbab6b3a12371aed34b_Out_2, _Property_0dcc7925547248eda1a7a076d41fce0e_Out_0, _Multiply_58f80451b51c4327903f881b5ecf8de9_Out_2);
-            float _Clamp_3272c07e928e491b9c174dde80ca9219_Out_3;
-            Unity_Clamp_float(_Multiply_58f80451b51c4327903f881b5ecf8de9_Out_2, float(0), float(1), _Clamp_3272c07e928e491b9c174dde80ca9219_Out_3);
-            float _OneMinus_6bef09615ff24857b1109ee7d8d3225a_Out_1;
-            Unity_OneMinus_float(_Clamp_3272c07e928e491b9c174dde80ca9219_Out_3, _OneMinus_6bef09615ff24857b1109ee7d8d3225a_Out_1);
-            surface.BaseColor = (_SampleTexture2D_b6c2b13ff6274c9ba2c57038ea507733_RGBA_0.xyz);
-            surface.Alpha = _OneMinus_6bef09615ff24857b1109ee7d8d3225a_Out_1;
+            UnityTexture2D _Property_dd49e493eb534bffb52b00bff59a8c10_Out_0 = UnityBuildTexture2DStructNoScale(_MainTex);
+            float4 _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0 = SAMPLE_TEXTURE2D(_Property_dd49e493eb534bffb52b00bff59a8c10_Out_0.tex, _Property_dd49e493eb534bffb52b00bff59a8c10_Out_0.samplerstate, _Property_dd49e493eb534bffb52b00bff59a8c10_Out_0.GetTransformedUV(IN.uv0.xy));
+            float _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_R_4 = _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0.r;
+            float _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_G_5 = _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0.g;
+            float _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_B_6 = _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0.b;
+            float _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_A_7 = _SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0.a;
+            float _Multiply_7c04fb9008ec4bfda8fc9fe33017911f_Out_2;
+            Unity_Multiply_float_float(IN.TimeParameters.x, 0.75, _Multiply_7c04fb9008ec4bfda8fc9fe33017911f_Out_2);
+            float _Voronoi_9f788ddffc8f4a39abac91fa8f2655e2_Out_3;
+            float _Voronoi_9f788ddffc8f4a39abac91fa8f2655e2_Cells_4;
+            Unity_Voronoi_float(IN.uv0.xy, _Multiply_7c04fb9008ec4bfda8fc9fe33017911f_Out_2, float(3.51), _Voronoi_9f788ddffc8f4a39abac91fa8f2655e2_Out_3, _Voronoi_9f788ddffc8f4a39abac91fa8f2655e2_Cells_4);
+            float _Multiply_cf49043de4f54966a64bbdab4f72abca_Out_2;
+            Unity_Multiply_float_float(_Voronoi_9f788ddffc8f4a39abac91fa8f2655e2_Out_3, 2.79, _Multiply_cf49043de4f54966a64bbdab4f72abca_Out_2);
+            float _Power_760394e444fe4d7b92eff18233805f32_Out_2;
+            Unity_Power_float(_Multiply_cf49043de4f54966a64bbdab4f72abca_Out_2, float(0.45), _Power_760394e444fe4d7b92eff18233805f32_Out_2);
+            float _OneMinus_8c26e48cb4c54ee9af1508c3bce3d7c2_Out_1;
+            Unity_OneMinus_float(_Power_760394e444fe4d7b92eff18233805f32_Out_2, _OneMinus_8c26e48cb4c54ee9af1508c3bce3d7c2_Out_1);
+            float _Clamp_23f1adbc59d54a4abaf2db979dbb9d6c_Out_3;
+            Unity_Clamp_float(_OneMinus_8c26e48cb4c54ee9af1508c3bce3d7c2_Out_1, float(0), float(1), _Clamp_23f1adbc59d54a4abaf2db979dbb9d6c_Out_3);
+            surface.BaseColor = (_SampleTexture2D_9a1c27b3b1c34d8490fa7d93c28b269a_RGBA_0.xyz);
+            surface.Alpha = _Clamp_23f1adbc59d54a4abaf2db979dbb9d6c_Out_3;
             return surface;
         }
         
@@ -424,9 +415,9 @@ Shader "Unlit/Visao Bolinha UI"
         
         ENDHLSL
         }
-        
+    
     }
-    CustomEditorForRenderPipeline "UnityEditor.Rendering.BuiltIn.ShaderGraph.BuiltInLitGUI" ""
+    CustomEditorForRenderPipeline "UnityEditor.ShaderGraphUnlitGUI" "UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset"
     CustomEditor "UnityEditor.ShaderGraph.GenericShaderGraphMaterialGUI"
     FallBack "Hidden/Shader Graph/FallbackError"
 }

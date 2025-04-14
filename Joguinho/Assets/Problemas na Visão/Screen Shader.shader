@@ -595,7 +595,6 @@ Shader "Unlit/Screen Shader"
         
         ENDHLSL
         }
-        
     }
     CustomEditorForRenderPipeline "UnityEditor.ShaderGraphUnlitGUI" "UnityEngine.Rendering.Universal.UniversalRenderPipelineAsset"
     CustomEditor "UnityEditor.ShaderGraph.GenericShaderGraphMaterialGUI"
