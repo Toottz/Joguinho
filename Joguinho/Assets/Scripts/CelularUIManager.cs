@@ -11,10 +11,47 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaMensagens;
     public GameObject telaCaramelinho;
     public GameObject telaConfiguracoes;
+    public GameObject telaAlarme;         // NOVO: Tela do app de alarme
+    public GameObject cell;               // NOVO: Container com a interface normal do celular
+
 
     public GameObject[] telasApps;
 
+    public AlarmManager alarmManager;     // NOVO: Referência ao gerenciador de alarme
     public MensagensAppManager mensagensAppManager;
+
+    public void AoAbrirCelular()
+    {
+        if (alarmManager != null && alarmManager.AlarmeAtivo())
+        {
+            // Mostra a interface especial de alarme (sem borda e apps)
+            if (cell != null) cell.SetActive(false);
+            if (telaAlarme != null) telaAlarme.SetActive(true);
+        }
+        else
+        {
+            // Abre o celular normalmente
+            if (cell != null) cell.SetActive(true);
+            if (telaAlarme != null) telaAlarme.SetActive(false);
+
+            VoltarAoMenu();
+        }
+    }
+
+    public void AoFecharCelular()
+    {
+        if (telaAlarme != null) telaAlarme.SetActive(false);
+        if (cell != null) cell.SetActive(true);
+    }
+
+    public void DesligarAlarmeDoBotao()
+    {
+        if (alarmManager != null)
+            alarmManager.DesligarAlarmeViaBotao();
+
+        if (telaAlarme != null) telaAlarme.SetActive(false);
+        if (cell != null) cell.SetActive(true);
+    }
 
     public void AbrirMensagens()
     {
@@ -61,6 +98,34 @@ public class CelularUIManager : MonoBehaviour
             telaConfiguracoes.SetActive(true);
     }
 
+    public void MostrarTelaAlarme()
+    {
+        if (telaAlarme != null)
+            telaAlarme.SetActive(true);
+        if (cell != null)
+            cell.SetActive(false); // Esconde todo o resto do celular
+    }
+
+    public void EsconderTelaAlarme()
+    {
+        if (telaAlarme != null)
+            telaAlarme.SetActive(false);
+        if (cell != null)
+            cell.SetActive(true); // Traz o celular normal de volta
+    }
+
+    public void MostrarTelaAlarmeSomente()
+    {
+        if (telaAlarme != null)
+            telaAlarme.SetActive(true);
+
+        if (menuApps != null)
+            menuApps.SetActive(false);
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+    }
+
     public void VoltarAoMenu()
     {
         FecharTodasTelas();
@@ -72,7 +137,6 @@ public class CelularUIManager : MonoBehaviour
         if (menuApps != null)
             menuApps.SetActive(true);
 
-        // Novo: garante que nenhuma conversa continue aberta
         if (mensagensAppManager != null)
             mensagensAppManager.FechamentoCompletoMensagens();
     }
@@ -88,5 +152,6 @@ public class CelularUIManager : MonoBehaviour
         if (telaMensagens != null) telaMensagens.SetActive(false);
         if (telaCaramelinho != null) telaCaramelinho.SetActive(false);
         if (telaConfiguracoes != null) telaConfiguracoes.SetActive(false);
+        if (telaAlarme != null) telaAlarme.SetActive(false);
     }
 }

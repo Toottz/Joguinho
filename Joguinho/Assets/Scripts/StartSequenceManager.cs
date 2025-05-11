@@ -29,7 +29,7 @@ public class StartSequenceManager : MonoBehaviour
         phoneUI.SetActive(false);
         
 
-        alarmManager.PlayAlarm(); // Começa a tocar o alarme
+        //alarmManager.PlayAlarm();
     }
 
     void Update()
@@ -53,7 +53,7 @@ public class StartSequenceManager : MonoBehaviour
 
             if (phoneOpen)
             {
-                alarmManager.StopAlarm(); // Alarme desliga ao abrir o celular
+                //alarmManager.StopAlarm();
                 lookScript.SetLookEnabled(true); // Continua podendo olhar
             }
             else
