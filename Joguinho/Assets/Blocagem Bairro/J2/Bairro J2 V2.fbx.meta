@@ -3,7 +3,57 @@ guid: 280650b4223de9a41a6061333266e2a8
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Calchada
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material Default
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rua
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Casa 1
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Casa 1.2
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Grid
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Modulares 1
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Modulares 2
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: UV Modulares 3
+    second: {fileID: 2100000, guid: c5a3165762c0e634abfd0cdb7cd2bd5b, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -47,7 +97,7 @@ ModelImporter:
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
-    generateSecondaryUV: 0
+    generateSecondaryUV: 1
     useFileUnits: 1
     keepQuads: 0
     weldVertices: 1
