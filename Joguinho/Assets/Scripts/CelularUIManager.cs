@@ -11,8 +11,13 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaMensagens;
     public GameObject telaCaramelinho;
     public GameObject telaConfiguracoes;
-    public GameObject telaAlarme;         // NOVO: Tela do app de alarme
-    public GameObject cell;               // NOVO: Container com a interface normal do celular
+    public GameObject telaAlarme;         
+    public GameObject cell;              
+    public GameObject telaBlocoNotas;
+    public GameObject telaCamera;
+    public GameObject telaAlbumFotos;
+    public GameObject telaY;
+    public GameObject telaInForma;
 
 
     public GameObject[] telasApps;
@@ -124,6 +129,69 @@ public class CelularUIManager : MonoBehaviour
 
         if (celularImagem != null)
             celularImagem.SetActive(false);
+    }
+
+    public void AbrirBlocoNotas()
+    {
+        FecharTodasTelas();
+
+        if (menuApps != null)
+            menuApps.SetActive(false);
+
+        if (telaBlocoNotas != null)
+            telaBlocoNotas.SetActive(true);
+    }
+
+    public void AbrirCamera()
+    {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaCamera != null)
+            telaCamera.SetActive(true);
+
+        Debug.Log("📷 App Câmera aberto!");
+    }
+
+    public void AbrirAlbumFotos()
+     {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaAlbumFotos != null)
+            telaAlbumFotos.SetActive(true);
+
+        Debug.Log("📷 App Album aberto!");
+    }
+
+    public void AbrirY()
+     {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaY != null)
+            telaY.SetActive(true);
+
+        Debug.Log("📷 App Y aberto!");
+    }
+
+    public void AbrirInForma()
+     {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaInForma != null)
+            telaInForma.SetActive(true);
+
+        Debug.Log("📷 App InForma aberto!");
     }
 
     public void VoltarAoMenu()

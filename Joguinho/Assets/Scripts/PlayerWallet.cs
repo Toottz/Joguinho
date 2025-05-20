@@ -5,7 +5,7 @@ public class PlayerWallet : MonoBehaviour
 {
     public static PlayerWallet Instance;
 
-    public float saldo = 0f;
+    public float saldo = 200f;
     public Text textoSaldo;
 
     void Awake()
