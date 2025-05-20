@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Carta
   - NPC
+  - Banheiro
+  - CoffeeStation
+  - Racao
   layers:
   - Default
   - TransparentFX
