@@ -8,6 +8,7 @@ TagManager:
   - NPC
   - Banheiro
   - CoffeeStation
+  - Racao
   layers:
   - Default
   - TransparentFX
