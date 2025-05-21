@@ -2,15 +2,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class CartaController : MonoBehaviour
 {
     public Image cartaUI;
     public GameObject dialogoUI;
-    public Text textoDialogo;
+    public TextMeshProUGUI textoentrega;
 
-    private string destinatarioAtual = "";
-    private bool temCarta = false;
+    [SerializeField]private string destinatarioAtual = "";
+    [SerializeField]  private bool temCarta = false;
 
     private bool podePegar = false;
     private CartaOrder cartaNoChao;
@@ -22,9 +23,10 @@ public class CartaController : MonoBehaviour
 
     private int indiceFala = 0;
     private List<Fala> falasAtuais = new List<Fala>();
-    private bool mostrandoDialogo = false;
+    [SerializeField]private bool mostrandoDialogo = false;
 
     public MensagensController mensagensController;
+    public bool tentouEntregar = false;
 
     void Start()
     {
@@ -44,11 +46,12 @@ public class CartaController : MonoBehaviour
         if (podePegar && Input.GetKeyDown(KeyCode.E) && !temCarta)
         {
             destinatarioAtual = cartaNoChao.nomeDestinatario;
-            entregouCartaFinal = cartaNoChao.cartaFinal;
+            //entregouCartaFinal = cartaNoChao.cartaFinal;
 
             if (entregouCartaFinal)
                 Debug.Log("📩 Pegou a carta final!");
 
+            InteracaoUIManager.Instance.EsconderTexto();
             Destroy(cartaNoChao.gameObject);
             cartaNoChao = null;
 
@@ -58,8 +61,12 @@ public class CartaController : MonoBehaviour
 
         if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo)
         {
+            InteracaoUIManager.Instance.EsconderTexto();
+            tentouEntregar = true;
+            Debug.Log("ver se o if de cima existe");
             if (npcProximo.nomeNPC == destinatarioAtual)
             {
+                Debug.Log("So pra indificar se entrou aqui");
                 falasAtuais = npcProximo.dialogoCompleto;
                 indiceFala = 0;
                 mostrandoDialogo = true;
@@ -70,11 +77,11 @@ public class CartaController : MonoBehaviour
                 cartaUI.gameObject.SetActive(false);
                 destinatarioAtual = "";
 
-                if (entregouCartaFinal)
-                {
-                    Debug.Log("🎯 Entregou a carta final! Voltando para o menu...");
-                    Invoke("VoltarParaMenu", 4f);
-                }
+                //if (entregouCartaFinal)
+                //{
+                //    Debug.Log("🎯 Entregou a carta final! Voltando para o menu...");
+                //    Invoke("VoltarParaMenu", 4f);
+                //}
             }
             else
             {
@@ -125,7 +132,7 @@ public class CartaController : MonoBehaviour
         Fala falaAtual = falasAtuais[indiceFala];
         string nome = falaAtual.quemFala == Fala.TipoDeFala.NPC ? npcProximo.nomeNPC : "Você";
 
-        textoDialogo.text = $"{nome}: {falaAtual.texto}";
+        textoentrega.text = $"{nome}: {falaAtual.texto}";
         dialogoUI.SetActive(true);
 
         Debug.Log($"Mostrando fala {indiceFala} de {falasAtuais.Count}");
@@ -134,7 +141,7 @@ public class CartaController : MonoBehaviour
     void MostrarDialogo(string mensagem)
     {
         dialogoUI.SetActive(true);
-        textoDialogo.text = mensagem;
+        textoentrega.text = mensagem;
         Invoke("EsconderDialogo", 2.5f);
     }
 

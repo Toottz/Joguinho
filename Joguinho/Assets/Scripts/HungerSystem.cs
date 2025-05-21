@@ -48,4 +48,10 @@ public class HungerSystem : MonoBehaviour
         float fillAmount = currentHunger / maxHunger;
         hungerBar.fillAmount = fillAmount;
     }
+
+    public bool TaSemFome()
+    {
+        if (currentHunger == maxHunger) return true;   
+        else return false;
+    }
 }

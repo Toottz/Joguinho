@@ -11,6 +11,7 @@ public class NPCController : MonoBehaviour
 
     [Header("Diálogo quando recebe a carta correta")]
     public List<Fala> dialogoCompleto = new List<Fala>();
+    public CartaController cartaController;
 
     void OnTriggerEnter(Collider other)
     {
@@ -22,7 +23,7 @@ public class NPCController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !cartaController.tentouEntregar)
         {
             InteracaoUIManager.Instance.EsconderTexto();
         }

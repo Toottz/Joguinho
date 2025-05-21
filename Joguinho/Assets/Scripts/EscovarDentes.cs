@@ -11,7 +11,7 @@ public AudioSource somEscovando; // som da escovação
 public TextMeshProUGUI legendaTexto; // legenda exibida após escovação
 public float tempoLegenda = 3f;
 private bool dentroDaArea = false;
-private bool escovou = false;
+public bool escovou = false;
 
 void Start()
 {

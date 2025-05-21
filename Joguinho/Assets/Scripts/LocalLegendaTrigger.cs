@@ -16,6 +16,7 @@ public class LocalLegendaTrigger : MonoBehaviour
         {
             LegendaManager.Instance?.MostrarLegenda(textoLegenda, tempoLegenda);
             jaMostrou = true;
+
         }
     }
 }

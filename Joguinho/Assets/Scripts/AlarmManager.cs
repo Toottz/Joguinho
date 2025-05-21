@@ -23,6 +23,8 @@ private bool alarmeTocando = false;
 private bool alarmeDesligado = false;
 private bool ignorouAlarme = false;
 private bool videoTocando = false;
+    public EscovarDentes EscovarDentes;
+    public ChuveiroManager ChuveiroManager;
 
 public bool AlarmeEsperandoInteracao { get; private set; } = false;
 
@@ -195,6 +197,7 @@ public void BotaoSairDoCelular()
     if (celularCompleto != null)
         celularCompleto.SetActive(true);
 
+
     Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
     //MostrarLegenda("Preciso ir ao banheiro");
     videoTocando = false;
@@ -202,7 +205,10 @@ public void BotaoSairDoCelular()
 
 public void legenda_preciso_ir_ao_banheiro()
     {
+        if (!EscovarDentes.escovou && !ChuveiroManager.tomouBanho) 
+        {
         MostrarLegenda("Preciso ir ao banheiro");
+        }
     }
 
 public bool VideoEstaTocando() => videoTocando;

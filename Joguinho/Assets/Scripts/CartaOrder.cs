@@ -13,7 +13,7 @@ public class CartaOrder : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para pegar");
+            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para pegar a carta");
         }
     }
 

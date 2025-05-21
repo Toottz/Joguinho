@@ -64,7 +64,7 @@ void Update()
 
     void OnTriggerEnter(Collider other)
 {
-    if (!escovou && other.CompareTag("Player"))
+    if (other.CompareTag("Player"))
     {
         dentroDaArea = true;
         if (textoUI != null)
