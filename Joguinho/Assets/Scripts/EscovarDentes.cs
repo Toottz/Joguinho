@@ -72,6 +72,7 @@ void OnTriggerEnter(Collider other)
         dentroDaArea = true;
         if (textoUI != null)
             textoUI.SetActive(true);
+            legendaTexto.text = "Pressione 'E' para escovar os dentes";
     }
 }
 

@@ -103,7 +103,9 @@ public void DesligarAlarmeViaBotao()
 
     if (tutorialMensagemManager != null)
         tutorialMensagemManager.OcultarMensagem();
-}
+
+    Invoke(nameof(legenda_preciso_ir_ao_banheiro), 18f);
+    }
 
 void MostrarLegenda(string texto)
 {
@@ -174,7 +176,10 @@ public void BotaoContinuarNoCelular()
 {
     if (perguntaBotoesUI != null)
         perguntaBotoesUI.SetActive(false);
-}
+
+        //MostrarLegenda("Preciso ir ao banheiro daqui a pouco");
+        Invoke(nameof(legenda_preciso_ir_ao_banheiro), 5f);
+    }
 
 public void BotaoSairDoCelular()
 {
@@ -190,9 +195,15 @@ public void BotaoSairDoCelular()
     if (celularCompleto != null)
         celularCompleto.SetActive(true);
 
-    MostrarLegenda("Preciso ir ao banheiro");
+    Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
+    //MostrarLegenda("Preciso ir ao banheiro");
     videoTocando = false;
 }
+
+public void legenda_preciso_ir_ao_banheiro()
+    {
+        MostrarLegenda("Preciso ir ao banheiro");
+    }
 
 public bool VideoEstaTocando() => videoTocando;
 public bool AlarmeAtivo() => alarmeTocando;
