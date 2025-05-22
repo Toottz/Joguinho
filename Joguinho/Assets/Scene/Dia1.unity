@@ -2342,12 +2342,12 @@ GameObject:
   m_Component:
   - component: {fileID: 137187102}
   m_Layer: 0
-  m_Name: Caixas de Correio (1)
+  m_Name: Caixas de Correio Para Teste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &137187102
 Transform:
   m_ObjectHideFlags: 0
@@ -4822,7 +4822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &339234940
 Transform:
   m_ObjectHideFlags: 0
@@ -13997,12 +13997,12 @@ GameObject:
   m_Component:
   - component: {fileID: 952482742}
   m_Layer: 0
-  m_Name: Cartas (1)
+  m_Name: Cartas Para Teste
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &952482742
 Transform:
   m_ObjectHideFlags: 0
@@ -15398,8 +15398,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaUI: {fileID: 638374269}
   nomeDestinatario: Morador da casa 368
-  setaCarta: {fileID: 0}
-  setaCasa: {fileID: 0}
+  setaCarta: {fileID: 913246798}
+  setaCasa: {fileID: 1616964968}
 --- !u!65 &1037024509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19413,7 +19413,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.023600228, y: 0.892}
   m_AnchorMax: {x: 0.12426652, y: 0.9710001}
-  m_AnchoredPosition: {x: -12.000122, y: 22}
+  m_AnchoredPosition: {x: -12.000244, y: 22}
   m_SizeDelta: {x: 113, y: 76.7298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325064451
@@ -21603,7 +21603,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1507692831
 Transform:
   m_ObjectHideFlags: 0
@@ -21627,7 +21627,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507692830}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -23049,7 +23049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1616964969
 Transform:
   m_ObjectHideFlags: 0
@@ -23073,7 +23073,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1616964968}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -23339,7 +23339,7 @@ GameObject:
   - component: {fileID: 1636516158}
   - component: {fileID: 1636516157}
   m_Layer: 0
-  m_Name: Seta Correio 467
+  m_Name: Seta Correio 457
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23449,12 +23449,12 @@ GameObject:
   - component: {fileID: 1637503581}
   - component: {fileID: 1637503580}
   m_Layer: 0
-  m_Name: Seta Casa 467
+  m_Name: Seta Casa 457
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1637503579
 Transform:
   m_ObjectHideFlags: 0
@@ -23478,7 +23478,7 @@ VFXRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637503578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -29726,8 +29726,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaUI: {fileID: 261887006}
   nomeDestinatario: Morador da casa 303
-  setaCarta: {fileID: 0}
-  setaCasa: {fileID: 0}
+  setaCarta: {fileID: 869609458}
+  setaCasa: {fileID: 1507692830}
 --- !u!65 &1922618745
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30875,7 +30875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1991510858
 Transform:
   m_ObjectHideFlags: 0
@@ -32418,8 +32418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cartaUI: {fileID: 1759169962}
   nomeDestinatario: Morador da casa 457
-  setaCarta: {fileID: 0}
-  setaCasa: {fileID: 0}
+  setaCarta: {fileID: 1636516155}
+  setaCasa: {fileID: 1637503578}
 --- !u!65 &2108314062
 BoxCollider:
   m_ObjectHideFlags: 0
