@@ -23,8 +23,8 @@ public class CameraIntroMover : MonoBehaviour
             elapsedTime += Time.deltaTime;
             float t = Mathf.Clamp01(elapsedTime / moveDuration);
 
-            transform.position = Vector3.Lerp(initialPosition, targetPosition.position, t);
-            transform.rotation = Quaternion.Slerp(initialRotation, targetPosition.rotation, t);
+            //transform.position = Vector3.Lerp(initialPosition, targetPosition.position, t);
+            //transform.rotation = Quaternion.Slerp(initialRotation, targetPosition.rotation, t);
 
             if (t >= 1f)
             {
