@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,10 @@ public class Lanchonete : MonoBehaviour
     public GameObject dialogoUI;
     public TextMeshProUGUI textoDialogosemFome;
     public TextMeshProUGUI textDialogosemDinheiro;
+    [TextArea]
+    public string semFome = "Não to com fome agora";
+    [TextArea]
+    public string semDinheiro = "Estou sem dinheiro, que triste";
 
     void Update()
     {
@@ -40,14 +45,14 @@ public class Lanchonete : MonoBehaviour
     private void MostrarDialogosemFome()
     {
         dialogoUI.SetActive(true);
-        textoDialogosemFome.text = "Não to com fome agora";
+        textoDialogosemFome.text = semFome;
         Invoke("EsconderDialogo", 2.5f);
     }
 
     private void MostrarDialogosemDinheiro()
     {
         dialogoUI.SetActive(true);
-        textDialogosemDinheiro.text = "Estou sem dinheiro, que triste";
+        textDialogosemDinheiro.text = semDinheiro;
         Invoke("EsconderDialogo", 2.5f);
     }
 

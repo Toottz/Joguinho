@@ -3,6 +3,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System.Diagnostics.SymbolStore;
+using Unity.VisualScripting;
 
 public class CartaController : MonoBehaviour
 {
@@ -38,8 +40,11 @@ public class CartaController : MonoBehaviour
     {
         if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("vendo se reage ao E");
             indiceFala++;
+            Debug.Log(indiceFala);
             MostrarFalaAtual();
+            Debug.Log($"aqeui é o mostrarfala atual{falasAtuais.Count}");
             return;
         }
 
@@ -57,6 +62,8 @@ public class CartaController : MonoBehaviour
 
             temCarta = true;
             cartaUI.gameObject.SetActive(true);
+
+
         }
 
         if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo)
@@ -122,17 +129,18 @@ public class CartaController : MonoBehaviour
 
     void MostrarFalaAtual()
     {
+
         if (indiceFala >= falasAtuais.Count)
         {
+            Debug.Log("acabo a fala");
             EsconderDialogo();
             mostrandoDialogo = false;
             return;
         }
 
         Fala falaAtual = falasAtuais[indiceFala];
-        string nome = falaAtual.quemFala == Fala.TipoDeFala.NPC ? npcProximo.nomeNPC : "Você";
 
-        textoentrega.text = $"{nome}: {falaAtual.texto}";
+        textoentrega.text = falaAtual.texto;
         dialogoUI.SetActive(true);
 
         Debug.Log($"Mostrando fala {indiceFala} de {falasAtuais.Count}");

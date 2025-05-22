@@ -1,10 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using static System.Net.Mime.MediaTypeNames;
+using System.Diagnostics.SymbolStore;
+using UnityEngine.VFX;
 
 public class CartaOrder : MonoBehaviour
 {
+    //public Image cartaUI;
+    public GameObject cartaUI;
     public string nomeDestinatario;
+    public GameObject seta;
 
     [Header("Especial")]
     public bool cartaFinal = false; // ← Marque essa carta no Inspector como final

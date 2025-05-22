@@ -9,6 +9,7 @@ public class AlarmManager : MonoBehaviour
 public AudioSource somAlarme;
 public GameObject telaPreta;
 public GameObject videoPlayerUI;
+public GameObject apps;
 public VideoPlayer videoPlayer;
 public GameObject player;
 public GameObject cameraObj;
@@ -25,8 +26,10 @@ private bool ignorouAlarme = false;
 private bool videoTocando = false;
     public EscovarDentes EscovarDentes;
     public ChuveiroManager ChuveiroManager;
+[TextArea]
+public string falaIrBanheiro = "Preciso ir ao banheiro";
 
-public bool AlarmeEsperandoInteracao { get; private set; } = false;
+    public bool AlarmeEsperandoInteracao { get; private set; } = false;
 
 void Start()
 {
@@ -40,6 +43,9 @@ void Start()
 
     if (videoPlayerUI != null)
         videoPlayerUI.SetActive(false);
+
+    if (apps != null)
+        apps.SetActive(false);
 
     if (legendaTexto != null)
         legendaTexto.gameObject.SetActive(false);
@@ -74,7 +80,10 @@ IEnumerator IniciarSequencia()
         if (telaAlarmeUI != null)
             telaAlarmeUI.SetActive(false);
 
-        if (tutorialMensagemManager != null)
+            if (apps != null)
+                apps.SetActive(false);
+
+            if (tutorialMensagemManager != null)
             tutorialMensagemManager.OcultarMensagem();
     }
 }
@@ -94,7 +103,10 @@ public void DesligarAlarmeViaBotao()
     if (celularCompleto != null)
         celularCompleto.SetActive(true);
 
-    CelularUIManager uiManager = FindObjectOfType<CelularUIManager>();
+        if (apps != null)
+            apps.SetActive(true);
+
+        CelularUIManager uiManager = FindObjectOfType<CelularUIManager>();
     if (uiManager != null && uiManager.menuApps != null)
         uiManager.menuApps.SetActive(true);
 
@@ -140,7 +152,14 @@ IEnumerator VoltarADormir()
     if (videoPlayerUI != null)
         videoPlayerUI.SetActive(true);
 
-    if (videoPlayer != null)
+        if (celularCompleto != null)
+            celularCompleto.SetActive(true);
+
+        if (apps != null)
+            apps.SetActive(false);
+
+
+        if (videoPlayer != null)
     {
         videoPlayer.Play();
         videoTocando = true;
@@ -151,7 +170,7 @@ IEnumerator VoltarADormir()
 
     yield return StartCoroutine(FazerFadeOutTelaPreta());
 
-    MostrarLegenda("Nem comecei o dia e já tô esgotada...");
+    MostrarLegenda(falaIrBanheiro);
 
     yield return new WaitForSeconds(10f);
 
@@ -194,8 +213,11 @@ public void BotaoSairDoCelular()
     if (videoPlayerUI != null)
         videoPlayerUI.SetActive(false);
 
-    if (celularCompleto != null)
-        celularCompleto.SetActive(true);
+        if (apps != null)
+            apps.SetActive(true);
+
+        if (celularCompleto != null)
+        celularCompleto.SetActive(false);
 
 
     Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
