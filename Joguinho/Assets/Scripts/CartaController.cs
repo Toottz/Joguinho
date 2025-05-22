@@ -8,11 +8,12 @@ using Unity.VisualScripting;
 
 public class CartaController : MonoBehaviour
 {
-    public Image cartaUI;
     public GameObject dialogoUI;
     public TextMeshProUGUI textoentrega;
+    public GameObject[] cartasObject = new GameObject[3];
+    public GameObject[] setasCasas = new GameObject[3];
 
-    [SerializeField]private string destinatarioAtual = "";
+    [SerializeField] private string [] destinatarioAtual = new string [3];
     [SerializeField]  private bool temCarta = false;
 
     private bool podePegar = false;
@@ -21,7 +22,7 @@ public class CartaController : MonoBehaviour
     private bool podeEntregar = false;
     private NPCController npcProximo;
 
-    private bool entregouCartaFinal = false;
+    //private bool entregouCartaFinal = false;
 
     private int indiceFala = 0;
     private List<Fala> falasAtuais = new List<Fala>();
@@ -32,15 +33,18 @@ public class CartaController : MonoBehaviour
 
     void Start()
     {
-        cartaUI.gameObject.SetActive(false);
+        //cartaUI.gameObject.SetActive(false);
         dialogoUI.SetActive(false);
+        for (int i = 0; i < destinatarioAtual.Length; i++)
+        {
+            destinatarioAtual[i] = "";
+        }
     }
 
     void Update()
     {
         if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("vendo se reage ao E");
             indiceFala++;
             Debug.Log(indiceFala);
             MostrarFalaAtual();
@@ -48,56 +52,86 @@ public class CartaController : MonoBehaviour
             return;
         }
 
-        if (podePegar && Input.GetKeyDown(KeyCode.E) && !temCarta)
+        if (podePegar && Input.GetKeyDown(KeyCode.E))
         {
-            destinatarioAtual = cartaNoChao.nomeDestinatario;
-            //entregouCartaFinal = cartaNoChao.cartaFinal;
+            for (int i = 0; i < destinatarioAtual.Length; i++) 
+            {
+                Debug.Log("Ta entrando no for pode pegar");
+                if (destinatarioAtual[i] == "")
+                {
+                    Debug.Log("Ta entrnado no if do pode pegar");
+                    destinatarioAtual[i] = cartaNoChao.nomeDestinatario;
 
-            if (entregouCartaFinal)
-                Debug.Log("📩 Pegou a carta final!");
+                    //entregouCartaFinal = cartaNoChao.cartaFinal;
+                    //if (entregouCartaFinal)
+                    //    Debug.Log("📩 Pegou a carta final!");
 
-            InteracaoUIManager.Instance.EsconderTexto();
-            Destroy(cartaNoChao.gameObject);
-            cartaNoChao = null;
+                    InteracaoUIManager.Instance.EsconderTexto();
 
-            temCarta = true;
-            cartaUI.gameObject.SetActive(true);
+                    cartasObject[i] = cartaNoChao.cartaUI;
+                    cartasObject[i].SetActive(true);
 
+                    setasCasas[i] = cartaNoChao.setaCasa;
+                    cartaNoChao.setaCasa.SetActive(true);
 
+                    cartaNoChao.setaCarta.SetActive(false);
+
+                    Destroy(cartaNoChao.gameObject);
+                    cartaNoChao = null;
+
+                    temCarta = true;
+
+                    if (i == 2)
+                    {
+                        podePegar = false;
+                    }
+                    return;
+
+                }
+            }
         }
 
         if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo)
         {
             InteracaoUIManager.Instance.EsconderTexto();
             tentouEntregar = true;
-            Debug.Log("ver se o if de cima existe");
-            if (npcProximo.nomeNPC == destinatarioAtual)
+            for (int i = 0; i < destinatarioAtual.Length; i++)
             {
-                Debug.Log("So pra indificar se entrou aqui");
-                falasAtuais = npcProximo.dialogoCompleto;
-                indiceFala = 0;
-                mostrandoDialogo = true;
-                MostrarFalaAtual();
+                if (destinatarioAtual[i] == npcProximo.nomeNPC)
+                {
+                    falasAtuais = npcProximo.dialogoCompleto;
+                    indiceFala = 0;
+                    mostrandoDialogo = true;
+                    MostrarFalaAtual();
 
-                PlayerWallet.Instance.AdicionarDinheiro(25f);
-                temCarta = false;
-                cartaUI.gameObject.SetActive(false);
-                destinatarioAtual = "";
+                    PlayerWallet.Instance.AdicionarDinheiro(25f);
+                    temCarta = false;
 
-                //if (entregouCartaFinal)
-                //{
-                //    Debug.Log("🎯 Entregou a carta final! Voltando para o menu...");
-                //    Invoke("VoltarParaMenu", 4f);
-                //}
-            }
-            else
-            {
-                MostrarDialogo(npcProximo.mensagemErrada);
+                    for (int j = 0; j < destinatarioAtual.Length; j++)
+                    {
+                        if (destinatarioAtual[j] != "")
+                        {
+                            temCarta = true;
+                        }
+                    }
+
+                    cartasObject[i].SetActive(false);
+                    setasCasas[i].SetActive(false);
+
+                    Destroy(npcProximo.gameObject);
+
+                    destinatarioAtual[i] = "";
+                    return;
+                }
+                else if (i == 2)
+                {
+                    MostrarDialogo(npcProximo.mensagemErrada);
+                }
             }
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay (Collider other)
     {
         if (other.CompareTag("Carta"))
         {
@@ -155,6 +189,9 @@ public class CartaController : MonoBehaviour
 
     void EsconderDialogo()
     {
+        Debug.Log("EsconerDialogo");
+        mostrandoDialogo = false;
+        tentouEntregar= false;
         dialogoUI.SetActive(false);
     }
 

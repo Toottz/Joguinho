@@ -11,10 +11,11 @@ public class CartaOrder : MonoBehaviour
     //public Image cartaUI;
     public GameObject cartaUI;
     public string nomeDestinatario;
-    public GameObject seta;
+    public GameObject setaCarta;
+    public GameObject setaCasa;
 
-    [Header("Especial")]
-    public bool cartaFinal = false; // ← Marque essa carta no Inspector como final
+    //[Header("Especial")]
+    //public bool cartaFinal = false; // ← Marque essa carta no Inspector como final
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,6 +24,7 @@ public class CartaOrder : MonoBehaviour
             InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para pegar a carta");
         }
     }
+    
 
     void OnTriggerExit(Collider other)
     {
