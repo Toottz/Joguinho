@@ -29501,6 +29501,8 @@ MonoBehaviour:
   listaContatos: {fileID: 2053038749}
   conversaChefe: {fileID: 482925759}
   conversaMae: {fileID: 760495090}
+  botaovoltar: {fileID: 0}
+  botaovoltarmenu: {fileID: 0}
   celularBorda: {fileID: 0}
 --- !u!1 &1986743580
 GameObject:

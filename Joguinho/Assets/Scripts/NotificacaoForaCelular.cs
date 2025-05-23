@@ -4,6 +4,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEditor.VersionControl;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NotificacaoForaCelular : MonoBehaviour
 {
@@ -14,37 +15,44 @@ public class NotificacaoForaCelular : MonoBehaviour
     public Vector3 originalPosition;
     public Vector3 hiddenPosition;
     private bool isShowing = false;
-    public TextMeshProUGUI TextMeshProUGUI;
+    public TextMeshProUGUI Notificacao;
+    public TextMeshProUGUI App;
+    public Image Logo;
+    public Image Cor;
+
 
 
     void Awake()
     {
-
-        transform.position = hiddenPosition; // Começa escondido
+        transform.localPosition = hiddenPosition; // Começa escondido
     }
 
 
     // Método público para ativar a notificação
-    public void ShowNotification(string message)
+    public void ShowNotification(string message, string app, Color cores, Sprite Logos)
     {
         gameObject.SetActive(true);
 
         if (isShowing) return;
 
         isShowing = true;
-        TextMeshProUGUI.text = message;
+        Notificacao.text = message;
+        App.text = app;
+        Cor.color = cores;
+        Logo.sprite = Logos;
 
         // Animação de entrada
-        transform.DOMove(originalPosition, fadeDuration)
+        transform.DOLocalMove(originalPosition, fadeDuration)
             .SetEase(Ease.OutBack)
             .OnComplete(() =>
             {
                 // Animação de saída após o tempo definido
                 DOVirtual.DelayedCall(showDuration, () =>
                 {
-                    transform.DOMove(hiddenPosition, fadeDuration)
+                    transform.DOLocalMove(hiddenPosition, fadeDuration)
                         .SetEase(Ease.InBack)
-                        .OnComplete(() => isShowing = false);
+                        .OnComplete(() => isShowing = false)
+                        .OnComplete(() => gameObject.SetActive(false));
                 });
             });
     }
@@ -53,7 +61,7 @@ public class NotificacaoForaCelular : MonoBehaviour
     public void ResetNotification()
     {
         transform.DOKill();
-        transform.position = hiddenPosition;
+        transform.localPosition = hiddenPosition;
         isShowing = false;
     }
 }

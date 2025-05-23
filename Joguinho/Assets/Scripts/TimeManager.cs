@@ -10,6 +10,7 @@ public class TimeManager : MonoBehaviour
 
     public bool usarMudancaDeCor = true;
     public static float HoraAtual { get; private set; }
+    public static float MinutoAtual { get; private set; }
 
 
     private float tempoEmMinutos = 360f; // começa às 6:00 da manhã
@@ -20,6 +21,8 @@ public class TimeManager : MonoBehaviour
         tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
 
         HoraAtual = tempoEmMinutos / 60f;
+        MinutoAtual = tempoEmMinutos % 60f;
+
 
         if (tempoEmMinutos >= 1440f)
             tempoEmMinutos = 0f; // reinicia ao chegar em 24h
