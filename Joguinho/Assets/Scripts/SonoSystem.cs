@@ -13,7 +13,7 @@ public class SonoSystem : MonoBehaviour
 
     void Start()
     {
-        currentSono = maxSono;
+        currentSono = 0f;
         UpdateUI();
     }
 
@@ -23,13 +23,13 @@ public class SonoSystem : MonoBehaviour
         if (timer >= timeBetweenDecreases)
         {
             timer = 0f;
-            ModifySono(-sonoDecreaseRate);
+            ModifySono(sonoDecreaseRate);
         }
     }
 
     public void Dormir(float valor)
     {
-        ModifySono(valor);
+        ModifySono(-valor);
     }
 
     private void ModifySono(float valor)

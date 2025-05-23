@@ -8,8 +8,6 @@ public class FeedBackLegendas : MonoBehaviour
 public GameObject textoUI; 
 public TextMeshProUGUI legendaTexto;
 public float tempoLegenda = 3f;
-private bool dentroDaArea = false;
-private bool escovou = false;
 public string mensagemInteracao = "FeedBack";
 
 void Start()
@@ -66,7 +64,6 @@ void Update()
 {
     if (other.CompareTag("Player"))
     {
-        dentroDaArea = true;
         if (textoUI != null)
             textoUI.SetActive(true);
             legendaTexto.text = mensagemInteracao;
@@ -77,7 +74,6 @@ void OnTriggerExit(Collider other)
 {
     if (other.CompareTag("Player"))
     {
-        dentroDaArea = false;
         if (textoUI != null)
             textoUI.SetActive(false);
     }

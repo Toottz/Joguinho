@@ -23,7 +23,7 @@ public class NPCController : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) ; //&& !cartaController.tentouEntregar)
+        if (other.CompareTag("Player")) //&& !cartaController.tentouEntregar)
         {
             Debug.Log("Caixa de correio if Exit");
             InteracaoUIManager.Instance.EsconderTexto();

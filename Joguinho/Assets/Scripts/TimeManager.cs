@@ -9,13 +9,17 @@ public class TimeManager : MonoBehaviour
     public Gradient corLuzPorHora; // curva de cor ao longo do dia
 
     public bool usarMudancaDeCor = true;
+    public static float HoraAtual { get; private set; }
 
 
     private float tempoEmMinutos = 360f; // começa às 6:00 da manhã
 
     void Update()
     {
+
         tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
+
+        HoraAtual = tempoEmMinutos / 60f;
 
         if (tempoEmMinutos >= 1440f)
             tempoEmMinutos = 0f; // reinicia ao chegar em 24h
