@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Lanchonete : MonoBehaviour
 {
     public float hungerRestoreAmount = 100f;
+    public float socialRestoreAmount = 8f;
     private bool isPlayerNearby = false;
     private GameObject player;
     public PlayerWallet wallet;
@@ -29,6 +30,12 @@ public class Lanchonete : MonoBehaviour
                         if (wallet.GastarDinheiro(20))
                         {
                             hungerSystem.EatFood(hungerRestoreAmount);
+
+                            SedeSystem SedeSystem = player.GetComponent<SedeSystem>();
+                            if (SedeSystem != null)
+                            {
+                                SedeSystem.BeberAgua(socialRestoreAmount);
+                            }
                         }
                         else
                         {
