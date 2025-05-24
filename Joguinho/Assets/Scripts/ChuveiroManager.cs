@@ -13,8 +13,9 @@ public GameObject telaPreta;
 public AudioSource somChuveiro;
 public GameObject roupaNoChao; // NOVO
 public bool tomouBanho = false;
+    public Toggle toggleBanho;
 
-void Awake()
+    void Awake()
 {
     Instance = this;
 
@@ -44,13 +45,17 @@ public void EscolherBanhoSimples()
 {
     StartCoroutine(RotinaBanhoSimples());
     tomouBanho = true;
-}
+        if (toggleBanho != null)
+            toggleBanho.isOn = true;
+    }
 
 public void EscolherBanhoComCabelo()
 {
     StartCoroutine(RotinaBanhoComCabelo());
     tomouBanho = true;
-}
+        if (toggleBanho != null)
+            toggleBanho.isOn = true;
+    }
 
 IEnumerator RotinaBanhoSimples()
 {

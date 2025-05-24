@@ -10,6 +10,7 @@ public class Passarinho : MonoBehaviour
     private GameObject player;
     public Collision Collision;
     public GameObject falaPersona;
+    public bool falou = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,8 +39,10 @@ public class Passarinho : MonoBehaviour
 
             Invoke(nameof(desligarFala), 2f);
 
-            InteracaoUIManager.Instance.EsconderTexto(); // Esconde o texto ao comer
-            Destroy(gameObject); // Remove o hambúrguer
+            falou = true;
+
+            InteracaoUIManager.Instance.EsconderTexto();
+            Destroy(gameObject);
         }
     }
     private void desligarFala()

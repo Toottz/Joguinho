@@ -1,10 +1,14 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Hamburger : MonoBehaviour
 {
     public float hungerRestoreAmount = 100f;
     private bool isPlayerNearby = false;
     private GameObject player;
+    public GameObject falaPersona;
+    public Toggle toggleComida;
 
     void Update()
     {
@@ -16,8 +20,13 @@ public class Hamburger : MonoBehaviour
                 hungerSystem.EatFood(hungerRestoreAmount);
             }
 
+            if (falaPersona != null)
+                falaPersona.SetActive(true);
+
             InteracaoUIManager.Instance.EsconderTexto(); // Esconde o texto ao comer
             Destroy(gameObject); // Remove o hambúrguer
+            if (toggleComida != null)
+                toggleComida.isOn = true;
         }
     }
 

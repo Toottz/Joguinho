@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PortaCena : MonoBehaviour
 {
@@ -16,11 +17,40 @@ public class PortaCena : MonoBehaviour
     [TextArea]
     public string mensagemProibido = "FeedBack";
 
+    public GameObject player;
+
+    [Header("Perdas se não falar com passarinho")]
+    public float socialLost;
+    public float ansiedadeAumento;
+    public Passarinho passaro;
+
+    public Toggle toggleEscovacao;
+    public Toggle toggleBanho;
+    public Toggle toggleComida;
+
+
+
     void Update()
     {
         if (playerPerto && Input.GetKeyDown(KeyCode.E) && tarefas_Finalizadas)
         {
             SceneManager.LoadScene(nomeCenaDestino);
+
+            if (!passaro.falou)
+            {
+                SedeSystem SedeSystem = player.GetComponent<SedeSystem>();
+                if (SedeSystem != null)
+                {
+                    SedeSystem.BeberAgua(socialLost);
+                }
+
+                AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+                if (AnsiedadeSystem != null)
+                {
+                    AnsiedadeSystem.Relaxar(ansiedadeAumento);
+                }
+            }
+
         }
         if (playerPerto && Input.GetKeyDown(KeyCode.E) && !tarefas_Finalizadas)
         {
@@ -29,6 +59,11 @@ public class PortaCena : MonoBehaviour
             legendaTexto.text = mensagemProibido;
             Invoke("desligarFala", 3f);
 
+        }
+
+        if (toggleBanho.isOn && toggleComida.isOn && toggleEscovacao.isOn)
+        {
+            tarefas_Finalizadas = true; 
         }
     }
 

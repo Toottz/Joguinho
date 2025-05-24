@@ -9,23 +9,33 @@ public class TimeManager : MonoBehaviour
     public Gradient corLuzPorHora; // curva de cor ao longo do dia
 
     public bool usarMudancaDeCor = true;
+
+    [SerializeField]
     public static float HoraAtual { get; private set; }
+    [SerializeField]
     public static float MinutoAtual { get; private set; }
 
 
     private float tempoEmMinutos = 360f; // começa às 6:00 da manhã
 
+    public GameObject objetoControlador; // Arraste o objeto que controlará o relógio no Inspector
+    private bool relogioPausado = false;
+
     void Update()
     {
+        // Verifica se o objeto controlador está ativo
+        relogioPausado = objetoControlador != null && objetoControlador.activeInHierarchy;
 
-        tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
+        // Se o relógio não estiver pausado, atualiza o tempo
+        if (!relogioPausado)
+        {
+            tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
+            HoraAtual = tempoEmMinutos / 60f;
+            MinutoAtual = tempoEmMinutos % 60f;
 
-        HoraAtual = tempoEmMinutos / 60f;
-        MinutoAtual = tempoEmMinutos % 60f;
-
-
-        if (tempoEmMinutos >= 1440f)
-            tempoEmMinutos = 0f; // reinicia ao chegar em 24h
+            if (tempoEmMinutos >= 1440f)
+                tempoEmMinutos = 0f; // reinicia ao chegar em 24h
+        }
 
         AtualizarRelogio();
         AtualizarIluminacao();

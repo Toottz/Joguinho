@@ -18,4 +18,5 @@ public class BlocoDeNotasApp : MonoBehaviour
             if (campoTexto != null)
                 campoTexto.text = objetivosTexto;
         }
+
 }
