@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class CelularUIManager : MonoBehaviour
 {
@@ -18,7 +20,9 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaAlbumFotos;
     public GameObject telaY;
     public GameObject telaInForma;
+    public GameObject telaGabi;
 
+    public VideoPlayer videoConfigPlayer;
 
     public GameObject[] telasApps;
 
@@ -101,7 +105,18 @@ public class CelularUIManager : MonoBehaviour
 
         if (telaConfiguracoes != null)
             telaConfiguracoes.SetActive(true);
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (videoConfigPlayer != null)
+        {
+            videoConfigPlayer.Play();
+        }
+
+        Debug.Log("⚙️ App Configurações aberto com vídeo.");
     }
+
 
     public void MostrarTelaAlarme()
     {
@@ -192,6 +207,19 @@ public class CelularUIManager : MonoBehaviour
             telaInForma.SetActive(true);
 
         Debug.Log("📷 App InForma aberto!");
+    }
+
+    public void AbrirTelaGabi()
+     {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaGabi != null)
+            telaGabi.SetActive(true);
+
+        Debug.Log("📷 App Gabi aberto!");
     }
 
     public void VoltarAoMenu()

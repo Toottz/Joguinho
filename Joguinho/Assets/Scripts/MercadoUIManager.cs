@@ -3,63 +3,67 @@ using UnityEngine.UI;
 
 public class MercadoUIManager : MonoBehaviour
 {
-    public GameObject painelPerguntaEntrada; // painel com as opções "Entrar" ou "Não"
-    public GameObject painelLoja; // painel principal da loja com os itens
-    public GameObject[] itensLoja; // objetos visuais de itens com botão de compra
+public GameObject painelPerguntaInicial; // "Comprar comidas? [Sim] [Não]"
+public GameObject painelConfirmacao; // "Tem certeza? [Sim] [Não]"
+public GameObject painelPrincipalLoja; // Painel de fundo da loja (se quiser mostrar algo)
+public float precoComida = 10f;
 
-    void Start()
+public Text textoPrecoConfirmacao;         // "Tem certeza? Isso custará X reais"
+public AudioSource somCompra;
+
+private void Start()
+{
+    FecharTudo();
+}
+
+public void MostrarPergunta()
+{
+    FecharTudo();
+    painelPerguntaInicial.SetActive(true);
+}
+
+public void BotaoSimPrimeiraPergunta()
+{
+    painelPerguntaInicial.SetActive(false);
+    textoPrecoConfirmacao.text = $"Tem certeza? Isso custará R$ {precoComida:F2}";
+    painelConfirmacao.SetActive(true);
+}
+
+public void BotaoNaoPrimeiraPergunta()
+{
+    SairDaLoja();
+}
+
+public void BotaoSimConfirmacao()
+{
+    if (PlayerWallet.Instance != null && PlayerWallet.Instance.GastarDinheiro(precoComida))
     {
-        if (painelPerguntaEntrada != null)
-            painelPerguntaEntrada.SetActive(false);
-
-        if (painelLoja != null)
-            painelLoja.SetActive(false);
+        Debug.Log("🛒 Compra realizada!");
+        if (somCompra != null) somCompra.Play();
+    }
+    else
+    {
+        Debug.Log("❌ Não foi possível comprar (dinheiro insuficiente)");
     }
 
-    // Chamado pelo trigger ao se aproximar
-    public void MostrarPerguntaEntrada()
-    {
-        if (painelPerguntaEntrada != null)
-            painelPerguntaEntrada.SetActive(true);
-    }
+    SairDaLoja();
+}
 
-    // Quando o jogador clica em "Entrar"
-    public void EntrarNaLoja()
-    {
-        if (painelPerguntaEntrada != null)
-            painelPerguntaEntrada.SetActive(false);
+public void BotaoNaoConfirmacao()
+{
+    SairDaLoja();
+}
 
-        if (painelLoja != null)
-            painelLoja.SetActive(true);
-    }
+void SairDaLoja()
+{
+    FecharTudo();
+    if (painelPrincipalLoja != null)
+        painelPrincipalLoja.SetActive(false);
+}
 
-    // Quando o jogador clica em "Não"
-    public void CancelarEntrada()
-    {
-        if (painelPerguntaEntrada != null)
-            painelPerguntaEntrada.SetActive(false);
-    }
-
-    public void ComprarItem(float preco)
-    {
-        if (PlayerWallet.Instance != null)
-        {
-            bool comprou = PlayerWallet.Instance.GastarDinheiro(preco);
-            if (comprou)
-            {
-                Debug.Log("Item comprado por R$ " + preco);
-                // Aqui você pode adicionar lógica como remover o item, dar feedback etc
-            }
-            else
-            {
-                Debug.Log("Não foi possível comprar, saldo insuficiente.");
-            }
-        }
-    }
-
-    public void FecharLoja()
-    {
-        if (painelLoja != null)
-            painelLoja.SetActive(false);
-    }
+void FecharTudo()
+{
+    painelPerguntaInicial?.SetActive(false);
+    painelConfirmacao?.SetActive(false);
+}
 }
