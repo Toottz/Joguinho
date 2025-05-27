@@ -1,36 +1,19 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Video;
 
 public class AppConfiguracoes : MonoBehaviour
 {
-public GameObject telaConfiguracoes;
-public GameObject[] outrasTelas;
-public VideoPlayer videoPlayer;
+    public Slider sliderBrilhoCelular;
+    public Slider sliderBrilhoJogo;
+    public Slider sliderVolume;
 
-public Slider sliderBrilhoCelular;
-public Slider sliderBrilhoJogo;
-public Slider sliderVolume;
-
-public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a tela do app)
-public Light luzPrincipal;         // Luz principal da cena (se usada)
-public Image overlayEscurecer;     // Imagem preta para escurecer o JOGO
-public Image overlayClarear;       // Imagem branca para clarear o JOGO
+    public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a tela do app)
+    public Light luzPrincipal;         // Luz principal da cena (se usada)
+    public Image overlayEscurecer;     // Imagem preta para escurecer o JOGO
+    public Image overlayClarear;       // Imagem branca para clarear o JOGO
 
     void Start()
     {
-        {
-            if (telaConfiguracoes != null)
-                telaConfiguracoes.SetActive(false);
-
-            if (videoPlayer != null)
-            {
-                videoPlayer.playOnAwake = false;
-                videoPlayer.isLooping = true;
-                videoPlayer.Stop();
-            }
-        }
-
         sliderBrilhoCelular.onValueChanged.AddListener(AjustarBrilhoCelular);
         sliderBrilhoJogo.onValueChanged.AddListener(AjustarBrilhoJogo);
         sliderVolume.onValueChanged.AddListener(AjustarVolume);
@@ -126,51 +109,4 @@ public Image overlayClarear;       // Imagem branca para clarear o JOGO
     {
         AudioListener.volume = valor;
     }
-
-    public void AbrirTelaConfiguracoes()
-    {
-        if (!CelularEstaAberto())
-        {
-            Debug.Log("⛔ O celular precisa estar aberto para usar o app.");
-            return;
-        }
-
-        FecharTodasAsTelas();
-
-        if (telaConfiguracoes != null)
-            telaConfiguracoes.SetActive(true);
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.Stop();  // reinicia sempre do início
-            Invoke("PlayVideo", 0.05f); // pequena espera para evitar travamento
-        }
-
-        Debug.Log("📱 Tela Gabi aberta");
-    }
-
-    void PlayVideo()
-    {
-        if (videoPlayer != null)
-            videoPlayer.Play();
-    }
-
-    void FecharTodasAsTelas()
-    {
-        foreach (GameObject tela in outrasTelas)
-        {
-            if (tela != null)
-                tela.SetActive(false);
-        }
-
-        if (videoPlayer != null)
-            videoPlayer.Stop();
-    }
-
-    bool CelularEstaAberto()
-    {
-        CelularController celular = FindObjectOfType<CelularController>();
-        return celular != null && celular.CelularEstaAberto();
-    }
 }
-

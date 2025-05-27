@@ -12,7 +12,7 @@ public class Hamburger : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Pressionar "F" para comer
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.F)) // Pressionar "F" para comer
         {
             HungerSystem hungerSystem = player.GetComponent<HungerSystem>();
             if (hungerSystem != null)
@@ -36,7 +36,7 @@ public class Hamburger : MonoBehaviour
         {
             isPlayerNearby = true;
             player = other.gameObject;
-            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para comer");
+            InteracaoUIManager.Instance.MostrarTexto("Pressione 'F' para comer");
         }
     }
 
