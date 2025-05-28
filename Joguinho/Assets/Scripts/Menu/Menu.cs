@@ -12,6 +12,11 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject painelOpcoes;
 
     //public AudioSource som;
+    private void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void StarGame()
     {

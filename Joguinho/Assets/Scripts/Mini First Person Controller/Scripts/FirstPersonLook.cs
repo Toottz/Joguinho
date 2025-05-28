@@ -6,7 +6,7 @@ public class FirstPersonLook : MonoBehaviour
     public float sensitivity = 2f;
     public float smoothing = 1.5f;
 
-    public bool bloquearCamera = false; // Permite bloquear rotação da câmera
+    public bool bloquearCamera; // Permite bloquear rotação da câmera
 
     private Vector2 velocity;
     private Vector2 frameVelocity;

@@ -30,6 +30,12 @@ public class FirstPersonMovement : MonoBehaviour
 
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
+
+        if (CelularUIManager.instance.gameObject.activeSelf)
+        {
+            targetMovingSpeed = 0f;
+        }
+
         if (speedOverrides.Count > 0)
         {
             targetMovingSpeed = speedOverrides[speedOverrides.Count - 1]();

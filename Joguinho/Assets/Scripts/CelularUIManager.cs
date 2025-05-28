@@ -29,6 +29,14 @@ public class CelularUIManager : MonoBehaviour
     public AlarmManager alarmManager;     // NOVO: Referência ao gerenciador de alarme
     public MensagensAppManager mensagensAppManager;
 
+    public static CelularUIManager instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+
     public void AoAbrirCelular()
     {
         if (alarmManager != null && alarmManager.AlarmeAtivo())

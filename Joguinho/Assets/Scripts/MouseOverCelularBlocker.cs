@@ -7,14 +7,14 @@ public class MouseOverCelularBlocker : MonoBehaviour
     public FirstPersonLook cameraLookScript;
     public CelularController celularController; // Referência ao script que controla o celular
 
+    [SerializeField]
+    private GameObject UiCelular;
+
     void Update()
     {
-        if (celularController != null && celularController.CelularEstaAberto())
+        if (celularController != null && UiCelular.activeSelf)
         {
-            if (EventSystem.current.IsPointerOverGameObject() || !MouseScreenCheck())
                 cameraLookScript.bloquearCamera = true;
-            else
-                cameraLookScript.bloquearCamera = false;
         }
         else
         {

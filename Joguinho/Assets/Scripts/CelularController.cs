@@ -36,7 +36,7 @@ void Update()
         Cursor.visible = celularAberto;
 
         if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
-            lookScript.bloquearCamera = false;
+           // lookScript.bloquearCamera = false;
 
         FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
 
