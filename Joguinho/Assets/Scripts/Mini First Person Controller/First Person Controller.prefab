@@ -362,6 +362,7 @@ MonoBehaviour:
   character: {fileID: 4207293392497186}
   sensitivity: 2
   smoothing: 1.5
+  bloquearCamera: 0
 --- !u!114 &114103969153859672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,10 +545,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361b18972392fee459eec4b214628e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cartaUI: {fileID: 0}
   dialogoUI: {fileID: 0}
-  textoDialogo: {fileID: 0}
+  textoentrega: {fileID: 0}
+  cartasObject:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  setasCasas:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  destinatarioAtual:
+  - 
+  - 
+  - 
+  temCarta: 0
+  mostrandoDialogo: 0
   mensagensController: {fileID: 0}
+  tentouEntregar: 0
 --- !u!114 &812541823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -561,8 +576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hungerBar: {fileID: 0}
-  fullHungerColor: {r: 0, g: 1, b: 0, a: 1}
-  emptyHungerColor: {r: 0, g: 0, b: 0, a: 0}
   maxHunger: 100
   hungerDecreaseRate: 25
   timeBetweenDecreases: 5
