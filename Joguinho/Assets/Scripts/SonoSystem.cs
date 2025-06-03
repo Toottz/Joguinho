@@ -8,12 +8,10 @@ public class SonoSystem : MonoBehaviour
     public float sonoDecreaseRate = 5f;
     public float timeBetweenDecreases = 90f;
 
-    private float currentSono;
     private float timer;
 
     void Start()
     {
-        currentSono = 0f;
         UpdateUI();
     }
 
@@ -34,13 +32,13 @@ public class SonoSystem : MonoBehaviour
 
     private void ModifySono(float valor)
     {
-        currentSono = Mathf.Clamp(currentSono + valor, 0f, maxSono);
+        Estatico.Sono = Mathf.Clamp(Estatico.Sono + valor, 0f, maxSono);
         UpdateUI();
     }
 
     void UpdateUI()
     {
-        float fill = currentSono / maxSono;
+        float fill = Estatico.Sono / maxSono;
         sonoBar.fillAmount = fill;
     }
 }

@@ -4283,7 +4283,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &313281550
 Transform:
   m_ObjectHideFlags: 0
@@ -9292,7 +9292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &587344325
 Transform:
   m_ObjectHideFlags: 0
@@ -14305,7 +14305,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &869169033
 Transform:
   m_ObjectHideFlags: 0
@@ -14669,7 +14669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &909775783
 Transform:
   m_ObjectHideFlags: 0
@@ -17905,7 +17905,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1162061290
 Transform:
   m_ObjectHideFlags: 0
@@ -19518,6 +19518,7 @@ MonoBehaviour:
   celularUI: {fileID: 282714156}
   mensagensController: {fileID: 805789359}
   cameraLookScript: {fileID: 0}
+  celularAberto: 0
 --- !u!4 &1266578563
 Transform:
   m_ObjectHideFlags: 0
@@ -22856,7 +22857,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1596839496
 Transform:
   m_ObjectHideFlags: 0
@@ -25266,6 +25267,10 @@ PrefabInstance:
       propertyPath: m_BackGroundColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: Cell
+      value: 
+      objectReference: {fileID: 282714156}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: speed
       value: 1

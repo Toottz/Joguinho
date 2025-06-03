@@ -42,6 +42,7 @@ public class FirstPersonLook : MonoBehaviour
     {
         velocity = Vector2.zero;
         frameVelocity = Vector2.zero;
+  
     }
     public void SetLookEnabled(bool state)
     {

@@ -6,17 +6,19 @@ public class CelularController : MonoBehaviour
 public GameObject celularUI;
 public MensagensController mensagensController;
 public MonoBehaviour cameraLookScript;
-private bool celularAberto = false;
+public bool celularAberto = false;
 
-void Update()
+    void Update()
 {
     if (Input.GetKeyDown(KeyCode.Tab))
     {
         AlarmManager alarme = FindObjectOfType<AlarmManager>();
+            Debug.Log("Alarme find object");
 
-        if (alarme != null)
+            if (alarme != null)
         {
-            if (alarme.VideoEstaTocando())
+                Debug.Log("Alarme != null");
+                if (alarme.VideoEstaTocando())
             {
                 Debug.Log("📵 Não pode abrir o celular enquanto o vídeo está tocando.");
                 return;
@@ -25,7 +27,10 @@ void Update()
             if (alarme.AlarmeEsperandoInteracao)
             {
                 if (celularUI != null) celularUI.SetActive(true);
-                return;
+                    Cursor.lockState =CursorLockMode.None;
+                    Cursor.visible = true;
+                    Debug.Log("AlarmeEsperandoInteracao");
+                    return;
             }
         }
 
@@ -36,7 +41,7 @@ void Update()
         Cursor.visible = celularAberto;
 
         if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
-           // lookScript.bloquearCamera = false;
+           //lookScript.bloquearCamera = false;
 
         FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
 

@@ -15689,7 +15689,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.2907372}
   m_AnchorMax: {x: 1, y: 0.8497372}
-  m_AnchoredPosition: {x: -0.004638672, y: 1.7359619}
+  m_AnchoredPosition: {x: -0.0045776367, y: 1.7359619}
   m_SizeDelta: {x: -0.9000244, y: -0.6983032}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425252313
@@ -17623,7 +17623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &501963302
 Transform:
   m_ObjectHideFlags: 0
@@ -25413,6 +25413,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 368
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
+  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &722304245
 BoxCollider:
@@ -29382,6 +29383,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 457
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
+  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &833489426
 BoxCollider:
@@ -35231,11 +35233,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   telaConfiguracoes: {fileID: 0}
   outrasTelas: []
+  indiceAtual: 0
   videoPlayer: {fileID: 0}
   sliderBrilhoCelular: {fileID: 1422751925}
   sliderBrilhoJogo: {fileID: 1057349333}
   sliderVolume: {fileID: 195902408}
   escurecerCelular: {fileID: 929753386}
+  botaoProximo: {fileID: 0}
+  botaoVoltar: {fileID: 0}
 --- !u!224 &996020314
 RectTransform:
   m_ObjectHideFlags: 0
@@ -36849,6 +36854,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 368
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
+  Correio: {fileID: 1364250939}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1037024509
 BoxCollider:
@@ -88194,8 +88200,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraLookScript: {fileID: 1214390138}
-  celularController: {fileID: 0}
-  UiCelular: {fileID: 0}
+  celularController: {fileID: 1474380546}
+  UiCelular: {fileID: 1495427431}
 --- !u!4 &1159250814
 Transform:
   m_ObjectHideFlags: 0
@@ -93657,7 +93663,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1303525893
 Transform:
   m_ObjectHideFlags: 0
@@ -94447,7 +94453,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.023600228, y: 0.892}
   m_AnchorMax: {x: 0.12426652, y: 0.9710001}
-  m_AnchoredPosition: {x: -12.000244, y: 22}
+  m_AnchoredPosition: {x: -12.000305, y: 22}
   m_SizeDelta: {x: 113, y: 76.7298}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1325064451
@@ -95652,7 +95658,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1364250940
 Transform:
   m_ObjectHideFlags: 0
@@ -99395,9 +99401,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a094c10bd42d34e48928639e098abdba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  celularUI: {fileID: 1969039030}
+  celularUI: {fileID: 1495427431}
   mensagensController: {fileID: 1656937592}
   cameraLookScript: {fileID: 1214390138}
+  celularAberto: 0
 --- !u!4 &1474380547
 Transform:
   m_ObjectHideFlags: 0
@@ -101971,6 +101978,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 303
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
+  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1543497070
 BoxCollider:
@@ -114802,11 +114810,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   telaConfiguracoes: {fileID: 0}
   outrasTelas: []
+  indiceAtual: 0
   videoPlayer: {fileID: 0}
   sliderBrilhoCelular: {fileID: 2122747143}
   sliderBrilhoJogo: {fileID: 2069740149}
   sliderVolume: {fileID: 732007997}
   escurecerCelular: {fileID: 457636435}
+  botaoProximo: {fileID: 0}
+  botaoVoltar: {fileID: 0}
 --- !u!224 &1833543860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115138,6 +115149,18 @@ PrefabInstance:
       propertyPath: mensagensController
       value: 
       objectReference: {fileID: 1656937592}
+    - target: {fileID: 812541818, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: Correio.Array.data[0]
+      value: 
+      objectReference: {fileID: 501963301}
+    - target: {fileID: 812541818, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: Correio.Array.data[1]
+      value: 
+      objectReference: {fileID: 1364250939}
+    - target: {fileID: 812541818, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: Correio.Array.data[2]
+      value: 
+      objectReference: {fileID: 1303525892}
     - target: {fileID: 812541823, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: hungerBar
       value: 
@@ -115251,8 +115274,12 @@ PrefabInstance:
       value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: Cell
+      value: 
+      objectReference: {fileID: 1495427431}
+    - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: canRun
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 136877096903737240, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_Height
@@ -117917,6 +117944,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 303
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
+  Correio: {fileID: 501963301}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1922618745
 BoxCollider:
@@ -121437,7 +121465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2203f3e2d596e4184078ec73a57bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saldo: 20
   textoSaldo: {fileID: 419998497}
 --- !u!4 &2035188440
 Transform:
@@ -123660,6 +123687,7 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 457
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
+  Correio: {fileID: 1303525892}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &2108314062
 BoxCollider:

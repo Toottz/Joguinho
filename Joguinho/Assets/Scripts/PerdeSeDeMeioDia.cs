@@ -12,6 +12,9 @@ public class PerdeSeDeMeioDia : MonoBehaviour
     public string nomeCenaDestino;
     public Image fade;
     public TextMeshProUGUI texto;
+    public float velocidadefade = 0.2f;
+    public bool escureca;
+    public float alpha = 0f;
 
     // Start is called before the first frame update
     void Start()
@@ -24,17 +27,31 @@ public class PerdeSeDeMeioDia : MonoBehaviour
     {
 
 
-        float currentHour = TimeManager.HoraAtual; 
-        float currentMinuto = TimeManager.MinutoAtual;
+        float currentHour = Estatico.Hora; 
+        float currentMinuto = Estatico.Minutos;
 
         if (Mathf.FloorToInt(currentMinuto) == Mathf.FloorToInt(minuto))
+        {
+            if (Mathf.FloorToInt(currentHour) == Mathf.FloorToInt(hora))
             {
-                if (Mathf.FloorToInt(currentHour) == Mathf.FloorToInt(hora))
-                {
-                      
-                      SceneManager.LoadScene(nomeCenaDestino);
-                }
+                escureca = true;
+
+            }
+
+        }
+
+        if(escureca)
+        {
+            alpha += Time.deltaTime * velocidadefade;
+            var cor = fade.color;
+            cor.a = alpha;
+            fade.color = cor;
+            if (alpha >= 1f)
+            {
+                escureca=false;
+                SceneManager.LoadScene(nomeCenaDestino);
             }
         }
+    }
     }
 

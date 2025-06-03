@@ -4,9 +4,9 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour
 {
     public float minutosPorSegundoReal = 1f;
-    public Text relogioUI; // opcional, mostra a hora na tela
-    public Light directionalLight; // luz do sol
-    public Gradient corLuzPorHora; // curva de cor ao longo do dia
+    public Text relogioUI;
+    public Light directionalLight;
+    public Gradient corLuzPorHora;
 
     public Material SkyBoxMaterial;
     public Gradient corSkybox1;
@@ -15,10 +15,9 @@ public class TimeManager : MonoBehaviour
 
     public Material Casa1;
     public Material Casa2;
-    public Material Casa3; 
+    public Material Casa3;
     public Material Casa4;
     public Material Casa5;
-    public Material Casa6;
 
     public Gradient GradienteCasa1;
     public Gradient GradienteCasa2;
@@ -28,23 +27,18 @@ public class TimeManager : MonoBehaviour
 
     public bool usarMudancaDeCor = true;
 
-    [SerializeField]
-    public static float HoraAtual { get; private set; }
-    [SerializeField]
-    public static float MinutoAtual { get; private set; }
+    [SerializeField] public static float HoraAtual { get; private set; }
+    [SerializeField] public static float MinutoAtual { get; private set; }
 
+    private float tempoEmMinutos = 360f;
 
-    private float tempoEmMinutos = 360f; // começa às 6:00 da manhã
-
-    public GameObject objetoControlador; // Arraste o objeto que controlará o relógio no Inspector
+    public GameObject objetoControlador;
     private bool relogioPausado = false;
 
     void Update()
     {
-        // Verifica se o objeto controlador está ativo
         relogioPausado = objetoControlador != null && objetoControlador.activeInHierarchy;
 
-        // Se o relógio não estiver pausado, atualiza o tempo
         if (!relogioPausado)
         {
             tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
@@ -52,11 +46,12 @@ public class TimeManager : MonoBehaviour
             MinutoAtual = tempoEmMinutos % 60f;
 
             if (tempoEmMinutos >= 1440f)
-                tempoEmMinutos = 0f; // reinicia ao chegar em 24h
+                tempoEmMinutos = 0f;
         }
 
         AtualizarRelogio();
         AtualizarIluminacao();
+        AtualizarMomentoDoDia();
     }
 
     void AtualizarRelogio()
@@ -68,6 +63,25 @@ public class TimeManager : MonoBehaviour
             relogioUI.text = horas.ToString("00") + ":" + minutos.ToString("00");
     }
 
+    void AtualizarMomentoDoDia()
+    {
+        float hora = HoraAtual;
+        Mensagem.MomentoDia momento;
+
+        if (hora >= 5f && hora < 12f)
+            momento = Mensagem.MomentoDia.Manha;
+        else if (hora >= 12f && hora < 18f)
+            momento = Mensagem.MomentoDia.Tarde;
+        else
+            momento = Mensagem.MomentoDia.Noite;
+
+        MensagensAppManager mensagens = FindObjectOfType<MensagensAppManager>();
+        if (mensagens != null)
+        {
+            mensagens.AtualizarMomentoDoDia(momento);
+        }
+    }
+
     void AtualizarIluminacao()
     {
         if (!usarMudancaDeCor)
@@ -75,14 +89,14 @@ public class TimeManager : MonoBehaviour
 
         float t = tempoEmMinutos / 1440f;
 
-        if (directionalLight != null && corLuzPorHora != null)
+        if (directionalLight != null)
         {
             directionalLight.color = corLuzPorHora.Evaluate(t);
-            directionalLight.transform.rotation = Quaternion.Euler(new Vector3((t * 360f) - 90f, 105.104f, 0));
+            directionalLight.transform.rotation = Quaternion.Euler((t * 360f) - 90f, 105.104f, 0);
         }
-        if (SkyBoxMaterial != null && corLuzPorHora != null)
-        {
 
+        if (SkyBoxMaterial != null)
+        {
             SkyBoxMaterial.SetColor("_Cor_Horizonte", corSkybox1.Evaluate(t));
             SkyBoxMaterial.SetColor("_Cor_ceu", corSkybox2.Evaluate(t));
             SkyBoxMaterial.SetColor("_Sky_Noise_Color", corNuvens.Evaluate(t));
@@ -93,5 +107,4 @@ public class TimeManager : MonoBehaviour
             Casa5.SetColor("_EmissionColor", GradienteCasa5.Evaluate(t));
         }
     }
-
 }

@@ -31,6 +31,8 @@ public string falaIrBanheiro = "Preciso ir ao banheiro";
 
     public bool AlarmeEsperandoInteracao { get; private set; } = false;
 
+    public CelularController controller;
+
 void Start()
 {
     if (telaPreta != null)
@@ -65,8 +67,8 @@ IEnumerator IniciarSequencia()
     tempoInicio = Time.time;
     AlarmeEsperandoInteracao = true;
 
-    Cursor.lockState = CursorLockMode.None;
-    Cursor.visible = true;
+    //Cursor.lockState = CursorLockMode.None;
+    //Cursor.visible = true;
 
     yield return new WaitForSeconds(10f);
 
