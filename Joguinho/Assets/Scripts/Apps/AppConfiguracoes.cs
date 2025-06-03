@@ -6,38 +6,40 @@ public class AppConfiguracoes : MonoBehaviour
 {
 public GameObject telaConfiguracoes;
 public GameObject[] outrasTelas;
-public VideoPlayer videoPlayer;
+    public int indiceAtual = 0; // Começa na primeira tela
+    public VideoPlayer videoPlayer;
 
 public Slider sliderBrilhoCelular;
 public Slider sliderBrilhoJogo;
 public Slider sliderVolume;
 
 public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a tela do app)
-public Light luzPrincipal;         // Luz principal da cena (se usada)
-public Image overlayEscurecer;     // Imagem preta para escurecer o JOGO
-public Image overlayClarear;       // Imagem branca para clarear o JOGO
+
+    [Header("Botões (Opcional)")]
+    public Button botaoProximo; // Arraste o botão "Próximo" aqui
+    public Button botaoVoltar;  // Arraste o botão "Voltar" aqui
 
     void Start()
     {
+        AtualizarTelas();
+
+        // Configura os botões (se existirem)
+        if (botaoProximo != null)
+            botaoProximo.onClick.AddListener(ProximaTela);
+
+        if (botaoVoltar != null)
+            botaoVoltar.onClick.AddListener(VoltarTela);
+
         {
             if (telaConfiguracoes != null)
                 telaConfiguracoes.SetActive(false);
-
-            if (videoPlayer != null)
-            {
-                videoPlayer.playOnAwake = false;
-                videoPlayer.isLooping = true;
-                videoPlayer.Stop();
-            }
         }
 
         sliderBrilhoCelular.onValueChanged.AddListener(AjustarBrilhoCelular);
-        sliderBrilhoJogo.onValueChanged.AddListener(AjustarBrilhoJogo);
         sliderVolume.onValueChanged.AddListener(AjustarVolume);
 
         // Valores padrão ao iniciar
         sliderBrilhoCelular.value = 1f;
-        sliderBrilhoJogo.value = luzPrincipal != null ? luzPrincipal.intensity : 1f;
         sliderVolume.value = AudioListener.volume;
 
         // Começa com brilho do celular total (sem escurecimento)
@@ -48,8 +50,38 @@ public Image overlayClarear;       // Imagem branca para clarear o JOGO
             escurecerCelular.color = cor;
         }
     }
+    public void ProximaTela()
+    {
+        indiceAtual++;
+        if (indiceAtual >= outrasTelas.Length)
+            indiceAtual = 0; // Volta para a primeira tela se chegar no fim
 
-    void AjustarBrilhoCelular(float valor)
+        AtualizarTelas();
+    }
+
+    // Chamado pelo botão "Voltar"
+    public void VoltarTela()
+    {
+        indiceAtual--;
+        if (indiceAtual < 0)
+            indiceAtual = outrasTelas.Length - 1; // Vai para a última tela se chegar no início
+
+        AtualizarTelas();
+    }
+
+    // Ativa/desativa as telas conforme o índice
+    void AtualizarTelas()
+    {
+        for (int i = 0; i < outrasTelas.Length; i++)
+        {
+            outrasTelas[i].SetActive(i == indiceAtual); // Ativa só a tela atual
+        }
+    }
+
+    // Opcional: Métodos para chamar diretamente em eventos de UI
+    public void BotaoProximo() => ProximaTela();
+    public void BotaoVoltar() => VoltarTela();
+void AjustarBrilhoCelular(float valor)
     {
         // 1 = sem escurecimento | 0 = escuro total
         if (escurecerCelular != null)
@@ -58,67 +90,6 @@ public Image overlayClarear;       // Imagem branca para clarear o JOGO
             var cor = escurecerCelular.color;
             cor.a = alpha;
             escurecerCelular.color = cor;
-        }
-    }
-
-    void AjustarBrilhoJogo(float valor)
-    {
-        float brilhoNormal = 1f;
-
-        // Limites máximos dos efeitos visuais
-        float maxEscurecer = 0.5f; // até 50% de opacidade preta
-        float maxClarear = 0.3f;   // até 30% de opacidade branca
-
-        if (valor < brilhoNormal)
-        {
-            float escurecer = (1f - valor) * maxEscurecer;
-
-            if (overlayEscurecer != null)
-            {
-                var c = overlayEscurecer.color;
-                c.a = escurecer;
-                overlayEscurecer.color = c;
-            }
-
-            if (overlayClarear != null)
-            {
-                var c = overlayClarear.color;
-                c.a = 0f;
-                overlayClarear.color = c;
-            }
-        }
-        else if (valor > brilhoNormal)
-        {
-            float clarear = (valor - 1f) * maxClarear;
-
-            if (overlayClarear != null)
-            {
-                var c = overlayClarear.color;
-                c.a = clarear;
-                overlayClarear.color = c;
-            }
-
-            if (overlayEscurecer != null)
-            {
-                var c = overlayEscurecer.color;
-                c.a = 0f;
-                overlayEscurecer.color = c;
-            }
-        }
-        else
-        {
-            if (overlayClarear != null)
-            {
-                var c = overlayClarear.color;
-                c.a = 0f;
-                overlayClarear.color = c;
-            }
-            if (overlayEscurecer != null)
-            {
-                var c = overlayEscurecer.color;
-                c.a = 0f;
-                overlayEscurecer.color = c;
-            }
         }
     }
 
@@ -135,25 +106,8 @@ public Image overlayClarear;       // Imagem branca para clarear o JOGO
             return;
         }
 
-        FecharTodasAsTelas();
-
-        if (telaConfiguracoes != null)
-            telaConfiguracoes.SetActive(true);
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.Stop();  // reinicia sempre do início
-            Invoke("PlayVideo", 0.05f); // pequena espera para evitar travamento
-        }
-
-        Debug.Log("📱 Tela Gabi aberta");
     }
 
-    void PlayVideo()
-    {
-        if (videoPlayer != null)
-            videoPlayer.Play();
-    }
 
     void FecharTodasAsTelas()
     {
@@ -163,8 +117,6 @@ public Image overlayClarear;       // Imagem branca para clarear o JOGO
                 tela.SetActive(false);
         }
 
-        if (videoPlayer != null)
-            videoPlayer.Stop();
     }
 
     bool CelularEstaAberto()

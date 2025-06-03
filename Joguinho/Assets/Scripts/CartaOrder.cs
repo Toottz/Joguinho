@@ -13,6 +13,7 @@ public class CartaOrder : MonoBehaviour
     public string nomeDestinatario;
     public GameObject setaCarta;
     public GameObject setaCasa;
+    public string texto = "Pressione 'E' para pegar a carta";
 
     //[Header("Especial")]
     //public bool cartaFinal = false; // ← Marque essa carta no Inspector como final
@@ -21,7 +22,7 @@ public class CartaOrder : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para pegar a carta");
+            InteracaoUIManager.Instance.MostrarTexto(texto);
         }
     }
     

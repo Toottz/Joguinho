@@ -4240,7 +4240,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &282714157
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13045,7 +13045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d3661fa0b047244ab01c44cb002755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutosPorSegundoReal: 5
+  minutosPorSegundoReal: 1
   relogioUI: {fileID: 0}
   directionalLight: {fileID: 1603641308}
   corLuzPorHora:
@@ -26594,9 +26594,6 @@ MonoBehaviour:
   sliderBrilhoJogo: {fileID: 1942522739}
   sliderVolume: {fileID: 1619938802}
   escurecerCelular: {fileID: 842246068}
-  luzPrincipal: {fileID: 0}
-  overlayEscurecer: {fileID: 670246322}
-  overlayClarear: {fileID: 254292940}
 --- !u!224 &1426619227
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27346,7 +27343,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
