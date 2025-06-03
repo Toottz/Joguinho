@@ -13,7 +13,6 @@ public class CartaOrder : MonoBehaviour
     public string nomeDestinatario;
     public GameObject setaCarta;
     public GameObject setaCasa;
-    public GameObject Correio;
     public string texto = "Pressione 'E' para pegar a carta";
 
     //[Header("Especial")]

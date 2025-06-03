@@ -50,14 +50,6 @@ public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a
             escurecerCelular.color = cor;
         }
     }
-
-    private void Update()
-    {
-        if (!telaConfiguracoes) ;
-        {
-            indiceAtual = 0;
-        }
-    }
     public void ProximaTela()
     {
         indiceAtual++;

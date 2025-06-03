@@ -12,7 +12,6 @@ public class CartaController : MonoBehaviour
     public TextMeshProUGUI textoentrega;
     public GameObject[] cartasObject = new GameObject[3];
     public GameObject[] setasCasas = new GameObject[3];
-    public GameObject[] Correio = new GameObject[3];
 
     [SerializeField] private string [] destinatarioAtual = new string [3];
     [SerializeField]  private bool temCarta = false;
@@ -71,10 +70,9 @@ public class CartaController : MonoBehaviour
 
                     cartasObject[i] = cartaNoChao.cartaUI;
                     cartasObject[i].SetActive(true);
+
                     setasCasas[i] = cartaNoChao.setaCasa;
                     cartaNoChao.setaCasa.SetActive(true);
-                    Correio[i] = cartaNoChao.Correio;
-                    cartaNoChao.Correio.SetActive(true);
 
                     cartaNoChao.setaCarta.SetActive(false);
 
@@ -119,8 +117,6 @@ public class CartaController : MonoBehaviour
 
                     cartasObject[i].SetActive(false);
                     setasCasas[i].SetActive(false);
-                    podeEntregar = false;
-                    npcProximo = null;
 
                     Destroy(npcProximo.gameObject);
 
@@ -161,7 +157,6 @@ public class CartaController : MonoBehaviour
         if (other.CompareTag("NPC"))
         {
             podeEntregar = false;
-            Debug.Log("ta deixando falso?");
             npcProximo = null;
         }
     }

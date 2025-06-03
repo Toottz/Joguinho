@@ -13,6 +13,8 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaMensagens;
     public GameObject telaCaramelinho;
     public GameObject telaConfiguracoes;
+    public GameObject telaConfiguracoes2;
+    public GameObject telaConfiguracoes3;
     public GameObject telaAlarme;         
     public GameObject cell;              
     public GameObject telaBlocoNotas;
@@ -33,7 +35,13 @@ public class CelularUIManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
         instance = this;
+        DontDestroyOnLoad(gameObject); // faz o objeto sobreviver entre cenas
     }
 
 
@@ -80,8 +88,8 @@ public class CelularUIManager : MonoBehaviour
         if (telaMensagens != null)
             telaMensagens.SetActive(true);
 
-        if (mensagensAppManager != null)
-            mensagensAppManager.ResetarParaListaContatos();
+       // if (mensagensAppManager != null)
+           // mensagensAppManager.ResetarParaListaContatos();
     }
 
     public void AbrirCaramelinho()
@@ -125,6 +133,47 @@ public class CelularUIManager : MonoBehaviour
         Debug.Log("⚙️ App Configurações aberto com vídeo.");
     }
 
+    public void AbrirConfiguracoes2()
+    {
+        FecharTodasTelas();
+
+        if (menuApps != null)
+            menuApps.SetActive(false);
+
+        if (telaConfiguracoes2 != null)
+            telaConfiguracoes2.SetActive(true);
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (videoConfigPlayer != null)
+        {
+            videoConfigPlayer.Play();
+        }
+
+        Debug.Log("⚙️ App Configurações aberto com vídeo.");
+    }
+
+    public void AbrirConfiguracoes3()
+    {
+        FecharTodasTelas();
+
+        if (menuApps != null)
+            menuApps.SetActive(false);
+
+        if (telaConfiguracoes3 != null)
+            telaConfiguracoes3.SetActive(true);
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (videoConfigPlayer != null)
+        {
+            videoConfigPlayer.Play();
+        }
+
+        Debug.Log("⚙️ App Configurações aberto com vídeo.");
+    }
 
     public void MostrarTelaAlarme()
     {
@@ -241,8 +290,8 @@ public class CelularUIManager : MonoBehaviour
         if (menuApps != null)
             menuApps.SetActive(true);
 
-        if (mensagensAppManager != null)
-            mensagensAppManager.FechamentoCompletoMensagens();
+        //if (mensagensAppManager != null)
+            //mensagensAppManager.FechamentoCompletoMensagens();
     }
 
     private void FecharTodasTelas()

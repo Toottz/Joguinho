@@ -14,7 +14,6 @@ public class FirstPersonMovement : MonoBehaviour
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
-    public GameObject Cell;
 
 
 
@@ -32,7 +31,7 @@ public class FirstPersonMovement : MonoBehaviour
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
 
-        if (Cell.activeSelf)
+        if (CelularUIManager.instance.gameObject.activeSelf)
         {
             targetMovingSpeed = 0f;
         }

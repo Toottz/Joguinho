@@ -1,70 +1,63 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class MensagensAppManager : MonoBehaviour
 {
-    public GameObject listaContatos;
-    public GameObject conversaChefe;
-    public GameObject conversaMae;
-    public GameObject botaovoltar;
-    public GameObject botaovoltarmenu;
-    public GameObject celularBorda;
+    public ContatoConversa conversaAtual;
+    public GameObject painelMensagem;
+    public TextMeshProUGUI textoMensagem;
+    public Button[] botoesRespostas;
+    public TextMeshProUGUI[] textosBotoes;
+    private Mensagem.MomentoDia momentoAtual;
 
-    public void AbrirConversaChefe()
+    void Start()
     {
-        listaContatos.SetActive(false);
-        conversaChefe.SetActive(true);
-        botaovoltar.SetActive(true);
-        botaovoltarmenu.SetActive(false);
-
-        if (celularBorda != null)
-            celularBorda.SetActive(false);
+        painelMensagem.SetActive(false);
+        // O momento será atualizado pelo TimeManager
     }
 
-    public void AbrirConversaMae()
+    public void AtualizarMomentoDoDia(Mensagem.MomentoDia novoMomento)
     {
-        listaContatos.SetActive(false);
-        conversaMae.SetActive(true);
-        botaovoltar.SetActive(true);
-        botaovoltarmenu.SetActive(false);   
-
-        if (celularBorda != null)
-            celularBorda.SetActive(false);
+        momentoAtual = novoMomento;
     }
 
-    public void VoltarParaContatos()
+    public void AbrirConversa(ContatoConversa contato)
     {
-        Debug.Log("Voltar para contatos");
-        conversaChefe.SetActive(false);
-        conversaMae.SetActive(false);
-        listaContatos.SetActive(true);
-        botaovoltar.SetActive(false);
-        botaovoltarmenu.SetActive(true);
-
-        if (celularBorda != null)
-            celularBorda.SetActive(true);
+        conversaAtual = contato;
+        MostrarMensagemDoMomento();
     }
 
-    public void ResetarParaListaContatos()
+    void MostrarMensagemDoMomento()
     {
-        if (conversaChefe != null)
-            conversaChefe.SetActive(false);
+        foreach (var mensagem in conversaAtual.mensagens)
+        {
+            if (mensagem.momento == momentoAtual && !mensagem.jaFoiRespondida)
+            {
+                painelMensagem.SetActive(true);
+                textoMensagem.text = mensagem.textoPergunta;
 
-        if (conversaMae != null)
-            conversaMae.SetActive(false);
+                for (int i = 0; i < botoesRespostas.Length; i++)
+                {
+                    int index = i;
+                    textosBotoes[i].text = mensagem.opcoesResposta[i];
+                    botoesRespostas[i].onClick.RemoveAllListeners();
+                    botoesRespostas[i].onClick.AddListener(() => Responder(index, mensagem));
+                }
 
-        if (listaContatos != null)
-            listaContatos.SetActive(true);
+                return;
+            }
+        }
+
+        painelMensagem.SetActive(false);
     }
 
-    public void FechamentoCompletoMensagens()
+    void Responder(int respostaIndex, Mensagem mensagem)
     {
-        if (listaContatos != null)
-            listaContatos.SetActive(false);
-        if (conversaChefe != null)
-            conversaChefe.SetActive(false);
-        if (conversaMae != null)
-            conversaMae.SetActive(false);
+        textoMensagem.text = mensagem.respostasPersonagem[respostaIndex];
+        mensagem.jaFoiRespondida = true;
+
+        foreach (var btn in botoesRespostas)
+            btn.gameObject.SetActive(false);
     }
 }

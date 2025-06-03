@@ -50,8 +50,8 @@ public class NotificacaoManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float currentHour = Estatico.Hora;
-        float currentMinuto = Estatico.Minutos;
+        float currentHour = TimeManager.HoraAtual;
+        float currentMinuto = TimeManager.MinutoAtual;
 
 
         if (!jaNotificou)

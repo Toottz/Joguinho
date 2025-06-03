@@ -8,10 +8,12 @@ public class AnsiedadeSystem : MonoBehaviour
     public float ansiedadeIncreaseRate = 5f;
     public float timeBetweenIncreases = 60f;
 
+    private float currentAnsiedade;
     private float timer;
 
     void Start()
     {
+        currentAnsiedade = 0f;
         UpdateUI();
     }
 
@@ -32,14 +34,15 @@ public class AnsiedadeSystem : MonoBehaviour
 
     private void ModifyAnsiedade(float valor)
     {
-        Estatico.Ansiedade = Mathf.Clamp(Estatico.Ansiedade + valor, 0f, maxAnsiedade);
+        currentAnsiedade = Mathf.Clamp(currentAnsiedade + valor, 0f, maxAnsiedade);
         UpdateUI();
     }
 
-    void UpdateUI()
-    {
-        float fill = Estatico.Ansiedade / maxAnsiedade;
-        ansiedadeBar.fillAmount = fill;
-
-    }
+  void UpdateUI()
+{
+    float fill = currentAnsiedade / maxAnsiedade;
+    ansiedadeBar.fillAmount = fill;
+    
+    
+}
 }
