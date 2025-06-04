@@ -81,8 +81,9 @@ public Image escurecerCelular;     // Imagem preta DENTRO do celular (escurece a
     // Opcional: Métodos para chamar diretamente em eventos de UI
     public void BotaoProximo() => ProximaTela();
     public void BotaoVoltar() => VoltarTela();
-void AjustarBrilhoCelular(float valor)
+public void AjustarBrilhoCelular(float valor)
     {
+        Debug.Log("tA MECEHDNO OU N AAAAAAA");
         // 1 = sem escurecimento | 0 = escuro total
         if (escurecerCelular != null)
         {
@@ -93,7 +94,7 @@ void AjustarBrilhoCelular(float valor)
         }
     }
 
-    void AjustarVolume(float valor)
+    public void AjustarVolume(float valor)
     {
         AudioListener.volume = valor;
     }

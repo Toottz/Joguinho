@@ -5,7 +5,6 @@ public class PlayerWallet : MonoBehaviour
 {
     public static PlayerWallet Instance;
 
-    public float saldo = 200f;
     public Text textoSaldo;
 
     void Awake()
@@ -23,15 +22,15 @@ public class PlayerWallet : MonoBehaviour
 
     public void AdicionarDinheiro(float valor)
     {
-        saldo += valor;
+        Estatico.Dinheiro += valor;
         AtualizarUI();
     }
 
     public bool GastarDinheiro(float valor)
     {
-        if (saldo >= valor)
+        if (Estatico.Dinheiro >= valor)
         {
-            saldo -= valor;
+            Estatico.Dinheiro -= valor;
             AtualizarUI();
             return true;
         }
@@ -43,6 +42,6 @@ public class PlayerWallet : MonoBehaviour
     void AtualizarUI()
     {
         if (textoSaldo != null)
-            textoSaldo.text = "R$ " + saldo.ToString("F2");
+            textoSaldo.text = "R$ " + Estatico.Dinheiro.ToString("F2");
     }
 }
