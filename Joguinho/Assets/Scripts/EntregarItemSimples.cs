@@ -4,65 +4,90 @@ using TMPro;
 
 public class EntregarItemSimples : MonoBehaviour
 {
-public string idEsperado;
-public string mensagemAposEntrega = "Item entregue com sucesso!";
-public TextMeshProUGUI legendaUI;
-public float tempoLegenda = 3f;
-private bool podeEntregar = false;
-private bool itemEntregue = false;
+    public string idEsperado;
+    public string mensagemAposEntrega = "Item entregue com sucesso!";
+    public TextMeshProUGUI legendaInteragir;     // Legenda de instrução
+    public TextMeshProUGUI legendaMensagem;      // Legenda após entrega
+    public float tempoLegenda = 3f;
 
-void Start()
-{
-    if (legendaUI != null)
-        legendaUI.gameObject.SetActive(false);
-}
+    public GameObject objetoApareceAposEntrega;   
 
-void Update()
-{
-    if (podeEntregar && !itemEntregue && Input.GetKeyDown(KeyCode.E))
+    private bool podeEntregar = false;
+    private bool itemEntregue = false;
+
+    void Start()
     {
-        if (InventarioSimples.Instance != null && InventarioSimples.Instance.TemItem(idEsperado))
-        {
-            InventarioSimples.Instance.RemoverItem(idEsperado);
-            itemEntregue = true;
+        if (legendaInteragir != null)
+            legendaInteragir.gameObject.SetActive(false);
 
-            if (legendaUI != null)
+        if (legendaMensagem != null)
+            legendaMensagem.gameObject.SetActive(false);
+
+        if (objetoApareceAposEntrega != null)
+            objetoApareceAposEntrega.SetActive(false); // Garante que comece invisível
+    }
+
+    void Update()
+    {
+        if (podeEntregar && !itemEntregue && Input.GetKeyDown(KeyCode.E))
+        {
+            if (InventarioSimples.Instance != null && InventarioSimples.Instance.TemItem(idEsperado))
             {
-                legendaUI.text = mensagemAposEntrega;
-                legendaUI.gameObject.SetActive(true);
-                StartCoroutine(EsconderLegenda());
+                InventarioSimples.Instance.RemoverItem(idEsperado);
+                itemEntregue = true;
+
+                if (legendaInteragir != null)
+                    legendaInteragir.gameObject.SetActive(false);
+
+                if (legendaMensagem != null)
+                {
+                    legendaMensagem.text = mensagemAposEntrega;
+                    legendaMensagem.gameObject.SetActive(true);
+                    StartCoroutine(EsconderLegendaMensagem());
+                }
+
+                if (objetoApareceAposEntrega != null)
+                    objetoApareceAposEntrega.SetActive(true); // Ativa o novo objeto
+
+                Debug.Log("✅ Item entregue: " + idEsperado);
             }
-
-            Debug.Log("✅ Item entregue: " + idEsperado);
+            else
+            {
+                Debug.Log("❌ Você não tem o item necessário.");
+            }
         }
-        else
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player") && !itemEntregue)
         {
-            Debug.Log("❌ Você não tem o item necessário.");
+            podeEntregar = true;
+
+            if (legendaInteragir != null)
+            {
+                legendaInteragir.text = "Aperte 'E' para interagir";
+                legendaInteragir.gameObject.SetActive(true);
+            }
         }
     }
-}
 
-void OnTriggerEnter(Collider other)
-{
-    if (other.CompareTag("Player"))
+    void OnTriggerExit(Collider other)
     {
-        podeEntregar = true;
-    }
-}
+        if (other.CompareTag("Player"))
+        {
+            podeEntregar = false;
 
-void OnTriggerExit(Collider other)
-{
-    if (other.CompareTag("Player"))
+            if (legendaInteragir != null)
+                legendaInteragir.gameObject.SetActive(false);
+        }
+    }
+
+    IEnumerator EsconderLegendaMensagem()
     {
-        podeEntregar = false;
+        yield return new WaitForSeconds(tempoLegenda);
+
+        if (legendaMensagem != null)
+            legendaMensagem.gameObject.SetActive(false);
     }
-}
-
-IEnumerator EsconderLegenda()
-{
-    yield return new WaitForSeconds(tempoLegenda);
-
-    if (legendaUI != null)
-        legendaUI.gameObject.SetActive(false);
-}
 }

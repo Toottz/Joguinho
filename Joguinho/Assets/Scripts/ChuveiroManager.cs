@@ -11,7 +11,7 @@ public TextMeshProUGUI legendaChuveiro;
 public float tempoLegenda = 3f;
 public GameObject telaPreta;
 public AudioSource somChuveiro;
-public GameObject roupaNoChao; // NOVO
+public GameObject roupaNoChao; 
 public bool tomouBanho = false;
     public Toggle toggleBanho;
 
@@ -57,43 +57,47 @@ public void EscolherBanhoComCabelo()
             toggleBanho.isOn = true;
     }
 
-IEnumerator RotinaBanhoSimples()
-{
-    FecharOpcoes();
+    IEnumerator RotinaBanhoSimples()
+    {
+        FecharOpcoes();
 
-    if (somChuveiro != null)
-        somChuveiro.Play();
+        if (somChuveiro != null)
+            somChuveiro.Play();
 
-    yield return StartCoroutine(FadePreto(3f));
+        yield return StartCoroutine(FadePreto(3f));
 
-    MostrarLegenda("Água quente. Mente fria.");
+        if (somChuveiro != null)
+            somChuveiro.Stop(); // Interrompe o som após o fade
 
-    // Ativa a roupa no chão
-    if (roupaNoChao != null)
-        roupaNoChao.SetActive(true);
-        
-    tomouBanho = true;
-}
+        MostrarLegenda("Água quente. Mente fria.");
 
-IEnumerator RotinaBanhoComCabelo()
-{
-    FecharOpcoes();
+        if (roupaNoChao != null)
+            roupaNoChao.SetActive(true);
 
-    if (somChuveiro != null)
-        somChuveiro.Play();
+        tomouBanho = true;
+    }
 
-    yield return StartCoroutine(FadePreto(3f));
+    IEnumerator RotinaBanhoComCabelo()
+    {
+        FecharOpcoes();
 
-    MostrarLegenda("Sai sujeira, sai suor, sai cheirinho de chuleeeé.");
-    yield return new WaitForSeconds(tempoLegenda + 0.5f);
-    MostrarLegenda("Se eu lavo o cabelo, talvez o mundo lave junto…");
+        if (somChuveiro != null)
+            somChuveiro.Play();
 
-    // Ativa a roupa no chão
-    if (roupaNoChao != null)
-        roupaNoChao.SetActive(true);
-        
-    tomouBanho = true;
-}
+        yield return StartCoroutine(FadePreto(3f));
+
+        if (somChuveiro != null)
+            somChuveiro.Stop(); // Interrompe o som após o fade
+
+        MostrarLegenda("Sai sujeira, sai suor, sai cheirinho de chuleeeé.");
+        yield return new WaitForSeconds(tempoLegenda + 0.5f);
+        MostrarLegenda("Se eu lavo o cabelo, talvez o mundo lave junto…");
+
+        if (roupaNoChao != null)
+            roupaNoChao.SetActive(true);
+
+        tomouBanho = true;
+    }
 
 void MostrarLegenda(string texto)
 {

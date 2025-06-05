@@ -2,14 +2,13 @@ using UnityEngine;
 
 public class ConversaSalva : MonoBehaviour
 {
-    public string idConversa = "conversa_mae_manha"; // Um identificador único para essa conversa
+    public string idConversa = "conversa_mae_manha";
     public GameObject grupoDeOpcoes;
     public GameObject respostaJogadora;
     public GameObject respostaPessoa;
-
     void Start()
     {
-        if (PlayerPrefs.GetInt(idConversa, 0) == 1)
+        if (ConversaCache.FoiSalva(idConversa))
         {
             if (grupoDeOpcoes != null)
                 grupoDeOpcoes.SetActive(false);
@@ -24,8 +23,7 @@ public class ConversaSalva : MonoBehaviour
 
     public void SalvarResposta()
     {
-        PlayerPrefs.SetInt(idConversa, 1);
-        PlayerPrefs.Save();
+        ConversaCache.Salvar(idConversa);
 
         if (grupoDeOpcoes != null)
             grupoDeOpcoes.SetActive(false);

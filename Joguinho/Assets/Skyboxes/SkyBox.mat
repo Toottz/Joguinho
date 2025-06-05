@@ -150,8 +150,8 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Cor_Chao: {r: 0, g: 0, b: 0, a: 0}
-    - _Cor_Horizonte: {r: 0.87114614, g: 0.96500045, b: 0.91550136, a: 1}
-    - _Cor_ceu: {r: 0.09096353, g: 0.43223977, b: 0.59091365, a: 1}
+    - _Cor_Horizonte: {r: 0.9282954, g: 0.94472784, b: 0.86348915, a: 1}
+    - _Cor_ceu: {r: 0.14454123, g: 0.4979483, b: 0.63842595, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Offset_Lua: {r: 42.84, g: 2.1, b: 0, a: 0}
     - _Sky_Noise_Color: {r: 0.8396226, g: 0.8396226, b: 0.8396226, a: 1}

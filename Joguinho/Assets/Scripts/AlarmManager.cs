@@ -16,6 +16,7 @@ public GameObject cameraObj;
 public GameObject telaAlarmeUI;
 public GameObject celularCompleto;
 public GameObject perguntaBotoesUI;
+public GameObject telaAlbum;
 public TextMeshProUGUI legendaTexto;
 public float tempoLegenda = 3f;
 public TutorialMensagemManager tutorialMensagemManager;
@@ -165,6 +166,9 @@ IEnumerator VoltarADormir()
         videoTocando = true;
     }
 
+    if (telaAlbum != null)
+    telaAlbum.SetActive(true);
+
     Cursor.lockState = CursorLockMode.None;
     Cursor.visible = true;
 
@@ -195,12 +199,39 @@ IEnumerator VoltarADormir()
 
 public void BotaoContinuarNoCelular()
 {
-    if (perguntaBotoesUI != null)
-        perguntaBotoesUI.SetActive(false);
+        if (perguntaBotoesUI != null)
+            perguntaBotoesUI.SetActive(false);
+if (videoPlayer != null && videoPlayer.isPlaying)
+{
+    // Espera o vídeo terminar para continuar
+    StartCoroutine(EsperarVideoEncerrar());
+}
+else
+{
+    // Se o vídeo já terminou ou não estiver tocando, encerra direto
+    FinalizarVideoENormalizarCelular();
+}
+}
 
-        //MostrarLegenda("Preciso ir ao banheiro daqui a pouco");
-        Invoke(nameof(legenda_preciso_ir_ao_banheiro), 5f);
+IEnumerator EsperarVideoEncerrar()
+{
+        while (videoPlayer != null && videoPlayer.isPlaying)
+            yield return null;
+        FinalizarVideoENormalizarCelular();
+}
+
+    void FinalizarVideoENormalizarCelular()
+    {
+        if (videoPlayerUI != null)
+            videoPlayerUI.SetActive(false);
+        if (celularCompleto != null)
+            celularCompleto.SetActive(true);
+
+        videoTocando = false;
+
+        Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
     }
+
 
 public void BotaoSairDoCelular()
 {

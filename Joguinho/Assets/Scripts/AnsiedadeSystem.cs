@@ -31,7 +31,7 @@ public class AnsiedadeSystem : MonoBehaviour
         }
     }
 
-    public void Relaxar(float valor,)
+    public void Relaxar(float valor)
     {
         ModifyAnsiedade(-valor);
 
