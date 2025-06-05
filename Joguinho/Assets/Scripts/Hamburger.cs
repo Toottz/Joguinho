@@ -17,7 +17,7 @@ public class Hamburger : MonoBehaviour
             HungerSystem hungerSystem = player.GetComponent<HungerSystem>();
             if (hungerSystem != null)
             {
-                hungerSystem.EatFood(hungerRestoreAmount);
+                hungerSystem.EatFood(hungerRestoreAmount, -1f);
             }
 
             if (falaPersona != null)

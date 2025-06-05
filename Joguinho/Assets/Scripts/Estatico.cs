@@ -9,9 +9,9 @@ public static class Estatico
     public static int Minutos = 0;
     public static float tempoEmMinutos = 360;
 
-    public static float Ansiedade = 15f;
-    public static float Sono = 0f;
-    public static float Fome = 20f;
-    public static float Social = 60f;
+    public static float Ansiedade = 50f;
+    public static float Sono = 50f;
+    public static float Fome = 30f;
+    public static float Social = 20f;
 
 }
