@@ -30,6 +30,9 @@ public class TimeManager : MonoBehaviour
     public GameObject objetoControlador;
     private bool relogioPausado = false;
 
+    public bool relogio;
+    public GameObject relogioPonteiro;
+
     void Update()
     {
         relogioPausado = objetoControlador != null && objetoControlador.activeInHierarchy;
@@ -78,6 +81,11 @@ public class TimeManager : MonoBehaviour
         {
             directionalLight.color = corLuzPorHora.Evaluate(t);
             directionalLight.transform.rotation = Quaternion.Euler((t * 360f) - 90f, 105.104f, 0);
+        }
+
+        if (relogio)
+        {
+            relogioPonteiro.transform.rotation = Quaternion.Euler(0f,0f,(t * -360f) - -90f);
         }
 
         if (SkyBoxMaterial != null)
