@@ -3025,17 +3025,6 @@ MonoBehaviour:
   velocidadefade: 0.7
   escureca: 0
   alpha: 0
---- !u!114 &58881934 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
-  m_PrefabInstance: {fileID: 1837979370}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 58881910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 97fca36bd81de7c4cafce7bbf02ca611, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!64 &58928038
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25749,7 +25738,6 @@ MonoBehaviour:
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 0}
 --- !u!65 &722304245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -29719,7 +29707,6 @@ MonoBehaviour:
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 0}
 --- !u!65 &833489426
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37340,7 +37327,6 @@ MonoBehaviour:
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 1364250939}
 --- !u!65 &1037024509
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -102463,7 +102449,6 @@ MonoBehaviour:
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 0}
 --- !u!65 &1543497070
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -115557,10 +115542,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 970884659}
     - target: {fileID: 812541818, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
-      propertyPath: movimento
-      value: 
-      objectReference: {fileID: 58881934}
-    - target: {fileID: 812541818, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: textoDialogo
       value: 
       objectReference: {fileID: 213118095}
@@ -118368,7 +118349,6 @@ MonoBehaviour:
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 501963301}
 --- !u!65 &1922618745
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -120051,7 +120031,7 @@ MonoBehaviour:
   - {fileID: 1489241550}
   - {fileID: 1155026639}
   alarmManager: {fileID: 0}
-  mensagensAppManager: {fileID: 55123460}
+  mensagensAppManager: {fileID: 0}
 --- !u!222 &1969039033
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -124180,7 +124160,6 @@ MonoBehaviour:
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
   texto: Pressione 'E' para pegar a carta
-  Correio: {fileID: 1303525892}
 --- !u!65 &2108314062
 BoxCollider:
   m_ObjectHideFlags: 0
