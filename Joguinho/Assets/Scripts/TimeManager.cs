@@ -27,11 +27,6 @@ public class TimeManager : MonoBehaviour
 
     public bool usarMudancaDeCor = true;
 
-    [SerializeField] public static float HoraAtual { get; private set; }
-    [SerializeField] public static float MinutoAtual { get; private set; }
-
-    private float tempoEmMinutos = 360f;
-
     public GameObject objetoControlador;
     private bool relogioPausado = false;
 
@@ -41,31 +36,21 @@ public class TimeManager : MonoBehaviour
 
         if (!relogioPausado)
         {
-            tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
-            HoraAtual = tempoEmMinutos / 60f;
-            MinutoAtual = tempoEmMinutos % 60f;
-
-            if (tempoEmMinutos >= 1440f)
-                tempoEmMinutos = 0f;
+            Estatico.tempoEmMinutos += minutosPorSegundoReal * Time.deltaTime;
+            Estatico.Hora = Mathf.FloorToInt(Estatico.tempoEmMinutos / 60f);
+            Estatico.Minutos = Mathf.FloorToInt(Estatico.tempoEmMinutos % 60f);
+            if (Estatico.tempoEmMinutos >= 1440f)
+                Estatico.tempoEmMinutos = 0f;
         }
+        relogioUI.text = Estatico.Hora.ToString("00") + ":" + Estatico.Minutos.ToString("00");
 
-        AtualizarRelogio();
         AtualizarIluminacao();
         AtualizarMomentoDoDia();
     }
 
-    void AtualizarRelogio()
-    {
-        int horas = Mathf.FloorToInt(tempoEmMinutos / 60f);
-        int minutos = Mathf.FloorToInt(tempoEmMinutos % 60f);
-
-        if (relogioUI != null)
-            relogioUI.text = horas.ToString("00") + ":" + minutos.ToString("00");
-    }
-
     void AtualizarMomentoDoDia()
     {
-        float hora = HoraAtual;
+        float hora = Estatico.Hora;
         Mensagem.MomentoDia momento;
 
         if (hora >= 5f && hora < 12f)
@@ -87,7 +72,7 @@ public class TimeManager : MonoBehaviour
         if (!usarMudancaDeCor)
             return;
 
-        float t = tempoEmMinutos / 1440f;
+        float t = Estatico.tempoEmMinutos / 1440f;
 
         if (directionalLight != null)
         {

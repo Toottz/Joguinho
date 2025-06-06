@@ -8,12 +8,11 @@ public class HungerSystem : MonoBehaviour
     public float hungerDecreaseRate = 5f; // quanto vai descer por ciclo
     public float timeBetweenDecreases = 60f; // tempo em segundos
 
-    private float currentHunger;
     private float timer;
 
     void Start()
     {
-        currentHunger = maxHunger;
+ 
         UpdateHungerUI();
     }
 
@@ -31,27 +30,27 @@ public class HungerSystem : MonoBehaviour
 
     public void EatFood(float amount)
     {
-        currentHunger += amount;
-        currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger);
+        Estatico.Fome += amount;
+        Estatico.Fome = Mathf.Clamp(Estatico.Fome, 0f, maxHunger);
         UpdateHungerUI();
     }
 
     void DecreaseHunger(float amount)
     {
-        currentHunger -= amount;
-        currentHunger = Mathf.Clamp(currentHunger, 0f, maxHunger);
+        Estatico.Fome -= amount;
+        Estatico.Fome = Mathf.Clamp(Estatico.Fome, 0f, maxHunger);
         UpdateHungerUI();
     }
 
      void UpdateHungerUI()
     {
-        float fillAmount = currentHunger / maxHunger;
+        float fillAmount = Estatico.Fome / maxHunger;
         hungerBar.fillAmount = fillAmount;
     }
 
     public bool TaSemFome()
     {
-        if (currentHunger == maxHunger) return true;   
+        if (Estatico.Fome == maxHunger) return true;   
         else return false;
     }
 }

@@ -2581,12 +2581,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870c8aec0c0f2464ea27c96cccfd3d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listaContatos: {fileID: 516600648}
-  conversaChefe: {fileID: 826740741}
-  conversaMae: {fileID: 209859472}
-  botaovoltar: {fileID: 0}
-  botaovoltarmenu: {fileID: 0}
-  celularBorda: {fileID: 0}
+  conversaAtual: {fileID: 0}
+  painelMensagem: {fileID: 0}
+  textoMensagem: {fileID: 0}
+  botoesRespostas: []
+  textosBotoes: []
 --- !u!1 &56112472
 GameObject:
   m_ObjectHideFlags: 0
@@ -10459,7 +10458,6 @@ MonoBehaviour:
   Casa3: {fileID: 2100000, guid: c0fd285fff8b9524d97ff0e607bcaff3, type: 2}
   Casa4: {fileID: 2100000, guid: b05f421daa02c2a45a2b4fdbb35ea558, type: 2}
   Casa5: {fileID: 2100000, guid: 1eaed405e7f4e9b4cab11555e40f81c2, type: 2}
-  Casa6: {fileID: 2100000, guid: 09b5460a2f3488642b8bb6f5cda83435, type: 2}
   GradienteCasa1:
     serializedVersion: 2
     key0: {r: 0.019382361, g: 0.027320892, b: 0.028426038, a: 1}
@@ -25413,7 +25411,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 368
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
-  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &722304245
 BoxCollider:
@@ -29383,7 +29380,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 457
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
-  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &833489426
 BoxCollider:
@@ -36854,7 +36850,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 368
   setaCarta: {fileID: 913246798}
   setaCasa: {fileID: 1616964968}
-  Correio: {fileID: 1364250939}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1037024509
 BoxCollider:
@@ -88737,12 +88732,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870c8aec0c0f2464ea27c96cccfd3d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  listaContatos: {fileID: 1594436766}
-  conversaChefe: {fileID: 941826851}
-  conversaMae: {fileID: 1270957504}
-  botaovoltar: {fileID: 1283283947}
-  botaovoltarmenu: {fileID: 16617927}
-  celularBorda: {fileID: 0}
+  conversaAtual: {fileID: 0}
+  painelMensagem: {fileID: 0}
+  textoMensagem: {fileID: 0}
+  botoesRespostas: []
+  textosBotoes: []
 --- !u!224 &1173003456
 RectTransform:
   m_ObjectHideFlags: 0
@@ -99404,7 +99398,6 @@ MonoBehaviour:
   celularUI: {fileID: 1495427431}
   mensagensController: {fileID: 1656937592}
   cameraLookScript: {fileID: 1214390138}
-  celularAberto: 0
 --- !u!4 &1474380547
 Transform:
   m_ObjectHideFlags: 0
@@ -100013,6 +100006,8 @@ MonoBehaviour:
   telaMensagens: {fileID: 640475028}
   telaCaramelinho: {fileID: 1503815950}
   telaConfiguracoes: {fileID: 1833543856}
+  telaConfiguracoes2: {fileID: 0}
+  telaConfiguracoes3: {fileID: 0}
   telaAlarme: {fileID: 233971235}
   cell: {fileID: 400253872}
   telaBlocoNotas: {fileID: 1103080952}
@@ -101978,7 +101973,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 303
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
-  Correio: {fileID: 0}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1543497070
 BoxCollider:
@@ -115276,7 +115270,7 @@ PrefabInstance:
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: Cell
       value: 
-      objectReference: {fileID: 1495427431}
+      objectReference: {fileID: 1969039030}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: canRun
       value: 1
@@ -117944,7 +117938,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 303
   setaCarta: {fileID: 869609458}
   setaCasa: {fileID: 1507692830}
-  Correio: {fileID: 501963301}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &1922618745
 BoxCollider:
@@ -119606,6 +119599,8 @@ MonoBehaviour:
   telaMensagens: {fileID: 13917397}
   telaCaramelinho: {fileID: 1706649927}
   telaConfiguracoes: {fileID: 996020312}
+  telaConfiguracoes2: {fileID: 0}
+  telaConfiguracoes3: {fileID: 0}
   telaAlarme: {fileID: 0}
   cell: {fileID: 713236368}
   telaBlocoNotas: {fileID: 177231735}
@@ -123687,7 +123682,6 @@ MonoBehaviour:
   nomeDestinatario: Morador da casa 457
   setaCarta: {fileID: 1636516155}
   setaCasa: {fileID: 1637503578}
-  Correio: {fileID: 1303525892}
   texto: Pressione 'E' para pegar a carta
 --- !u!65 &2108314062
 BoxCollider:

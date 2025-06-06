@@ -8,12 +8,10 @@ public class SedeSystem : MonoBehaviour
     public float sedeDecreaseRate = 5f;
     public float timeBetweenDecreases = 60f;
 
-    private float currentSede;
     private float timer;
 
     void Start()
     {
-        currentSede = maxSede;
         UpdateUI();
     }
 
@@ -28,8 +26,8 @@ public class SedeSystem : MonoBehaviour
     }
     public void EatFood(float amount)
     {
-        currentSede += amount;
-        currentSede = Mathf.Clamp(currentSede, 0f, maxSede);
+        Estatico.Social += amount;
+        Estatico.Social = Mathf.Clamp(Estatico.Social, 0f, maxSede);
         UpdateUI();
     }
 
@@ -40,13 +38,13 @@ public class SedeSystem : MonoBehaviour
 
     private void ModifySede(float valor)
     {
-        currentSede = Mathf.Clamp(currentSede + valor, 0f, maxSede);
+        Estatico.Social = Mathf.Clamp(Estatico.Social + valor, 0f, maxSede);
         UpdateUI();
     }
 
    void UpdateUI()
     {
-        float fill = currentSede / maxSede;
+        float fill = Estatico.Social / maxSede;
         sedeBar.fillAmount = fill;
     }
 

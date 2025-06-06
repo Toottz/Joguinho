@@ -13,8 +13,13 @@ void Update()
     if (Input.GetKeyDown(KeyCode.Tab))
     {
         AlarmManager alarme = FindObjectOfType<AlarmManager>();
-
-        if (alarme != null)
+            if (celularUI.activeInHierarchy)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Debug.Log("deixando o curso visivel sera?");
+            }
+            if (alarme != null)
         {
             if (alarme.VideoEstaTocando())
             {
@@ -25,16 +30,15 @@ void Update()
             if (alarme.AlarmeEsperandoInteracao)
             {
                 if (celularUI != null) celularUI.SetActive(true);
-
-                return;
+                    //Cursor.lockState = CursorLockMode.None;
+                    //Cursor.visible = true;
+                    Debug.Log("AlarmeEsperandoInteracao");
+                    return;
             }
         }
 
-        celularAberto = !celularAberto;
-        celularUI.SetActive(celularAberto);
+        //Cursor.visible = celularAberto;
 
-        Cursor.lockState = celularAberto ? CursorLockMode.None : CursorLockMode.Locked;
-        Cursor.visible = celularAberto;
 
         if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
            // lookScript.bloquearCamera = false;

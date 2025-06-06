@@ -11,6 +11,8 @@ public class FirstPersonMovement : MonoBehaviour
     public float runSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
 
+    public GameObject Cell;
+
     Rigidbody rigidbody;
     /// <summary> Functions to override movement speed. Will use the last added override. </summary>
     public List<System.Func<float>> speedOverrides = new List<System.Func<float>>();
@@ -31,7 +33,7 @@ public class FirstPersonMovement : MonoBehaviour
         // Get targetMovingSpeed.
         float targetMovingSpeed = IsRunning ? runSpeed : speed;
 
-        if (CelularUIManager.instance.gameObject.activeSelf)
+        if (Cell.activeSelf)
         {
             targetMovingSpeed = 0f;
         }
