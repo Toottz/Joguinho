@@ -23,12 +23,6 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaY;
     public GameObject telaInForma;
     public GameObject telaGabi;
-    public GameObject telaVideo1;
-    public GameObject telaVideo2;
-    public GameObject telaVideo3;
-    public GameObject telaFoto1;
-    public GameObject telaFoto2;
-    public GameObject telaFoto3;
 
     public VideoPlayer videoConfigPlayer;
 
@@ -245,87 +239,9 @@ public class CelularUIManager : MonoBehaviour
 
         Debug.Log("📷 App Album aberto!");
     }
-    
-    public void AbrirTelaVideo1()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo1 != null)
-            telaVideo1.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
-    
-    public void AbrirTelaVideo2()
-    {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo2 != null)
-            telaVideo2.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
-
-    public void AbrirTelaVideo3()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo3 != null)
-            telaVideo3.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
-
-    public void AbrirTelaFoto1()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto1 != null)
-            telaFoto1.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
-
-    public void AbrirTelaFoto2()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto2 != null)
-            telaFoto2.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
-
-    public void AbrirTelaFoto3()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto3 != null)
-            telaFoto3.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
-    }
 
     public void AbrirY()
-    {
+     {
         FecharTodasTelas();
 
         if (celularImagem != null)

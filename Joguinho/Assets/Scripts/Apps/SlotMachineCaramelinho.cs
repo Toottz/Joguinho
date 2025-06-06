@@ -4,18 +4,17 @@ using UnityEngine.UI;
 
 public class SlotMachineCaramelinho : MonoBehaviour
 {
-    public Sprite[] simbolos;
-    public Image[] slotImages;
-    public float spinDuration = 1.5f;
-    public float spinSpeed = 0.05f;
+    public Sprite[] simbolos;             // Ícones do caramelo
+    public Image[] slotImages;            // Slot1, Slot2, Slot3
+    public float spinDuration = 1.5f;     // Tempo total de giro
+    public float spinSpeed = 0.05f;       // Velocidade de troca dos símbolos
     public Button girarButton;
     public GameObject mensagemVitoria;
     public Color corVitoria = Color.yellow;
     public float tempoMensagem = 2f;
     public Text mensagemErro;
     public Color corErro = Color.red;
-    public AudioSource somGirar;    
-    public AudioSource somVitoria;  
+
     private bool girando = false;
 
     void Start()
@@ -39,7 +38,7 @@ public class SlotMachineCaramelinho : MonoBehaviour
                     Debug.Log("💸 Saldo insuficiente para girar o Caramelinho!");
 
                     if (mensagemErro != null)
-                        StartCoroutine(MostrarErro());
+                        StartCoroutine(MostrarErro()); // <- Aqui está a chamada
                 }
             }
         });
@@ -50,14 +49,13 @@ public class SlotMachineCaramelinho : MonoBehaviour
         girando = true;
         girarButton.interactable = false;
 
-        if (somGirar != null)
-            somGirar.Play(); // ⬅️ toca som de girar
-
+        // Rodar cada slot separadamente com atraso entre eles
         for (int i = 0; i < slotImages.Length; i++)
         {
             StartCoroutine(GirarSlotIndividual(slotImages[i], spinDuration + (i * 0.3f)));
         }
 
+        // Espera até todos pararem
         yield return new WaitForSeconds(spinDuration + 1f);
 
         girando = false;
@@ -77,15 +75,15 @@ public class SlotMachineCaramelinho : MonoBehaviour
             yield return new WaitForSeconds(spinSpeed);
         }
 
+        // Ao final, sorteia um símbolo final
         slot.sprite = simbolos[Random.Range(0, simbolos.Length)];
     }
 
     IEnumerator MostrarMensagemVitoria()
     {
-        if (somVitoria != null)
-            somVitoria.Play(); // ⬅️ toca som de vitória
-
         mensagemVitoria.SetActive(true);
+
+        // Efeito de cor: piscar ou mudar temporariamente
         Color originalColor = mensagemVitoria.GetComponent<Text>().color;
         mensagemVitoria.GetComponent<Text>().color = corVitoria;
 
@@ -125,16 +123,17 @@ public class SlotMachineCaramelinho : MonoBehaviour
 
         if (todosIguais)
         {
-            int recompensa = Random.Range(2, 11) * 5;
+            int recompensa = Random.Range(2, 11) * 5; // múltiplos de 5 entre 10 (2*5) e 50 (10*5)
             Debug.Log($"🎉 Você ganhou R$ {recompensa} com o Caramelinho!");
             PlayerWallet.Instance.AdicionarDinheiro(recompensa);
 
             if (mensagemVitoria != null)
                 StartCoroutine(MostrarMensagemVitoria());
         }
+
         else
         {
             Debug.Log("🐶 Não foi dessa vez...");
-        }
+        }   
     }
 }
