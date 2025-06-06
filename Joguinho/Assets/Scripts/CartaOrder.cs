@@ -14,7 +14,6 @@ public class CartaOrder : MonoBehaviour
     public GameObject setaCarta;
     public GameObject setaCasa;
     public string texto = "Pressione 'E' para pegar a carta";
-    public GameObject Correio;
 
     //[Header("Especial")]
     //public bool cartaFinal = false; // ← Marque essa carta no Inspector como final
