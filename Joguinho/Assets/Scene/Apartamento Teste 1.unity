@@ -7150,7 +7150,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -202.494
+      value: -202.5887
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7158,11 +7158,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.944
+      value: 2.8246
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97033066
+      value: 0.29013398
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalRotation.x
@@ -7170,7 +7170,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.24178183
+      value: -0.95698607
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalRotation.z
@@ -7182,7 +7182,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 27.983
+      value: -146.268
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -20377,10 +20377,14 @@ PrefabInstance:
       propertyPath: bloquearCamera
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114762042097486276, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: crouchYHeadPosition
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: Cell
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 154817415}
     - target: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: speed
       value: 1.5
