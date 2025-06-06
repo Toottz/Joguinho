@@ -3596,9 +3596,6 @@ MonoBehaviour:
   nomeCenaDestino: Menu
   fade: {fileID: 631935127}
   texto: {fileID: 0}
-  velocidadefade: 0.7
-  escureca: 0
-  alpha: 0
 --- !u!114 &327794068
 MonoBehaviour:
   m_ObjectHideFlags: 0
