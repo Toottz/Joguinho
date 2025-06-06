@@ -12,7 +12,7 @@ public TextMeshProUGUI legendaTexto; // legenda exibida após escovação
 public float tempoLegenda = 3f;
 private bool dentroDaArea = false;
 public bool escovou = false;
-public Toggle toggleEscovacao;
+public GameObject risco;
 
     void Start()
 {
@@ -31,8 +31,8 @@ void Update()
     if (dentroDaArea && !escovou && Input.GetKeyDown(KeyCode.E))
     {
         StartCoroutine(RotinaEscovarDentes());
-            if (toggleEscovacao != null)
-                toggleEscovacao.isOn = true;
+            if (risco !=null)
+                risco.SetActive(true);
         }
 }
 

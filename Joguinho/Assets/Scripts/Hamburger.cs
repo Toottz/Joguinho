@@ -8,7 +8,7 @@ public class Hamburger : MonoBehaviour
     private bool isPlayerNearby = false;
     private GameObject player;
     public GameObject falaPersona;
-    public Toggle toggleComida;
+    public GameObject risco;
 
     void Update()
     {
@@ -22,11 +22,13 @@ public class Hamburger : MonoBehaviour
 
             if (falaPersona != null)
                 falaPersona.SetActive(true);
+            if (risco != null) 
+                risco.SetActive(true);
 
             InteracaoUIManager.Instance.EsconderTexto(); // Esconde o texto ao comer
             Destroy(gameObject); // Remove o hambúrguer
-            if (toggleComida != null)
-                toggleComida.isOn = true;
+            Debug.Log("destroi hamburguer");
+
         }
     }
 

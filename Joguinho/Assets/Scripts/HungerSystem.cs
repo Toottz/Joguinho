@@ -34,8 +34,6 @@ public class HungerSystem : MonoBehaviour
     {
         Estatico.Fome += amount;
         Estatico.Fome = Mathf.Clamp(Estatico.Fome, 0f, maxHunger);
-        float currentIntensityChromatic = ChromaticAberration.intensity.value;
-        ChromaticAberration.intensity.value = Mathf.Clamp(currentIntensityChromatic + valor1, 0f, 1f);
         UpdateHungerUI();
     }
 

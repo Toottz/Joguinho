@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f370a366e18ab440be0010534a1bb66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sedeBar: {fileID: 0}
+  sedeBar: {fileID: 1801421388}
   maxSede: 100
   sedeDecreaseRate: 25
   timeBetweenDecreases: 60
@@ -3266,7 +3266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e0ddcd6e45fcb4a9eb0b92a8769afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sonoBar: {fileID: 0}
+  sonoBar: {fileID: 526512957}
   maxSono: 100
   sonoAoAcordar: 20
   tempoParaComecarRecuperar: 480
@@ -3284,7 +3284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2640d8bb14da19b4b88ff3daced91452, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hungerBar: {fileID: 0}
+  hungerBar: {fileID: 1607522748}
   maxHunger: 100
   hungerDecreaseRate: 25
   timeBetweenDecreases: 60
@@ -3300,7 +3300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 278f0057af1e6274d9ec029744855db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ansiedadeBar: {fileID: 0}
+  ansiedadeBar: {fileID: 1901901358}
   maxAnsiedade: 100
   ansiedadeIncreaseRate: 25
   timeBetweenIncreases: 60
