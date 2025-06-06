@@ -14,9 +14,27 @@ public class SlotMachineCaramelinho : MonoBehaviour
     public float tempoMensagem = 2f;
     public Text mensagemErro;
     public Color corErro = Color.red;
-    public AudioSource somGirar;    
-    public AudioSource somVitoria;  
+    public AudioSource somGirar;
+    public AudioSource somVitoria;
+
     private bool girando = false;
+    private Coroutine erroCoroutine; // ← armazena referência da coroutine de erro
+
+    void OnDisable()
+    {
+        // Sempre que a tela do app for desativada, esconde as mensagens
+        if (mensagemErro != null)
+            mensagemErro.gameObject.SetActive(false);
+
+        if (mensagemVitoria != null)
+            mensagemVitoria.SetActive(false);
+
+        if (erroCoroutine != null)
+        {
+            StopCoroutine(erroCoroutine);
+            erroCoroutine = null;
+        }
+    }
 
     void Start()
     {
@@ -39,7 +57,12 @@ public class SlotMachineCaramelinho : MonoBehaviour
                     Debug.Log("💸 Saldo insuficiente para girar o Caramelinho!");
 
                     if (mensagemErro != null)
-                        StartCoroutine(MostrarErro());
+                    {
+                        if (erroCoroutine != null)
+                            StopCoroutine(erroCoroutine); // Para erro anterior, se houver
+
+                        erroCoroutine = StartCoroutine(MostrarErro());
+                    }
                 }
             }
         });
@@ -51,7 +74,7 @@ public class SlotMachineCaramelinho : MonoBehaviour
         girarButton.interactable = false;
 
         if (somGirar != null)
-            somGirar.Play(); // ⬅️ toca som de girar
+            somGirar.Play();
 
         for (int i = 0; i < slotImages.Length; i++)
         {
@@ -69,7 +92,6 @@ public class SlotMachineCaramelinho : MonoBehaviour
     IEnumerator GirarSlotIndividual(Image slot, float duration)
     {
         float timer = 0f;
-
         while (timer < duration)
         {
             slot.sprite = simbolos[Random.Range(0, simbolos.Length)];
@@ -83,7 +105,7 @@ public class SlotMachineCaramelinho : MonoBehaviour
     IEnumerator MostrarMensagemVitoria()
     {
         if (somVitoria != null)
-            somVitoria.Play(); // ⬅️ toca som de vitória
+            somVitoria.Play();
 
         mensagemVitoria.SetActive(true);
         Color originalColor = mensagemVitoria.GetComponent<Text>().color;
@@ -107,6 +129,8 @@ public class SlotMachineCaramelinho : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         mensagemErro.gameObject.SetActive(false);
+
+        erroCoroutine = null;
     }
 
     void VerificarResultado()

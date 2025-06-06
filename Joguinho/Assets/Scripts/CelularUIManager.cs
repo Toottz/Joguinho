@@ -29,6 +29,7 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaFoto1;
     public GameObject telaFoto2;
     public GameObject telaFoto3;
+    public GameObject telaNave;
 
     public VideoPlayer videoConfigPlayer;
 
@@ -336,9 +337,22 @@ public class CelularUIManager : MonoBehaviour
 
         Debug.Log("📷 App Y aberto!");
     }
+    
+    public void AbrirNave()
+    {
+        FecharTodasTelas();
+
+        if (celularImagem != null)
+            celularImagem.SetActive(false);
+
+        if (telaNave != null)
+            telaNave.SetActive(true);
+
+        Debug.Log("📷 App Nave aberto!");
+    }
 
     public void AbrirInForma()
-     {
+    {
         FecharTodasTelas();
 
         if (celularImagem != null)

@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 352a4455dbdaf114aac061b977ab58fa
+guid: 10db9e288faf9554f9402b7fd77e86de
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Vidro 1
-    second: {fileID: 2100000, guid: 0d96d46dffa691841bd7505fce5382cb, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
