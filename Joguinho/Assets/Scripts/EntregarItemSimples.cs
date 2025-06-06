@@ -14,7 +14,6 @@ public class EntregarItemSimples : MonoBehaviour
 
     private bool podeEntregar = false;
     private bool itemEntregue = false;
-    public GameObject risco;
 
     void Start()
     {
@@ -30,8 +29,6 @@ public class EntregarItemSimples : MonoBehaviour
 
     void Update()
     {
-        if (itemEntregue)
-            risco.SetActive(true);
         if (podeEntregar && !itemEntregue && Input.GetKeyDown(KeyCode.E))
         {
             if (InventarioSimples.Instance != null && InventarioSimples.Instance.TemItem(idEsperado))

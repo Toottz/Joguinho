@@ -24,10 +24,9 @@ public class PortaCena : MonoBehaviour
     public float ansiedadeAumento;
     public Passarinho passaro;
 
-    public GameObject risco1;
-    public GameObject risco2;
-    public GameObject risco3;
-    public GameObject risco4;
+    public Toggle toggleEscovacao;
+    public Toggle toggleBanho;
+    public Toggle toggleComida;
 
 
 
@@ -62,7 +61,7 @@ public class PortaCena : MonoBehaviour
 
         }
 
-        if (risco4 && risco3 && risco2 && risco1)
+        if (toggleBanho.isOn && toggleComida.isOn && toggleEscovacao.isOn)
         {
             tarefas_Finalizadas = true; 
         }
