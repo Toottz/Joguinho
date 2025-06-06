@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class AnsiedadeSystem : MonoBehaviour
@@ -11,9 +10,6 @@ public class AnsiedadeSystem : MonoBehaviour
 
     private float currentAnsiedade;
     private float timer;
-
-    private FilmGrain grain;
-    private LensDistortion distortion;
 
     void Start()
     {
@@ -31,10 +27,9 @@ public class AnsiedadeSystem : MonoBehaviour
         }
     }
 
-    public void Relaxar(float valor,)
+    public void Relaxar(float valor)
     {
         ModifyAnsiedade(-valor);
-
     }
 
     private void ModifyAnsiedade(float valor)

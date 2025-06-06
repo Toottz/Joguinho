@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
 
 public class HungerSystem : MonoBehaviour
@@ -11,7 +10,6 @@ public class HungerSystem : MonoBehaviour
 
     private float timer;
 
-    private ChromaticAberration ChromaticAberration;
     void Start()
     {
  
@@ -30,12 +28,10 @@ public class HungerSystem : MonoBehaviour
         }
     }
 
-    public void EatFood(float amount, float valor1)
+    public void EatFood(float amount)
     {
         Estatico.Fome += amount;
         Estatico.Fome = Mathf.Clamp(Estatico.Fome, 0f, maxHunger);
-        float currentIntensityChromatic = ChromaticAberration.intensity.value;
-        ChromaticAberration.intensity.value = Mathf.Clamp(currentIntensityChromatic + valor1, 0f, 1f);
         UpdateHungerUI();
     }
 
