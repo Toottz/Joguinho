@@ -24,8 +24,8 @@ public class PerdeSeDeMeioDia : MonoBehaviour
     {
 
 
-        float currentHour = Estatico.Hora; 
-        float currentMinuto = Estatico.Minutos;
+        float currentHour = TimeManager.HoraAtual; 
+        float currentMinuto = TimeManager.MinutoAtual;
 
         if (Mathf.FloorToInt(currentMinuto) == Mathf.FloorToInt(minuto))
             {
