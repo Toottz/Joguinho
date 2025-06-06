@@ -1,7 +1,6 @@
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Lanchonete : MonoBehaviour
@@ -14,8 +13,6 @@ public class Lanchonete : MonoBehaviour
     public GameObject dialogoUI;
     public TextMeshProUGUI textoDialogosemFome;
     public TextMeshProUGUI textDialogosemDinheiro;
-    public GameObject fade;
-    public float alpha = 0f;
     [TextArea]
     public string semFome = "Não to com fome agora";
     [TextArea]
@@ -32,17 +29,7 @@ public class Lanchonete : MonoBehaviour
                 {
                         if (wallet.GastarDinheiro(20))
                         {
-
-                        if (fade != null)
-                        {
-                            fade.SetActive(true);
-                            Image img = fade.GetComponent<Image>();
-                            if (img != null)
-                                img.color = new Color(img.color.r, img.color.g, img.color.b, 1f);
-                            Invoke("telapreta", 2f);
-                        }
-
-                        hungerSystem.EatFood(hungerRestoreAmount);
+                            hungerSystem.EatFood(hungerRestoreAmount);
 
                             SedeSystem SedeSystem = player.GetComponent<SedeSystem>();
                             if (SedeSystem != null)
@@ -61,12 +48,6 @@ public class Lanchonete : MonoBehaviour
                 }
             }
         }
-    }
-
-    private void telapreta()
-    {
-        if (fade != null)
-            fade.SetActive(false);
     }
     private void MostrarDialogosemFome()
     {

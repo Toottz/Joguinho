@@ -10443,7 +10443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nomeCenaDestino: Dia1
   mensagemInteracao: Pressione 'E' para sair
-  tarefas_Finalizadas: 1
+  tarefas_Finalizadas: 0
   textoUI: {fileID: 1149664145}
   legendaTexto: {fileID: 1149664147}
   mensagemProibido: "N\xE3o terminei o que precisava, vou olhar o \nblocos de notas
@@ -22317,7 +22317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d3661fa0b047244ab01c44cb002755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutosPorSegundoReal: 0.6
+  minutosPorSegundoReal: 1
   relogioUI: {fileID: 1437412570}
   directionalLight: {fileID: 2121543635}
   corLuzPorHora:
