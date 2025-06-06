@@ -3885,8 +3885,6 @@ MonoBehaviour:
   telaMensagens: {fileID: 1246438439}
   telaCaramelinho: {fileID: 113288045}
   telaConfiguracoes: {fileID: 1426619225}
-  telaConfiguracoes2: {fileID: 0}
-  telaConfiguracoes3: {fileID: 0}
   telaAlarme: {fileID: 0}
   cell: {fileID: 162659049}
   telaBlocoNotas: {fileID: 1263477395}
@@ -6891,7 +6889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1524, y: -738}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &471026658
@@ -12035,6 +12033,7 @@ MonoBehaviour:
   Casa3: {fileID: 2100000, guid: c0fd285fff8b9524d97ff0e607bcaff3, type: 2}
   Casa4: {fileID: 2100000, guid: b05f421daa02c2a45a2b4fdbb35ea558, type: 2}
   Casa5: {fileID: 2100000, guid: 1eaed405e7f4e9b4cab11555e40f81c2, type: 2}
+  Casa6: {fileID: 2100000, guid: 09b5460a2f3488642b8bb6f5cda83435, type: 2}
   GradienteCasa1:
     serializedVersion: 2
     key0: {r: 0.019382361, g: 0.027320892, b: 0.028426038, a: 1}
@@ -19519,6 +19518,7 @@ MonoBehaviour:
   celularUI: {fileID: 282714156}
   mensagensController: {fileID: 805789359}
   cameraLookScript: {fileID: 0}
+  celularAberto: 0
 --- !u!4 &1266578563
 Transform:
   m_ObjectHideFlags: 0
@@ -24119,6 +24119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c2203f3e2d596e4184078ec73a57bbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saldo: 0
   textoSaldo: {fileID: 0}
 --- !u!4 &1713462391
 Transform:
@@ -26965,11 +26966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 870c8aec0c0f2464ea27c96cccfd3d10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  conversaAtual: {fileID: 0}
-  painelMensagem: {fileID: 0}
-  textoMensagem: {fileID: 0}
-  botoesRespostas: []
-  textosBotoes: []
+  listaContatos: {fileID: 2053038749}
+  conversaChefe: {fileID: 482925759}
+  conversaMae: {fileID: 760495090}
+  botaovoltar: {fileID: 0}
+  botaovoltarmenu: {fileID: 0}
+  celularBorda: {fileID: 0}
 --- !u!1 &1986743580
 GameObject:
   m_ObjectHideFlags: 0
