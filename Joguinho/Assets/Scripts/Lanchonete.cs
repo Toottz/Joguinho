@@ -42,7 +42,7 @@ public class Lanchonete : MonoBehaviour
                             Invoke("telapreta", 2f);
                         }
 
-                        hungerSystem.EatFood(hungerRestoreAmount);
+                        hungerSystem.EatFood(hungerRestoreAmount, -1);
 
                             SedeSystem SedeSystem = player.GetComponent<SedeSystem>();
                             if (SedeSystem != null)
