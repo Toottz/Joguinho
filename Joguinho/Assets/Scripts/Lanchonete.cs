@@ -17,13 +17,13 @@ public class Lanchonete : MonoBehaviour
     public GameObject fade;
     public float alpha = 0f;
     [TextArea]
-    public string semFome = "Nï¿½o to com fome agora";
+    public string semFome = "Não to com fome agora";
     [TextArea]
     public string semDinheiro = "Estou sem dinheiro, que triste";
 
     void Update()
     {
-        if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Pressionar "F" para comer
+        if (isPlayerNearby && Input.GetKeyDown(KeyCode.F)) // Pressionar "F" para comer
         {
             HungerSystem hungerSystem = player.GetComponent<HungerSystem>();
             if (hungerSystem != null)
@@ -93,7 +93,7 @@ public class Lanchonete : MonoBehaviour
         {
             isPlayerNearby = true;
             player = other.gameObject;
-            InteracaoUIManager.Instance.MostrarTexto("Pressione 'E' para comer, essa aÃ§Ã£o custa 20Reais");
+            InteracaoUIManager.Instance.MostrarTexto("Pressione 'F' para comer, essa ação gastará 20Reais");
         }
     }
 

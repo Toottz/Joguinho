@@ -32,18 +32,14 @@ public bool tomouBanho = false;
         roupaNoChao.SetActive(false); // garante que comece oculta
 }
 
-    public void MostrarOpcoesChuveiro()
-    {
-        if (chuveiroUI != null)
-            chuveiroUI.SetActive(true);
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+public void MostrarOpcoesChuveiro()
+{
+    if (chuveiroUI != null)
+        chuveiroUI.SetActive(true);
 
-        // Bloqueia movimento da câmera, se houver
-        FirstPersonLook cameraLook = FindObjectOfType<FirstPersonLook>();
-        if (cameraLook != null)
-            cameraLook.bloquearCamera = true;
-    }
+    Cursor.lockState = CursorLockMode.None;
+    Cursor.visible = true;
+}
 
 public void EscolherBanhoSimples()
 {
@@ -139,16 +135,9 @@ IEnumerator FadePreto(float duracao)
     Cursor.visible = false;
 }
 
-    public void FecharOpcoes()
-    {
-        if (chuveiroUI != null)
-            chuveiroUI.SetActive(false);
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // Libera a câmera
-        FirstPersonLook cameraLook = FindObjectOfType<FirstPersonLook>();
-        if (cameraLook != null)
-            cameraLook.bloquearCamera = false;
-    }
+public void FecharOpcoes()
+{
+    if (chuveiroUI != null)
+        chuveiroUI.SetActive(false);
+}
 }

@@ -1,72 +1,69 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CelularController2 : MonoBehaviour
 {
-public GameObject celularUI;
-public MensagensController mensagensController;
+    public GameObject celularUI;
+    public MensagensController mensagensController;
     public MonoBehaviour cameraLookScript; // Ex: FirstPersonLook
-private bool celularAberto = false;
-private FirstPersonLook lookScript;
 
-void Start()
-{
-    // Garante que o script correto seja usado
-    lookScript = cameraLookScript as FirstPersonLook;
-}
+    private bool celularAberto = false;
 
-void Update()
-{
-    if (Input.GetKeyDown(KeyCode.Tab))
+    void Update()
     {
-        celularAberto = !celularAberto;
-        celularUI.SetActive(celularAberto);
-
-        if (celularAberto)
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            celularAberto = !celularAberto;
+            celularUI.SetActive(celularAberto);
 
-            if (lookScript != null)
-                lookScript.bloquearCamera = true;
-
-            FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
-            if (lookScript != null)
-                lookScript.bloquearCamera = false;
-
-            FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
-        }
-
-        if (mensagensController != null)
-        {
             if (celularAberto)
-                mensagensController.AoAbrirCelular();
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+
+                // Em vez de desativar o script, apenas bloqueia a câmera
+                if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+                    lookScript.bloquearCamera = false; // Deixa o mouse controlar fora do celular
+                
+
+                FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
+            }
             else
-                mensagensController.AoFecharCelular();
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+
+                if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+                    lookScript.bloquearCamera = false; // Garante que a câmera volte ao normal
+
+                FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
+            }
+
+            if (mensagensController != null)
+            {
+                if (celularAberto)
+                    mensagensController.AoAbrirCelular();
+                else
+                    mensagensController.AoFecharCelular();
+            }
         }
     }
-}
 
-public void FecharCelular()
-{
-    celularAberto = false;
-    celularUI.SetActive(false);
+    public void FecharCelular()
+    {
+        celularAberto = false;
+        celularUI.SetActive(false);
 
-    Cursor.lockState = CursorLockMode.Locked;
-    Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
 
-    if (lookScript != null)
-        lookScript.bloquearCamera = false;
+        if (cameraLookScript != null && cameraLookScript is FirstPersonLook lookScript)
+            lookScript.bloquearCamera = false;
 
-    if (mensagensController != null)
-        mensagensController.AoFecharCelular();
+        if (mensagensController != null)
+            mensagensController.AoFecharCelular();
 
-    FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
-}
+        FindObjectOfType<CelularUIManager>()?.VoltarAoMenu();
+    }
 }
