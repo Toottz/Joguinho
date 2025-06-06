@@ -12,6 +12,7 @@ public class CartaController : MonoBehaviour
     public TextMeshProUGUI textoentrega;
     public GameObject[] cartasObject = new GameObject[3];
     public GameObject[] setasCasas = new GameObject[3];
+    public GameObject[] Correio = new GameObject[3];
 
     [SerializeField] private string [] destinatarioAtual = new string [3];
     [SerializeField]  private bool temCarta = false;
@@ -31,6 +32,7 @@ public class CartaController : MonoBehaviour
     public MensagensController mensagensController;
     public bool tentouEntregar = false;
 
+    public FirstPersonMovement movimento;
     void Start()
     {
         //cartaUI.gameObject.SetActive(false);
@@ -43,6 +45,15 @@ public class CartaController : MonoBehaviour
 
     void Update()
     {
+        if (mostrandoDialogo)
+        {
+            movimento.speed = 0f;
+
+        }
+        if (!mostrandoDialogo)
+        {
+            movimento.speed = 5f;
+        }
         if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
         {
             indiceFala++;
@@ -73,6 +84,9 @@ public class CartaController : MonoBehaviour
 
                     setasCasas[i] = cartaNoChao.setaCasa;
                     cartaNoChao.setaCasa.SetActive(true);
+
+                    Correio[i] = cartaNoChao.Correio;
+                    cartaNoChao.Correio.SetActive(true);
 
                     cartaNoChao.setaCarta.SetActive(false);
 
@@ -117,6 +131,9 @@ public class CartaController : MonoBehaviour
 
                     cartasObject[i].SetActive(false);
                     setasCasas[i].SetActive(false);
+
+                    podeEntregar = false;
+                    npcProximo = null;
 
                     Destroy(npcProximo.gameObject);
 
