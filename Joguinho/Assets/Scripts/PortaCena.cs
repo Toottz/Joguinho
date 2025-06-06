@@ -62,7 +62,7 @@ public class PortaCena : MonoBehaviour
 
         }
 
-        if (risco4 && risco3 && risco2 && risco1)
+        if (risco4.activeSelf && risco3.activeSelf && risco2.activeSelf && risco1.activeSelf)
         {
             tarefas_Finalizadas = true; 
         }

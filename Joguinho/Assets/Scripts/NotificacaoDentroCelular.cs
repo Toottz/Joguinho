@@ -16,10 +16,12 @@ public class NotificacaoDentroCelular : MonoBehaviour
     private bool isShowing = false;
     public TextMeshProUGUI Notificacao;
     public TextMeshProUGUI App;
-    public Image Logo;
+    public RawImage Logo;
     public Image Cor;
 
     public GameObject Celular;
+
+    public GameObject som;
 
 
     void Awake()
@@ -37,7 +39,7 @@ public class NotificacaoDentroCelular : MonoBehaviour
         }
     }
     // Método público para ativar a notificação
-    public void ShowNotification(string message, string app, Color cores, Sprite Logos)
+    public void ShowNotification(string message, string app, Color cores, RenderTexture Logos)
     {
         if (isShowing || !Celular.activeInHierarchy) return;
 
@@ -49,7 +51,9 @@ public class NotificacaoDentroCelular : MonoBehaviour
         Notificacao.text = message;
         App.text = app;
         Cor.color = cores;
-        Logo.sprite = Logos;
+        Logo.texture = Logos;
+
+        som.SetActive(true);
 
         // Animação de entrada
         transform.DOLocalMove(originalPosition, fadeDuration)
@@ -62,7 +66,8 @@ public class NotificacaoDentroCelular : MonoBehaviour
                     transform.DOLocalMove(hiddenPosition, fadeDuration)
                         .SetEase(Ease.InBack)
                         .OnComplete(() => isShowing = false)
-                        .OnComplete(() => gameObject.SetActive(false));
+                        .OnComplete(() => gameObject.SetActive(false))
+                        .OnComplete(()=> som.SetActive(false));
                 });
             });
     }

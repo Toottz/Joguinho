@@ -33,6 +33,10 @@ public class CartaController : MonoBehaviour
     public bool tentouEntregar = false;
 
     public FirstPersonMovement movimento;
+    public int quantidadedeentregas=0;
+
+    public GameObject risco;
+    public GameObject dialogo;
     void Start()
     {
         //cartaUI.gameObject.SetActive(false);
@@ -45,12 +49,14 @@ public class CartaController : MonoBehaviour
 
     void Update()
     {
-        if (mostrandoDialogo)
+        if(quantidadedeentregas>=3)
+            risco.SetActive(true);
+        if (dialogo.activeInHierarchy)
         {
             movimento.speed = 0f;
 
         }
-        if (!mostrandoDialogo)
+        if (!dialogo.activeInHierarchy)
         {
             movimento.speed = 5f;
         }
@@ -131,6 +137,7 @@ public class CartaController : MonoBehaviour
 
                     cartasObject[i].SetActive(false);
                     setasCasas[i].SetActive(false);
+                    quantidadedeentregas++;
 
                     podeEntregar = false;
                     npcProximo = null;

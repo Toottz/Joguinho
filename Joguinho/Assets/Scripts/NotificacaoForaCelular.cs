@@ -16,9 +16,9 @@ public class NotificacaoForaCelular : MonoBehaviour
     private bool isShowing = false;
     public TextMeshProUGUI Notificacao;
     public TextMeshProUGUI App;
-    public Image Logo;
+    public RawImage Logo;
     public Image Cor;
-
+    public AudioSource som;
 
 
     void Awake()
@@ -28,7 +28,7 @@ public class NotificacaoForaCelular : MonoBehaviour
 
 
     // Método público para ativar a notificação
-    public void ShowNotification(string message, string app, Color cores, Sprite Logos)
+    public void ShowNotification(string message, string app, Color cores, RenderTexture Logos)
     {
         gameObject.SetActive(true);
 
@@ -38,7 +38,9 @@ public class NotificacaoForaCelular : MonoBehaviour
         Notificacao.text = message;
         App.text = app;
         Cor.color = cores;
-        Logo.sprite = Logos;
+        Logo.texture = Logos;
+
+        som.Play();
 
         // Animação de entrada
         transform.DOLocalMove(originalPosition, fadeDuration)
@@ -51,7 +53,8 @@ public class NotificacaoForaCelular : MonoBehaviour
                     transform.DOLocalMove(hiddenPosition, fadeDuration)
                         .SetEase(Ease.InBack)
                         .OnComplete(() => isShowing = false)
-                        .OnComplete(() => gameObject.SetActive(false));
+                        .OnComplete(() => gameObject.SetActive(false))
+                        .OnComplete(()=> som.Stop());
                 });
             });
     }

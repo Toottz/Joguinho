@@ -19,7 +19,7 @@ public class NotificacaoManager : MonoBehaviour
     [TextArea]
     public string[] app; // Mensagens para cada horário
     public Color[] cor;
-    public Sprite[] logos;
+    public RenderTexture[] logos;
     public float[] triggerHours;
     public float[] triggerMinutes;
 
@@ -36,7 +36,8 @@ public class NotificacaoManager : MonoBehaviour
     [TextArea]
     public string appBomDia;
     public Color corBomDia;
-    public Sprite logoBomDia;
+    public RenderTexture logoBomDia;
+    public bool mensagemespecifica = false;
 
 
 
@@ -56,7 +57,7 @@ public class NotificacaoManager : MonoBehaviour
 
         if (!jaNotificou)
         {
-            if (Alarme.activeInHierarchy && !alarmetocou)
+            if (Alarme.activeInHierarchy && !alarmetocou && mensagemespecifica)
             {
                 notificacaoDentro.ShowNotification(mensagemBomDia, appBomDia, corBomDia, logoBomDia);
                 jaNotificou = true;

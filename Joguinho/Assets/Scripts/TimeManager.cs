@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour
 {
     public float minutosPorSegundoReal = 1f;
-    public Text relogioUI;
+    public Text[] relogioUI; // Array de Textos para mostrar o horário
     public Light directionalLight;
     public Gradient corLuzPorHora;
 
@@ -26,7 +26,6 @@ public class TimeManager : MonoBehaviour
     public Gradient GradienteCasa5;
 
     public bool usarMudancaDeCor = true;
-
     public GameObject objetoControlador;
     private bool relogioPausado = false;
 
@@ -45,10 +44,24 @@ public class TimeManager : MonoBehaviour
             if (Estatico.tempoEmMinutos >= 1440f)
                 Estatico.tempoEmMinutos = 0f;
         }
-        relogioUI.text = Estatico.Hora.ToString("00") + ":" + Estatico.Minutos.ToString("00");
 
+        // Atualiza todos os textos do relógio
+        AtualizarRelogiosUI();
         AtualizarIluminacao();
         AtualizarMomentoDoDia();
+    }
+
+    void AtualizarRelogiosUI()
+    {
+        string horarioFormatado = Estatico.Hora.ToString("00") + ":" + Estatico.Minutos.ToString("00");
+
+        foreach (Text textoRelogio in relogioUI)
+        {
+            if (textoRelogio != null)
+            {
+                textoRelogio.text = horarioFormatado;
+            }
+        }
     }
 
     void AtualizarMomentoDoDia()
@@ -85,7 +98,7 @@ public class TimeManager : MonoBehaviour
 
         if (relogio)
         {
-            relogioPonteiro.transform.rotation = Quaternion.Euler(0f,0f,(t * -360f) - -90f);
+            relogioPonteiro.transform.rotation = Quaternion.Euler(0f, 0f, (t * -360f) - -90f);
         }
 
         if (SkyBoxMaterial != null)

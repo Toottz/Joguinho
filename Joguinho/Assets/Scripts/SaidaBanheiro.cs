@@ -8,7 +8,7 @@ void OnTriggerExit(Collider other)
 {
     if (other.CompareTag("Player") && !jaTocou)
     {
-        if (ChuveiroManager.Instance != null && ChuveiroManager.Instance.tomouBanho)
+        if (ChuveiroManager.Instance != null && ChuveiroManager.Instance.tomouBanho && Estatico.Fome < 30f)
         {
             if (somBarriga != null)
                 somBarriga.Play();
