@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -12,11 +13,15 @@ public class PerdeSeDeMeioDia : MonoBehaviour
     public string nomeCenaDestino;
     public Image fade;
     public TextMeshProUGUI texto;
+    public float velocidadefade = 0.2f;
+    public bool escureca;
+    public float alpha = 0f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        float currentHour = Estatico.Hora;
+        float currentMinuto = Estatico.Minutos;
     }
 
     // Update is called once per frame
@@ -24,17 +29,28 @@ public class PerdeSeDeMeioDia : MonoBehaviour
     {
 
 
-        float currentHour = Estatico.Hora; 
+        float currentHour = Estatico.Hora;
         float currentMinuto = Estatico.Minutos;
 
         if (Mathf.FloorToInt(currentMinuto) == Mathf.FloorToInt(minuto))
+        {
+            if (Mathf.FloorToInt(currentHour) == Mathf.FloorToInt(hora))
             {
-                if (Mathf.FloorToInt(currentHour) == Mathf.FloorToInt(hora))
-                {
-                      
-                      SceneManager.LoadScene(nomeCenaDestino);
-                }
+                escureca = true;    
             }
         }
+        if (escureca)
+        {
+            alpha += Time.deltaTime * velocidadefade;
+            var cor = fade.color;
+            cor.a = alpha;
+            fade.color = cor;
+            if (alpha >= 1f)
+            {
+                escureca = false;
+                SceneManager.LoadScene(nomeCenaDestino);
+            }
     }
+    }
+}
 
