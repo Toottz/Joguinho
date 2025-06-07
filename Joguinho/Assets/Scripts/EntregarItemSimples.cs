@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
+using System.Numerics;
 
 public class EntregarItemSimples : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class EntregarItemSimples : MonoBehaviour
     private bool podeEntregar = false;
     private bool itemEntregue = false;
     public GameObject risco;
+    public GameObject player;
 
     void Start()
     {
@@ -51,6 +53,11 @@ public class EntregarItemSimples : MonoBehaviour
 
                 if (objetoApareceAposEntrega != null)
                     objetoApareceAposEntrega.SetActive(true); // Ativa o novo objeto
+                AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+                if (AnsiedadeSystem != null)
+                {
+                    AnsiedadeSystem.Relaxar(5);
+                }
 
                 Debug.Log("✅ Item entregue: " + idEsperado);
             }

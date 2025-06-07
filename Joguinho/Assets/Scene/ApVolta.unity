@@ -3623,9 +3623,15 @@ MonoBehaviour:
   sonoBar: {fileID: 526512957}
   maxSono: 100
   sonoAoAcordar: 20
-  tempoParaComecarRecuperar: 480
+  inicioRecuperacao: 480
+  fimRecuperacao: 1320
   taxaReducaoBase: 0.1
-  taxaRecuperacao: 0.2
+  minVignette: 0.125
+  maxVignette: 1
+  duracaoFechar: 0.5
+  duracaoAbrir: 0.5
+  tempoEntrePiscadasBase: 3
+  sonoMinimoParaEfeito: 80
 --- !u!114 &327794043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,6 +3648,8 @@ MonoBehaviour:
   maxHunger: 100
   hungerDecreaseRate: 25
   timeBetweenDecreases: 60
+  limiarSemEfeitos: 40
+  maxChromaticAberration: 0.8
 --- !u!114 &327794044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3658,6 +3666,9 @@ MonoBehaviour:
   maxAnsiedade: 100
   ansiedadeIncreaseRate: 25
   timeBetweenIncreases: 60
+  limiarEfeitos: 60
+  maxFilmGrain: 0.8
+  maxLensDistortion: 0.3
 --- !u!114 &327794056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4289,7 +4300,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalScale.x
@@ -4305,15 +4316,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.178
+      value: 4.0861
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.8559
+      value: 2.0017
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.419
+      value: -2.691
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalRotation.w
@@ -4343,13 +4354,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4992780056021517102, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 69dac57df094cb2499942fada77d9faf, type: 2}
     - target: {fileID: 919132149155446097, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_Name
       value: Passarinho
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1188791837432467558, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4370,6 +4385,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
   m_PrefabInstance: {fileID: 392286150}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &392286152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d641b79e8235d814982d6bf6725f2137, type: 3}
+  m_PrefabInstance: {fileID: 392286150}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &392286153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392286152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68a51a6a9195044ea169c9c10e74e18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  limiteAnsiedade: 80
+  textoMensagem: {fileID: 0}
+  tempoMensagem: 3
 --- !u!1 &393480650
 GameObject:
   m_ObjectHideFlags: 0
@@ -14835,6 +14870,7 @@ MonoBehaviour:
   roupaNoChao: {fileID: 1751731112}
   tomouBanho: 0
   risco: {fileID: 0}
+  player: {fileID: 0}
 --- !u!4 &1424608376
 Transform:
   m_ObjectHideFlags: 0
@@ -28127,6 +28163,7 @@ MonoBehaviour:
   - {fileID: 753174420}
   alarmManager: {fileID: 0}
   mensagensAppManager: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &167906311444614065
 MonoBehaviour:
   m_ObjectHideFlags: 0

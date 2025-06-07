@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -39,6 +40,7 @@ public class CelularUIManager : MonoBehaviour
     public MensagensAppManager mensagensAppManager;
 
     public static CelularUIManager instance;
+    public GameObject player;
 
     private void Awake()
     {
@@ -107,6 +109,16 @@ public class CelularUIManager : MonoBehaviour
             celularImagem.SetActive(false);
         if (celularBorda != null)
             celularBorda.SetActive(false);
+        AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+        if (AnsiedadeSystem != null)
+        {
+            AnsiedadeSystem.Relaxar(-5);
+        }
+        SedeSystem sedeSystem = player.GetComponent<SedeSystem>();
+        if (sedeSystem != null)
+        {
+            sedeSystem.EatFood(-5);
+        }
 
         foreach (GameObject tela in telasApps)
         {

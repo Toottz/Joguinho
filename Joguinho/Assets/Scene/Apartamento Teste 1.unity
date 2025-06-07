@@ -6201,9 +6201,15 @@ MonoBehaviour:
   sonoBar: {fileID: 1340620178}
   maxSono: 100
   sonoAoAcordar: 20
-  tempoParaComecarRecuperar: 480
+  inicioRecuperacao: 480
+  fimRecuperacao: 1320
   taxaReducaoBase: 0.1
-  taxaRecuperacao: 0.2
+  minVignette: 0.125
+  maxVignette: 1
+  duracaoFechar: 0.5
+  duracaoAbrir: 0.5
+  tempoEntrePiscadasBase: 10
+  sonoMinimoParaEfeito: 80
 --- !u!114 &327794043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6220,6 +6226,8 @@ MonoBehaviour:
   maxHunger: 100
   hungerDecreaseRate: 0.2
   timeBetweenDecreases: 1
+  limiarSemEfeitos: 40
+  maxChromaticAberration: 0.8
 --- !u!114 &327794044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6236,6 +6244,9 @@ MonoBehaviour:
   maxAnsiedade: 100
   ansiedadeIncreaseRate: 0.05
   timeBetweenIncreases: 1
+  limiarEfeitos: 60
+  maxFilmGrain: 0.8
+  maxLensDistortion: 0.3
 --- !u!114 &327794049 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114963311885979670, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
@@ -6944,7 +6955,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &362181293
 Transform:
   m_ObjectHideFlags: 0
@@ -11849,7 +11860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &649429693
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17760,6 +17771,7 @@ MonoBehaviour:
   tempoLegenda: 3
   objetoApareceAposEntrega: {fileID: 603710144}
   risco: {fileID: 280350819}
+  player: {fileID: 327794032}
 --- !u!65 &953345397
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28385,6 +28397,7 @@ MonoBehaviour:
   roupaNoChao: {fileID: 1751731112}
   tomouBanho: 0
   risco: {fileID: 629065885}
+  player: {fileID: 327794032}
 --- !u!4 &1424608376
 Transform:
   m_ObjectHideFlags: 0

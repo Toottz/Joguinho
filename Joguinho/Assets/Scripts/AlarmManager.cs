@@ -201,7 +201,12 @@ public void BotaoContinuarNoCelular()
 {
         if (perguntaBotoesUI != null)
             perguntaBotoesUI.SetActive(false);
-if (videoPlayer != null && videoPlayer.isPlaying)
+        AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+        if (AnsiedadeSystem != null)
+        {
+            AnsiedadeSystem.Relaxar(-10);
+        }
+        if (videoPlayer != null && videoPlayer.isPlaying)
 {
     // Espera o vídeo terminar para continuar
     StartCoroutine(EsperarVideoEncerrar());
@@ -249,9 +254,13 @@ public void BotaoSairDoCelular()
 
         if (celularCompleto != null)
         celularCompleto.SetActive(false);
+        AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+        if (AnsiedadeSystem != null)
+        {
+            AnsiedadeSystem.Relaxar(2);
+        }
 
-
-    Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
+        Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
     //MostrarLegenda("Preciso ir ao banheiro");
     videoTocando = false;
 }

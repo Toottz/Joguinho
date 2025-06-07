@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Numerics;
 
 public class ChuveiroManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public AudioSource somChuveiro;
 public GameObject roupaNoChao; 
 public bool tomouBanho = false;
 public GameObject risco;
-
+    public GameObject player;
     void Awake()
 {
     Instance = this;
@@ -51,6 +52,11 @@ public void EscolherBanhoSimples()
     tomouBanho = true;
         if (risco !=null)
             risco.SetActive(true);
+        AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+        if (AnsiedadeSystem != null)
+        {
+            AnsiedadeSystem.Relaxar(5);
+        }
 
     }
 
