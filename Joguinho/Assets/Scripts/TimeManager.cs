@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TimeManager : MonoBehaviour
 {
     public float minutosPorSegundoReal = 1f;
-    public Text[] relogioUI; // Array de Textos para mostrar o horário
+    public Text[] relogioUI; // Array de Textos UI Legacy
+    public TextMeshProUGUI[] relogioTMP; // Array de TextMeshPro
     public Light directionalLight;
     public Gradient corLuzPorHora;
 
@@ -45,7 +47,6 @@ public class TimeManager : MonoBehaviour
                 Estatico.tempoEmMinutos = 0f;
         }
 
-        // Atualiza todos os textos do relógio
         AtualizarRelogiosUI();
         AtualizarIluminacao();
         AtualizarMomentoDoDia();
@@ -55,11 +56,21 @@ public class TimeManager : MonoBehaviour
     {
         string horarioFormatado = Estatico.Hora.ToString("00") + ":" + Estatico.Minutos.ToString("00");
 
+        // Atualiza Textos UI Legacy
         foreach (Text textoRelogio in relogioUI)
         {
             if (textoRelogio != null)
             {
                 textoRelogio.text = horarioFormatado;
+            }
+        }
+
+        // Atualiza TextMeshPro
+        foreach (TextMeshProUGUI tmpRelogio in relogioTMP)
+        {
+            if (tmpRelogio != null)
+            {
+                tmpRelogio.text = horarioFormatado;
             }
         }
     }

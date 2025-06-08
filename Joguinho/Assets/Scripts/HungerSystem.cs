@@ -21,6 +21,9 @@ public class HungerSystem : MonoBehaviour
     private VolumeProfile volumeProfile;
     private ChromaticAberration chromaticAberration;
 
+    public GameObject SetaUp;
+    public GameObject SetaDown;
+
     void Start()
     {
         SetupPostProcessing();
@@ -75,6 +78,14 @@ public class HungerSystem : MonoBehaviour
     {
         Estatico.Fome += amount;
         Estatico.Fome = Mathf.Clamp(Estatico.Fome, 0f, maxHunger);
+        if (amount > 0f)
+        {
+            SetaUp.SetActive(true);
+        }
+        if (amount < 0f)
+        {
+            SetaDown.SetActive(true);
+        }
         UpdateHungerUI();
     }
 

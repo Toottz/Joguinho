@@ -15,18 +15,21 @@ public class passarinhosumiu : MonoBehaviour
     [Tooltip("Tempo que a mensagem ficará visível (segundos)")]
     public float tempoMensagem = 3f;
 
+    [Tooltip("Tempo de espera antes de mostrar a mensagem (segundos)")]
+    public float delayInicial = 10f;
+
     void Start()
     {
         // Verifica a ansiedade no início
         if (Estatico.Ansiedade >= limiteAnsiedade)
         {
-            // Desativa todos os filhos
+            // Desativa todos os filhos imediatamente
             DesativarFilhos();
 
-            // Ativa a mensagem se existir
+            // Inicia a corrotina para mostrar mensagem com delay
             if (textoMensagem != null)
             {
-                StartCoroutine(MostrarMensagemTemporaria());
+                StartCoroutine(MostrarMensagemComDelay());
             }
         }
     }
@@ -40,12 +43,15 @@ public class passarinhosumiu : MonoBehaviour
         }
     }
 
-    IEnumerator MostrarMensagemTemporaria()
+    IEnumerator MostrarMensagemComDelay()
     {
+        // Espera o delay inicial de 10 segundos
+        yield return new WaitForSeconds(delayInicial);
+
         // Ativa o texto
         textoMensagem.gameObject.SetActive(true);
 
-        // Espera o tempo definido
+        // Espera o tempo de exibição
         yield return new WaitForSeconds(tempoMensagem);
 
         // Desativa o texto novamente

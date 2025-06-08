@@ -31,6 +31,9 @@ public class SonoSystem : MonoBehaviour
     private bool piscando = false;
     private Coroutine piscadaCoroutine;
 
+    public GameObject SetaUp;
+    public GameObject SetaDown;
+
     void Start()
     {
         if (Estatico.Sono <= 0) Estatico.Sono = sonoAoAcordar;
@@ -145,6 +148,14 @@ public class SonoSystem : MonoBehaviour
     public void Dormir(float valor)
     {
         Estatico.Sono = Mathf.Max(0, Estatico.Sono - valor);
+        if (valor > 0f)
+        {
+            SetaUp.SetActive(true);
+        }
+        if (valor < 0f)
+        {
+            SetaDown.SetActive(true);
+        }
         UpdateUI();
     }
 

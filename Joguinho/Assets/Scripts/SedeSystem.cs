@@ -10,6 +10,9 @@ public class SedeSystem : MonoBehaviour
 
     private float timer;
 
+    public GameObject SetaUp;
+    public GameObject SetaDown; 
+
     void Start()
     {
         UpdateUI();
@@ -34,6 +37,14 @@ public class SedeSystem : MonoBehaviour
     public void BeberAgua(float valor)
     {
         ModifySede(valor);
+        if (valor > 0f)
+        {
+            SetaUp.SetActive(true);
+        }
+        if (valor < 0f)
+        {
+            SetaDown.SetActive(true);
+        }
     }
 
     private void ModifySede(float valor)

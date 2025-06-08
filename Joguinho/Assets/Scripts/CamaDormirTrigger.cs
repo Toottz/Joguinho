@@ -8,11 +8,14 @@ public class CamaDormirTrigger : MonoBehaviour
     public GameObject mensagemUI;
     public GameObject telaPreta;
     public float tempoAntesTransicao = 1.5f;
-    public string nomeProximaCena = "Dia2";
 
     private bool jogadorPerto = false;
     private bool dormindo = false;
 
+    [Header("Configurações de Ansiedade")]
+    public float limiteAnsiedade = 70f;
+    public string cenaAnsiedadeAlta = "Cena_Stress";
+    public string cenaAnsiedadeBaixa = "Cena_Normal";
     void Start()
     {
         if (mensagemUI != null)
@@ -42,7 +45,11 @@ public class CamaDormirTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(tempoAntesTransicao);
 
-        SceneManager.LoadScene(nomeProximaCena);
+        string cenaDestino = Estatico.Ansiedade >= limiteAnsiedade ?
+            cenaAnsiedadeAlta :
+            cenaAnsiedadeBaixa;
+
+        SceneManager.LoadScene(cenaDestino);
     }
 
     void OnTriggerEnter(Collider other)
