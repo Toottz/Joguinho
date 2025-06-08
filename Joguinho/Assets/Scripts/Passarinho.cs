@@ -11,6 +11,10 @@ public class Passarinho : MonoBehaviour
     public Collision Collision;
     public GameObject falaPersona;
     public bool falou = false;
+    public GameObject setaSocialUp;
+    public GameObject setaAnsiedadeUp;
+
+    public GameObject passarinhocode;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,12 +30,16 @@ public class Passarinho : MonoBehaviour
             if (SedeSystem != null)
             {
                 SedeSystem.BeberAgua(socialRestore);
+                setaSocialUp.SetActive(true);
+                Debug.Log("afetando social");
             }
 
             AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
             if (AnsiedadeSystem != null)
             {
                 AnsiedadeSystem.Relaxar(AnsiedadeDiminuir);
+                setaAnsiedadeUp.SetActive(true);
+                Debug.Log("afetando ansiedade");
             }
 
             if (falaPersona != null)
@@ -42,7 +50,7 @@ public class Passarinho : MonoBehaviour
             falou = true;
 
             InteracaoUIManager.Instance.EsconderTexto();
-            Destroy(gameObject);
+            passarinhocode.SetActive(false );
         }
     }
     private void desligarFala()

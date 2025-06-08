@@ -16,6 +16,7 @@ public GameObject roupaNoChao;
 public bool tomouBanho = false;
 public GameObject risco;
     public GameObject player;
+    public GameObject SetaAnsiedadeUp;
     void Awake()
 {
     Instance = this;
@@ -56,6 +57,7 @@ public void EscolherBanhoSimples()
         if (AnsiedadeSystem != null)
         {
             AnsiedadeSystem.Relaxar(5);
+            SetaAnsiedadeUp.SetActive(true);
         }
 
     }

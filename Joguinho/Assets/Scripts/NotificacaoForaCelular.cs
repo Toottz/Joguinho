@@ -8,62 +8,73 @@ using UnityEngine.UI;
 public class NotificacaoForaCelular : MonoBehaviour
 {
     [Header("Configurações")]
-    public float showDuration = 2f;    // Tempo visível
-    public float fadeDuration = 0.5f;  // Duração da animação
+    public float showDuration = 2f;
+    public float fadeDuration = 0.5f;
 
     public Vector3 originalPosition;
     public Vector3 hiddenPosition;
-    private bool isShowing = false;
+
+    [Header("Componentes")]
     public TextMeshProUGUI Notificacao;
     public TextMeshProUGUI App;
     public RawImage Logo;
     public Image Cor;
     public AudioSource som;
 
+    private Sequence animacao;
 
     void Awake()
     {
-        transform.localPosition = hiddenPosition; // Começa escondido
+        transform.localPosition = hiddenPosition;
+        gameObject.SetActive(false);
     }
 
-
-    // Método público para ativar a notificação
     public void ShowNotification(string message, string app, Color cores, RenderTexture Logos)
     {
-        gameObject.SetActive(true);
-
-        if (isShowing) return;
-
-        isShowing = true;
+        // Prepara os conteúdos
         Notificacao.text = message;
         App.text = app;
         Cor.color = cores;
         Logo.texture = Logos;
 
-        som.Play();
+        // Limpa animações anteriores
+        if (animacao != null && animacao.IsActive())
+        {
+            animacao.Kill();
+        }
+
+        // Ativa o objeto
+        gameObject.SetActive(true);
+
+        // Cria nova animação
+        animacao = DOTween.Sequence();
 
         // Animação de entrada
-        transform.DOLocalMove(originalPosition, fadeDuration)
+        animacao.Append(
+            transform.DOLocalMove(originalPosition, fadeDuration)
             .SetEase(Ease.OutBack)
-            .OnComplete(() =>
-            {
-                // Animação de saída após o tempo definido
-                DOVirtual.DelayedCall(showDuration, () =>
-                {
-                    transform.DOLocalMove(hiddenPosition, fadeDuration)
-                        .SetEase(Ease.InBack)
-                        .OnComplete(() => isShowing = false)
-                        .OnComplete(() => gameObject.SetActive(false))
-                        .OnComplete(()=> som.Stop());
-                });
-            });
+            .OnStart(() => som.Play())
+        );
+
+        // Tempo visível
+        animacao.AppendInterval(showDuration);
+
+        // Animação de saída
+        animacao.Append(
+            transform.DOLocalMove(hiddenPosition, fadeDuration)
+            .SetEase(Ease.InBack)
+            .OnComplete(() => gameObject.SetActive(false))
+            .OnComplete(() => som.Stop())
+        );
     }
 
-    // Método para resetar manualmente
     public void ResetNotification()
     {
-        transform.DOKill();
+        if (animacao != null && animacao.IsActive())
+        {
+            animacao.Kill();
+        }
         transform.localPosition = hiddenPosition;
-        isShowing = false;
+        gameObject.SetActive(false);
     }
 }

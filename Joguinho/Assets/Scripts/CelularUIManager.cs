@@ -42,6 +42,9 @@ public class CelularUIManager : MonoBehaviour
     public static CelularUIManager instance;
     public GameObject player;
 
+    public GameObject setaSocialDown;
+    public GameObject setaAnsiedadeDown;
+
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -113,11 +116,13 @@ public class CelularUIManager : MonoBehaviour
         if (AnsiedadeSystem != null)
         {
             AnsiedadeSystem.Relaxar(-5);
+            setaAnsiedadeDown.SetActive(true);
         }
         SedeSystem sedeSystem = player.GetComponent<SedeSystem>();
         if (sedeSystem != null)
         {
             sedeSystem.EatFood(-5);
+            setaSocialDown.SetActive(true) ;
         }
 
         foreach (GameObject tela in telasApps)

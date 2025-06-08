@@ -37,6 +37,9 @@ public class CartaController : MonoBehaviour
 
     public GameObject risco;
     public GameObject dialogo;
+
+    public AudioSource som;
+
     void Start()
     {
         //cartaUI.gameObject.SetActive(false);
@@ -123,7 +126,7 @@ public class CartaController : MonoBehaviour
                     indiceFala = 0;
                     mostrandoDialogo = true;
                     MostrarFalaAtual();
-
+                    som.Play();
                     PlayerWallet.Instance.AdicionarDinheiro(25f);
                     temCarta = false;
 

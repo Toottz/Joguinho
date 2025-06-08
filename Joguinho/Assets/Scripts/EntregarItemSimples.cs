@@ -17,6 +17,7 @@ public class EntregarItemSimples : MonoBehaviour
     private bool itemEntregue = false;
     public GameObject risco;
     public GameObject player;
+    public GameObject setaAnsiedadeDown;
 
     void Start()
     {
@@ -57,6 +58,7 @@ public class EntregarItemSimples : MonoBehaviour
                 if (AnsiedadeSystem != null)
                 {
                     AnsiedadeSystem.Relaxar(5);
+                    setaAnsiedadeDown.SetActive(true) ;
                 }
 
                 Debug.Log("✅ Item entregue: " + idEsperado);

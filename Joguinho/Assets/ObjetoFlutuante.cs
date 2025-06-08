@@ -18,7 +18,7 @@ public class ObjetoFlutuante : MonoBehaviour
     void Awake()
     {
         posicaoLocalInicial = transform.localPosition;
-        gameObject.SetActive(false);
+        gameObject.SetActive(true);
     }
 
     void OnEnable()

@@ -29,6 +29,8 @@ public class PortaCena : MonoBehaviour
     public GameObject risco3;
     public GameObject risco4;
 
+    public GameObject setaSocialDown;
+    public GameObject setaAnsiedadeUp;
 
 
     void Update()
@@ -43,12 +45,14 @@ public class PortaCena : MonoBehaviour
                 if (SedeSystem != null)
                 {
                     SedeSystem.BeberAgua(socialLost);
+                    setaSocialDown.SetActive(true);
                 }
 
                 AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
                 if (AnsiedadeSystem != null)
                 {
                     AnsiedadeSystem.Relaxar(ansiedadeAumento);
+                    setaAnsiedadeUp.SetActive(true);
                 }
             }
 

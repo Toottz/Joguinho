@@ -32,6 +32,9 @@ public string falaIrBanheiro = "Preciso ir ao banheiro";
 
     public bool AlarmeEsperandoInteracao { get; private set; } = false;
 
+    public GameObject setaAnsiedadeDown;
+    public GameObject setaAnsiedadeUp;
+
 void Start()
 {
     if (telaPreta != null)
@@ -205,6 +208,7 @@ public void BotaoContinuarNoCelular()
         if (AnsiedadeSystem != null)
         {
             AnsiedadeSystem.Relaxar(-10);
+            setaAnsiedadeUp.SetActive(true);
         }
         if (videoPlayer != null && videoPlayer.isPlaying)
 {
@@ -258,6 +262,7 @@ public void BotaoSairDoCelular()
         if (AnsiedadeSystem != null)
         {
             AnsiedadeSystem.Relaxar(2);
+            setaAnsiedadeUp.SetActive(true);
         }
 
         Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);

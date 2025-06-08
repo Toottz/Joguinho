@@ -23,9 +23,6 @@ public class AnsiedadeSystem : MonoBehaviour
     private FilmGrain filmGrain;
     private LensDistortion lensDistortion;
 
-    public GameObject SetaUp;
-    public GameObject SetaDown;
-
     void Start()
     {
         SetupPostProcessing();
@@ -91,14 +88,6 @@ public class AnsiedadeSystem : MonoBehaviour
     public void Relaxar(float valor)
     {
         ModifyAnsiedade(-valor);
-        if (valor < 0f)
-        {
-            SetaUp.SetActive(true);
-        }
-        if (valor > 0f)
-        {
-            SetaDown.SetActive(true);
-        }
     }
 
     private void ModifyAnsiedade(float valor)

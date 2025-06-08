@@ -21,6 +21,11 @@ public class Lanchonete : MonoBehaviour
     [TextArea]
     public string semDinheiro = "Estou sem dinheiro, que triste";
 
+    public GameObject setaSocialUp;
+    public GameObject setaFomeUp;
+
+    public AudioSource som;
+
     void Update()
     {
         if (isPlayerNearby && Input.GetKeyDown(KeyCode.E)) // Pressionar "F" para comer
@@ -32,7 +37,7 @@ public class Lanchonete : MonoBehaviour
                 {
                         if (wallet.GastarDinheiro(20))
                         {
-
+                        som.Play();
                         if (fade != null)
                         {
                             fade.SetActive(true);
@@ -43,11 +48,13 @@ public class Lanchonete : MonoBehaviour
                         }
 
                         hungerSystem.EatFood(hungerRestoreAmount, -1);
+                        setaFomeUp.SetActive(true);
 
                             SedeSystem SedeSystem = player.GetComponent<SedeSystem>();
                             if (SedeSystem != null)
                             {
                                 SedeSystem.BeberAgua(socialRestoreAmount);
+                                setaSocialUp.SetActive(true);
                             }
                         }
                         else
