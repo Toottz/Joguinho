@@ -54,8 +54,13 @@ public class PauseManager : MonoBehaviour
 
     public void VoltarAoMenuPrincipal()
     {
-        Time.timeScale = 1f; 
-        SceneManager.LoadScene("Menu"); 
+        Time.timeScale = 1f;
+        // Resetando o tempo
+        Estatico.tempoEmMinutos = 360f;
+        Estatico.Hora = 6;
+        Estatico.Minutos = 0;
+
+        SceneManager.LoadScene("Menu");
     }
 
 

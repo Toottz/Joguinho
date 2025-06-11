@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-using System.Diagnostics.SymbolStore;
-using Unity.VisualScripting;
 
 public class CartaController : MonoBehaviour
 {
@@ -14,26 +12,25 @@ public class CartaController : MonoBehaviour
     public GameObject[] setasCasas = new GameObject[3];
     public GameObject[] Correio = new GameObject[3];
 
-    [SerializeField] private string [] destinatarioAtual = new string [3];
-    [SerializeField]  private bool temCarta = false;
+    [SerializeField] private string[] destinatarioAtual = new string[3];
+    [SerializeField] private bool temCarta = false;
 
     private bool podePegar = false;
     private CartaOrder cartaNoChao;
 
     private bool podeEntregar = false;
     private NPCController npcProximo;
-
-    //private bool entregouCartaFinal = false;
+    private bool entregandoAgora = false; // ← novo controle de entrega atual
 
     private int indiceFala = 0;
     private List<Fala> falasAtuais = new List<Fala>();
-    [SerializeField]private bool mostrandoDialogo = false;
+    [SerializeField] private bool mostrandoDialogo = false;
 
     public MensagensController mensagensController;
     public bool tentouEntregar = false;
 
     public FirstPersonMovement movimento;
-    public int quantidadedeentregas=0;
+    public int quantidadedeentregas = 0;
 
     public GameObject risco;
     public GameObject dialogo;
@@ -42,49 +39,32 @@ public class CartaController : MonoBehaviour
 
     void Start()
     {
-        //cartaUI.gameObject.SetActive(false);
         dialogoUI.SetActive(false);
         for (int i = 0; i < destinatarioAtual.Length; i++)
-        {
             destinatarioAtual[i] = "";
-        }
     }
 
     void Update()
     {
-        if(quantidadedeentregas>=3)
+        if (quantidadedeentregas >= 3)
             risco.SetActive(true);
-        if (dialogo.activeInHierarchy)
-        {
-            movimento.speed = 0f;
 
-        }
-        if (!dialogo.activeInHierarchy)
-        {
-            movimento.speed = 5f;
-        }
+        movimento.speed = dialogo.activeInHierarchy ? 0f : 5f;
+
         if (mostrandoDialogo && Input.GetKeyDown(KeyCode.E))
         {
             indiceFala++;
-            Debug.Log(indiceFala);
             MostrarFalaAtual();
-            Debug.Log($"aqeui é o mostrarfala atual{falasAtuais.Count}");
             return;
         }
 
         if (podePegar && Input.GetKeyDown(KeyCode.E))
         {
-            for (int i = 0; i < destinatarioAtual.Length; i++) 
+            for (int i = 0; i < destinatarioAtual.Length; i++)
             {
-                Debug.Log("Ta entrando no for pode pegar");
                 if (destinatarioAtual[i] == "")
                 {
-                    Debug.Log("Ta entrnado no if do pode pegar");
                     destinatarioAtual[i] = cartaNoChao.nomeDestinatario;
-
-                    //entregouCartaFinal = cartaNoChao.cartaFinal;
-                    //if (entregouCartaFinal)
-                    //    Debug.Log("📩 Pegou a carta final!");
 
                     InteracaoUIManager.Instance.EsconderTexto();
 
@@ -98,28 +78,26 @@ public class CartaController : MonoBehaviour
                     cartaNoChao.Correio.SetActive(true);
 
                     cartaNoChao.setaCarta.SetActive(false);
-
                     Destroy(cartaNoChao.gameObject);
                     cartaNoChao = null;
 
                     temCarta = true;
-
-                    if (i == 2)
-                    {
-                        podePegar = false;
-                    }
+                    if (i == 2) podePegar = false;
                     return;
-
                 }
             }
         }
 
-        if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo)
+        if (podeEntregar && Input.GetKeyDown(KeyCode.E) && temCarta && !mostrandoDialogo && !entregandoAgora)
         {
             InteracaoUIManager.Instance.EsconderTexto();
             tentouEntregar = true;
+            entregandoAgora = true; // ← impede cliques múltiplos
+
             for (int i = 0; i < destinatarioAtual.Length; i++)
             {
+                if (npcProximo == null) break;
+
                 if (destinatarioAtual[i] == npcProximo.nomeNPC)
                 {
                     falasAtuais = npcProximo.dialogoCompleto;
@@ -131,34 +109,30 @@ public class CartaController : MonoBehaviour
                     temCarta = false;
 
                     for (int j = 0; j < destinatarioAtual.Length; j++)
-                    {
-                        if (destinatarioAtual[j] != "")
-                        {
-                            temCarta = true;
-                        }
-                    }
+                        if (destinatarioAtual[j] != "") temCarta = true;
 
                     cartasObject[i].SetActive(false);
                     setasCasas[i].SetActive(false);
                     quantidadedeentregas++;
 
-                    podeEntregar = false;
-                    npcProximo = null;
-
-                    Destroy(npcProximo.gameObject);
-
                     destinatarioAtual[i] = "";
+
+                    // Importante: marca que o NPC foi entregue e remove
+                    podeEntregar = false;
+                    Destroy(npcProximo.gameObject);
+                    npcProximo = null;
                     return;
                 }
                 else if (i == 2)
                 {
-                    MostrarDialogo(npcProximo.mensagemErrada);
+                    MostrarDialogo(npcProximo != null ? npcProximo.mensagemErrada : "Isso não parece certo.");
+                    entregandoAgora = false;
                 }
             }
         }
     }
 
-    private void OnTriggerStay (Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Carta"))
         {
@@ -168,8 +142,9 @@ public class CartaController : MonoBehaviour
 
         if (other.CompareTag("NPC"))
         {
-            podeEntregar = true;
             npcProximo = other.GetComponent<NPCController>();
+            if (npcProximo != null)
+                podeEntregar = true;
         }
     }
 
@@ -190,45 +165,36 @@ public class CartaController : MonoBehaviour
 
     void MostrarFalaAtual()
     {
-
         if (indiceFala >= falasAtuais.Count)
         {
-            Debug.Log("acabo a fala");
             EsconderDialogo();
             mostrandoDialogo = false;
             return;
         }
 
         Fala falaAtual = falasAtuais[indiceFala];
-
         textoentrega.text = falaAtual.texto;
         dialogoUI.SetActive(true);
-
-        Debug.Log($"Mostrando fala {indiceFala} de {falasAtuais.Count}");
     }
 
     void MostrarDialogo(string mensagem)
     {
         dialogoUI.SetActive(true);
         textoentrega.text = mensagem;
-        Invoke("EsconderDialogo", 2.5f);
+        Invoke(nameof(EsconderDialogo), 2.5f);
     }
 
     void EsconderDialogo()
     {
-        Debug.Log("EsconerDialogo");
         mostrandoDialogo = false;
-        tentouEntregar= false;
+        tentouEntregar = false;
+        entregandoAgora = false;
         dialogoUI.SetActive(false);
     }
 
     void VoltarParaMenu()
     {
-        Debug.Log("🔁 Carregando cena do menu...");
-        Debug.Log($"Cena atual: {SceneManager.GetActiveScene().name}");
-        Debug.Log($"Total de cenas carregadas: {SceneManager.sceneCount}");
-
-        Time.timeScale = 1f; // Garante que o tempo esteja normal
-        SceneManager.LoadScene("Menu"); // ← Certifique-se que esse é o nome exato da cena
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Menu");
     }
 }

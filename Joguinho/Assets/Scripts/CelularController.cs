@@ -9,6 +9,10 @@ public class CelularController : MonoBehaviour
     private bool celularAberto = false;
     void Update()
     {
+        // 🔒 Impede abrir/fechar celular nos primeiros segundos do jogo
+        if (AlarmManager.BloqueioInicialCelular)
+            return;
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             AlarmManager alarme = FindObjectOfType<AlarmManager>();

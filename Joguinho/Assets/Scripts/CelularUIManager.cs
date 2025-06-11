@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Video;
@@ -10,14 +9,13 @@ public class CelularUIManager : MonoBehaviour
     public GameObject menuApps;
     public GameObject celularImagem;
     public GameObject celularBorda;
-
     public GameObject telaMensagens;
     public GameObject telaCaramelinho;
     public GameObject telaConfiguracoes;
     public GameObject telaConfiguracoes2;
     public GameObject telaConfiguracoes3;
-    public GameObject telaAlarme;         
-    public GameObject cell;              
+    public GameObject telaAlarme;
+    public GameObject cell;
     public GameObject telaBlocoNotas;
     public GameObject telaCamera;
     public GameObject telaAlbumFotos;
@@ -33,10 +31,9 @@ public class CelularUIManager : MonoBehaviour
     public GameObject telaNave;
 
     public VideoPlayer videoConfigPlayer;
-
     public GameObject[] telasApps;
 
-    public AlarmManager alarmManager;     // NOVO: Referência ao gerenciador de alarme
+    public AlarmManager alarmManager;
     public MensagensAppManager mensagensAppManager;
 
     public static CelularUIManager instance;
@@ -52,22 +49,26 @@ public class CelularUIManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
         instance = this;
-        DontDestroyOnLoad(gameObject); // faz o objeto sobreviver entre cenas
+        DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable()
+    {
+        if (player == null)
+            player = GameObject.FindWithTag("Player");
+    }
 
     public void AoAbrirCelular()
     {
         if (alarmManager != null && alarmManager.AlarmeAtivo())
         {
-            // Mostra a interface especial de alarme (sem borda e apps)
             if (cell != null) cell.SetActive(false);
             if (telaAlarme != null) telaAlarme.SetActive(true);
         }
         else
         {
-            // Abre o celular normalmente
             if (cell != null) cell.SetActive(true);
             if (telaAlarme != null) telaAlarme.SetActive(false);
 
@@ -93,36 +94,39 @@ public class CelularUIManager : MonoBehaviour
     public void AbrirMensagens()
     {
         FecharTodasTelas();
-
         if (celularImagem != null)
             celularImagem.SetActive(false);
-
         if (telaMensagens != null)
             telaMensagens.SetActive(true);
-
-       // if (mensagensAppManager != null)
-           // mensagensAppManager.ResetarParaListaContatos();
     }
 
     public void AbrirCaramelinho()
     {
+        if (player == null)
+            player = GameObject.FindWithTag("Player");
+
         FecharTodasTelas();
 
         if (celularImagem != null)
             celularImagem.SetActive(false);
         if (celularBorda != null)
             celularBorda.SetActive(false);
-        AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
-        if (AnsiedadeSystem != null)
+
+        if (player != null)
         {
-            AnsiedadeSystem.Relaxar(-5);
-            setaAnsiedadeDown.SetActive(true);
-        }
-        SedeSystem sedeSystem = player.GetComponent<SedeSystem>();
-        if (sedeSystem != null)
-        {
-            sedeSystem.EatFood(-5);
-            setaSocialDown.SetActive(true) ;
+            AnsiedadeSystem ansiedadeSystem = player.GetComponent<AnsiedadeSystem>();
+            if (ansiedadeSystem != null)
+            {
+                ansiedadeSystem.Relaxar(-5);
+                if (setaAnsiedadeDown != null) setaAnsiedadeDown.SetActive(true);
+            }
+
+            SedeSystem sedeSystem = player.GetComponent<SedeSystem>();
+            if (sedeSystem != null)
+            {
+                sedeSystem.EatFood(-5);
+                if (setaSocialDown != null) setaSocialDown.SetActive(true);
+            }
         }
 
         foreach (GameObject tela in telasApps)
@@ -139,274 +143,140 @@ public class CelularUIManager : MonoBehaviour
     public void AbrirConfiguracoes()
     {
         FecharTodasTelas();
-
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (telaConfiguracoes != null)
-            telaConfiguracoes.SetActive(true);
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (videoConfigPlayer != null)
-        {
-            videoConfigPlayer.Play();
-        }
-
-        Debug.Log("⚙️ App Configurações aberto com vídeo.");
+        if (menuApps != null) menuApps.SetActive(false);
+        if (telaConfiguracoes != null) telaConfiguracoes.SetActive(true);
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (videoConfigPlayer != null) videoConfigPlayer.Play();
     }
 
     public void AbrirConfiguracoes2()
     {
         FecharTodasTelas();
-
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (telaConfiguracoes2 != null)
-            telaConfiguracoes2.SetActive(true);
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (videoConfigPlayer != null)
-        {
-            videoConfigPlayer.Play();
-        }
-
-        Debug.Log("⚙️ App Configurações aberto com vídeo.");
+        if (menuApps != null) menuApps.SetActive(false);
+        if (telaConfiguracoes2 != null) telaConfiguracoes2.SetActive(true);
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (videoConfigPlayer != null) videoConfigPlayer.Play();
     }
 
     public void AbrirConfiguracoes3()
     {
         FecharTodasTelas();
-
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (telaConfiguracoes3 != null)
-            telaConfiguracoes3.SetActive(true);
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (videoConfigPlayer != null)
-        {
-            videoConfigPlayer.Play();
-        }
-
-        Debug.Log("⚙️ App Configurações aberto com vídeo.");
+        if (menuApps != null) menuApps.SetActive(false);
+        if (telaConfiguracoes3 != null) telaConfiguracoes3.SetActive(true);
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (videoConfigPlayer != null) videoConfigPlayer.Play();
     }
 
     public void MostrarTelaAlarme()
     {
-        if (telaAlarme != null)
-            telaAlarme.SetActive(true);
-        if (cell != null)
-            cell.SetActive(false); // Esconde todo o resto do celular
+        if (telaAlarme != null) telaAlarme.SetActive(true);
+        if (cell != null) cell.SetActive(false);
     }
 
     public void EsconderTelaAlarme()
     {
-        if (telaAlarme != null)
-            telaAlarme.SetActive(false);
-        if (cell != null)
-            cell.SetActive(true); // Traz o celular normal de volta
+        if (telaAlarme != null) telaAlarme.SetActive(false);
+        if (cell != null) cell.SetActive(true);
     }
 
     public void MostrarTelaAlarmeSomente()
     {
-        if (telaAlarme != null)
-            telaAlarme.SetActive(true);
-
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
+        if (telaAlarme != null) telaAlarme.SetActive(true);
+        if (menuApps != null) menuApps.SetActive(false);
+        if (celularImagem != null) celularImagem.SetActive(false);
     }
 
     public void AbrirBlocoNotas()
     {
         FecharTodasTelas();
-
-        if (menuApps != null)
-            menuApps.SetActive(false);
-
-        if (telaBlocoNotas != null)
-            telaBlocoNotas.SetActive(true);
+        if (menuApps != null) menuApps.SetActive(false);
+        if (telaBlocoNotas != null) telaBlocoNotas.SetActive(true);
     }
 
     public void AbrirCamera()
     {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaCamera != null)
-            telaCamera.SetActive(true);
-
-        Debug.Log("📷 App Câmera aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaCamera != null) telaCamera.SetActive(true);
     }
 
     public void AbrirAlbumFotos()
-     {
+    {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaAlbumFotos != null)
-            telaAlbumFotos.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaAlbumFotos != null) telaAlbumFotos.SetActive(true);
     }
-    
+
     public void AbrirTelaVideo1()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo1 != null)
-            telaVideo1.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+    {
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaVideo1 != null) telaVideo1.SetActive(true);
     }
-    
+
     public void AbrirTelaVideo2()
     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo2 != null)
-            telaVideo2.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaVideo2 != null) telaVideo2.SetActive(true);
     }
 
     public void AbrirTelaVideo3()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaVideo3 != null)
-            telaVideo3.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+    {
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaVideo3 != null) telaVideo3.SetActive(true);
     }
 
     public void AbrirTelaFoto1()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto1 != null)
-            telaFoto1.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+    {
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaFoto1 != null) telaFoto1.SetActive(true);
     }
 
     public void AbrirTelaFoto2()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto2 != null)
-            telaFoto2.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+    {
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaFoto2 != null) telaFoto2.SetActive(true);
     }
 
     public void AbrirTelaFoto3()
-     {
-        //FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaFoto3 != null)
-            telaFoto3.SetActive(true);
-
-        Debug.Log("📷 App Album aberto!");
+    {
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaFoto3 != null) telaFoto3.SetActive(true);
     }
 
     public void AbrirY()
     {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaY != null)
-            telaY.SetActive(true);
-
-        Debug.Log("📷 App Y aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaY != null) telaY.SetActive(true);
     }
-    
+
     public void AbrirNave()
     {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaNave != null)
-            telaNave.SetActive(true);
-
-        Debug.Log("📷 App Nave aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaNave != null) telaNave.SetActive(true);
     }
 
     public void AbrirInForma()
     {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaInForma != null)
-            telaInForma.SetActive(true);
-
-        Debug.Log("📷 App InForma aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaInForma != null) telaInForma.SetActive(true);
     }
 
     public void AbrirTelaGabi()
-     {
+    {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(false);
-
-        if (telaGabi != null)
-            telaGabi.SetActive(true);
-
-        Debug.Log("📷 App Gabi aberto!");
+        if (celularImagem != null) celularImagem.SetActive(false);
+        if (telaGabi != null) telaGabi.SetActive(true);
     }
 
     public void VoltarAoMenu()
     {
         FecharTodasTelas();
-
-        if (celularImagem != null)
-            celularImagem.SetActive(true);
-        if (celularBorda != null)
-            celularBorda.SetActive(true);
-        if (menuApps != null)
-            menuApps.SetActive(true);
-
-        //if (mensagensAppManager != null)
-            //mensagensAppManager.FechamentoCompletoMensagens();
+        if (celularImagem != null) celularImagem.SetActive(true);
+        if (celularBorda != null) celularBorda.SetActive(true);
+        if (menuApps != null) menuApps.SetActive(true);
     }
 
     private void FecharTodasTelas()

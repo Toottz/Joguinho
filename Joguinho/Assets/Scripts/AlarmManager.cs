@@ -6,155 +6,162 @@ using TMPro;
 
 public class AlarmManager : MonoBehaviour
 {
-public AudioSource somAlarme;
-public GameObject telaPreta;
-public GameObject videoPlayerUI;
-public GameObject apps;
-public VideoPlayer videoPlayer;
-public GameObject player;
-public GameObject cameraObj;
-public GameObject telaAlarmeUI;
-public GameObject celularCompleto;
-public GameObject perguntaBotoesUI;
-public GameObject telaAlbum;
-public TextMeshProUGUI legendaTexto;
-public float tempoLegenda = 3f;
-public TutorialMensagemManager tutorialMensagemManager;
-private float tempoInicio;
-private bool alarmeTocando = false;
-private bool alarmeDesligado = false;
-private bool ignorouAlarme = false;
-private bool videoTocando = false;
+    public static bool BloqueioInicialCelular = true; // <- 🔒 Evita uso do celular nos primeiros segundos
+    public AudioSource somAlarme;
+    public GameObject telaPreta;
+    public GameObject videoPlayerUI;
+    public GameObject apps;
+    public VideoPlayer videoPlayer;
+    public GameObject player;
+    public GameObject cameraObj;
+    public GameObject telaAlarmeUI;
+    public GameObject celularCompleto;
+    public GameObject perguntaBotoesUI;
+    public GameObject telaAlbum;
+    public TextMeshProUGUI legendaTexto;
+    public float tempoLegenda = 3f;
+    public TutorialMensagemManager tutorialMensagemManager;
+
+    private float tempoInicio;
+    private bool alarmeTocando = false;
+    private bool alarmeDesligado = false;
+    private bool ignorouAlarme = false;
+    private bool videoTocando = false;
+
     public EscovarDentes EscovarDentes;
     public ChuveiroManager ChuveiroManager;
-[TextArea]
-public string falaIrBanheiro = "Preciso ir ao banheiro";
 
-    public bool AlarmeEsperandoInteracao { get; private set; } = false;
+    [TextArea]
+    public string falaIrBanheiro = "Preciso ir ao banheiro";
 
     public GameObject setaAnsiedadeDown;
     public GameObject setaAnsiedadeUp;
 
-void Start()
-{
-    if (telaPreta != null)
+    public bool AlarmeEsperandoInteracao { get; private set; } = false;
+
+    void Start()
     {
-        telaPreta.SetActive(true);
-        Color cor = telaPreta.GetComponent<Image>().color;
-        cor.a = 1f;
-        telaPreta.GetComponent<Image>().color = cor;
+        if (telaPreta != null)
+        {
+            telaPreta.SetActive(true);
+            Color cor = telaPreta.GetComponent<Image>().color;
+            cor.a = 1f;
+            telaPreta.GetComponent<Image>().color = cor;
+        }
+
+        if (videoPlayerUI != null)
+            videoPlayerUI.SetActive(false);
+
+        if (apps != null)
+            apps.SetActive(false);
+
+        if (legendaTexto != null)
+            legendaTexto.gameObject.SetActive(false);
+
+        if (perguntaBotoesUI != null)
+            perguntaBotoesUI.SetActive(false);
+
+        StartCoroutine(IniciarSequencia());
     }
 
-    if (videoPlayerUI != null)
-        videoPlayerUI.SetActive(false);
-
-    if (apps != null)
-        apps.SetActive(false);
-
-    if (legendaTexto != null)
-        legendaTexto.gameObject.SetActive(false);
-
-    if (perguntaBotoesUI != null)
-        perguntaBotoesUI.SetActive(false);
-
-    StartCoroutine(IniciarSequencia());
-}
-
-IEnumerator IniciarSequencia()
-{
-    yield return new WaitForSeconds(1f);
-    StartCoroutine(FazerFadeOutTelaPreta());
-
-    PlayAlarm();
-    tempoInicio = Time.time;
-    AlarmeEsperandoInteracao = true;
-
-    Cursor.lockState = CursorLockMode.None;
-    Cursor.visible = true;
-
-    yield return new WaitForSeconds(10f);
-
-    if (!alarmeDesligado)
+    IEnumerator IniciarSequencia()
     {
-        ignorouAlarme = true;
-        StopAlarm();
-        AlarmeEsperandoInteracao = false;
-        StartCoroutine(VoltarADormir());
+        yield return new WaitForSeconds(1f);
+        StartCoroutine(FazerFadeOutTelaPreta());
 
-        if (telaAlarmeUI != null)
-            telaAlarmeUI.SetActive(false);
+        PlayAlarm();
+        tempoInicio = Time.time;
+        AlarmeEsperandoInteracao = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        // Libera o uso do celular após a sequência inicial
+        BloqueioInicialCelular = false;
+
+        yield return new WaitForSeconds(10f);
+
+        if (!alarmeDesligado)
+        {
+            ignorouAlarme = true;
+            StopAlarm();
+            AlarmeEsperandoInteracao = false;
+            StartCoroutine(VoltarADormir());
+
+            if (telaAlarmeUI != null)
+                telaAlarmeUI.SetActive(false);
 
             if (apps != null)
                 apps.SetActive(false);
 
             if (tutorialMensagemManager != null)
-            tutorialMensagemManager.OcultarMensagem();
+                tutorialMensagemManager.OcultarMensagem();
+        }
     }
-}
 
-public void DesligarAlarmeViaBotao()
-{
-    if (alarmeDesligado || ignorouAlarme) return;
+    public void DesligarAlarmeViaBotao()
+    {
+        if (alarmeDesligado || ignorouAlarme) return;
 
-    float tempoResposta = Time.time - tempoInicio;
-    StopAlarm();
-    alarmeDesligado = true;
-    AlarmeEsperandoInteracao = false;
+        float tempoResposta = Time.time - tempoInicio;
+        StopAlarm();
+        alarmeDesligado = true;
+        AlarmeEsperandoInteracao = false;
 
-    if (telaAlarmeUI != null)
-        telaAlarmeUI.SetActive(false);
+        if (telaAlarmeUI != null)
+            telaAlarmeUI.SetActive(false);
 
-    if (celularCompleto != null)
-        celularCompleto.SetActive(true);
+        if (celularCompleto != null)
+            celularCompleto.SetActive(true);
 
         if (apps != null)
             apps.SetActive(true);
 
         CelularUIManager uiManager = FindObjectOfType<CelularUIManager>();
-    if (uiManager != null && uiManager.menuApps != null)
-        uiManager.menuApps.SetActive(true);
+        if (uiManager != null && uiManager.menuApps != null)
+            uiManager.menuApps.SetActive(true);
 
-    if (tempoResposta <= 5f)
-        MostrarLegenda("Pelo menos isso parou...");
-    else if (tempoResposta <= 10f)
-        MostrarLegenda("Por que sempre parece que tô atrasada?");
+        if (tempoResposta <= 5f)
+            MostrarLegenda("Pelo menos isso parou...");
+        else if (tempoResposta <= 10f)
+            MostrarLegenda("Por que sempre parece que tô atrasada?");
 
-    if (tutorialMensagemManager != null)
-        tutorialMensagemManager.OcultarMensagem();
+        if (tutorialMensagemManager != null)
+            tutorialMensagemManager.OcultarMensagem();
 
-    Invoke(nameof(legenda_preciso_ir_ao_banheiro), 18f);
+        Invoke(nameof(legenda_preciso_ir_ao_banheiro), 18f);
     }
 
-void MostrarLegenda(string texto)
-{
-    if (legendaTexto != null)
+    void MostrarLegenda(string texto)
     {
-        legendaTexto.text = texto;
-        legendaTexto.gameObject.SetActive(true);
-        StartCoroutine(EsconderLegendaDepoisDeSegundos());
+        if (legendaTexto != null)
+        {
+            legendaTexto.text = texto;
+            legendaTexto.gameObject.SetActive(true);
+            StartCoroutine(EsconderLegendaDepoisDeSegundos());
+        }
     }
-}
 
-IEnumerator EsconderLegendaDepoisDeSegundos()
-{
-    yield return new WaitForSeconds(tempoLegenda);
-    if (legendaTexto != null)
-        legendaTexto.gameObject.SetActive(false);
-}
-
-IEnumerator VoltarADormir()
-{
-    if (telaPreta != null)
+    IEnumerator EsconderLegendaDepoisDeSegundos()
     {
-        telaPreta.SetActive(true);
-        Image img = telaPreta.GetComponent<Image>();
-        img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
+        yield return new WaitForSeconds(tempoLegenda);
+        if (legendaTexto != null)
+            legendaTexto.gameObject.SetActive(false);
     }
 
-    yield return StartCoroutine(FazerFadeInTelaPreta());
+    IEnumerator VoltarADormir()
+    {
+        if (telaPreta != null)
+        {
+            telaPreta.SetActive(true);
+            Image img = telaPreta.GetComponent<Image>();
+            img.color = new Color(img.color.r, img.color.g, img.color.b, 0f);
+        }
 
-    if (videoPlayerUI != null)
-        videoPlayerUI.SetActive(true);
+        yield return StartCoroutine(FazerFadeInTelaPreta());
+
+        if (videoPlayerUI != null)
+            videoPlayerUI.SetActive(true);
 
         if (celularCompleto != null)
             celularCompleto.SetActive(true);
@@ -162,77 +169,78 @@ IEnumerator VoltarADormir()
         if (apps != null)
             apps.SetActive(false);
 
-
         if (videoPlayer != null)
-    {
-        videoPlayer.Play();
-        videoTocando = true;
+        {
+            videoPlayer.Play();
+            videoTocando = true;
+        }
+
+        if (telaAlbum != null)
+            telaAlbum.SetActive(true);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        yield return StartCoroutine(FazerFadeOutTelaPreta());
+
+        MostrarLegenda(falaIrBanheiro);
+
+        yield return new WaitForSeconds(10f);
+
+        if (perguntaBotoesUI != null)
+            perguntaBotoesUI.SetActive(true);
+
+        yield return new WaitForSeconds(10f);
+
+        if (perguntaBotoesUI.activeSelf)
+        {
+            perguntaBotoesUI.SetActive(false);
+
+            if (videoPlayerUI != null)
+                videoPlayerUI.SetActive(false);
+
+            if (celularCompleto != null)
+                celularCompleto.SetActive(true);
+
+            videoTocando = false;
+        }
     }
 
-    if (telaAlbum != null)
-    telaAlbum.SetActive(true);
-
-    Cursor.lockState = CursorLockMode.None;
-    Cursor.visible = true;
-
-    yield return StartCoroutine(FazerFadeOutTelaPreta());
-
-    MostrarLegenda(falaIrBanheiro);
-
-    yield return new WaitForSeconds(10f);
-
-    if (perguntaBotoesUI != null)
-        perguntaBotoesUI.SetActive(true);
-
-    yield return new WaitForSeconds(10f);
-
-    if (perguntaBotoesUI.activeSelf)
+    public void BotaoContinuarNoCelular()
     {
-        perguntaBotoesUI.SetActive(false);
-
-        if (videoPlayerUI != null)
-            videoPlayerUI.SetActive(false);
-
-        if (celularCompleto != null)
-            celularCompleto.SetActive(true);
-
-        videoTocando = false;
-    }
-}
-
-public void BotaoContinuarNoCelular()
-{
         if (perguntaBotoesUI != null)
             perguntaBotoesUI.SetActive(false);
+
         AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
         if (AnsiedadeSystem != null)
         {
             AnsiedadeSystem.Relaxar(-10);
             setaAnsiedadeUp.SetActive(true);
         }
-        if (videoPlayer != null && videoPlayer.isPlaying)
-{
-    // Espera o vídeo terminar para continuar
-    StartCoroutine(EsperarVideoEncerrar());
-}
-else
-{
-    // Se o vídeo já terminou ou não estiver tocando, encerra direto
-    FinalizarVideoENormalizarCelular();
-}
-}
 
-IEnumerator EsperarVideoEncerrar()
-{
+        if (videoPlayer != null && videoPlayer.isPlaying)
+        {
+            StartCoroutine(EsperarVideoEncerrar());
+        }
+        else
+        {
+            FinalizarVideoENormalizarCelular();
+        }
+    }
+
+    IEnumerator EsperarVideoEncerrar()
+    {
         while (videoPlayer != null && videoPlayer.isPlaying)
             yield return null;
+
         FinalizarVideoENormalizarCelular();
-}
+    }
 
     void FinalizarVideoENormalizarCelular()
     {
         if (videoPlayerUI != null)
             videoPlayerUI.SetActive(false);
+
         if (celularCompleto != null)
             celularCompleto.SetActive(true);
 
@@ -241,23 +249,23 @@ IEnumerator EsperarVideoEncerrar()
         Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
     }
 
+    public void BotaoSairDoCelular()
+    {
+        if (perguntaBotoesUI != null)
+            perguntaBotoesUI.SetActive(false);
 
-public void BotaoSairDoCelular()
-{
-    if (perguntaBotoesUI != null)
-        perguntaBotoesUI.SetActive(false);
+        if (videoPlayer != null)
+            videoPlayer.Pause();
 
-    if (videoPlayer != null)
-        videoPlayer.Pause();
-
-    if (videoPlayerUI != null)
-        videoPlayerUI.SetActive(false);
+        if (videoPlayerUI != null)
+            videoPlayerUI.SetActive(false);
 
         if (apps != null)
             apps.SetActive(true);
 
         if (celularCompleto != null)
-        celularCompleto.SetActive(false);
+            celularCompleto.SetActive(false);
+
         AnsiedadeSystem AnsiedadeSystem = player.GetComponent<AnsiedadeSystem>();
         if (AnsiedadeSystem != null)
         {
@@ -266,73 +274,72 @@ public void BotaoSairDoCelular()
         }
 
         Invoke(nameof(legenda_preciso_ir_ao_banheiro), 2f);
-    //MostrarLegenda("Preciso ir ao banheiro");
-    videoTocando = false;
-}
+        videoTocando = false;
+    }
 
-public void legenda_preciso_ir_ao_banheiro()
+    public void legenda_preciso_ir_ao_banheiro()
     {
-        if (!EscovarDentes.escovou && !ChuveiroManager.tomouBanho) 
+        if (!EscovarDentes.escovou && !ChuveiroManager.tomouBanho)
         {
-        MostrarLegenda("Preciso ir ao banheiro");
+            MostrarLegenda("Preciso ir ao banheiro");
         }
     }
 
-public bool VideoEstaTocando() => videoTocando;
-public bool AlarmeAtivo() => alarmeTocando;
-public bool AlarmeJaFoiDesligado() => alarmeDesligado;
+    public bool VideoEstaTocando() => videoTocando;
+    public bool AlarmeAtivo() => alarmeTocando;
+    public bool AlarmeJaFoiDesligado() => alarmeDesligado;
 
-public void StopAlarm()
-{
-    if (somAlarme != null && somAlarme.isPlaying)
-        somAlarme.Stop();
-
-    alarmeTocando = false;
-}
-
-public void PlayAlarm()
-{
-    if (somAlarme != null && !somAlarme.isPlaying)
-        somAlarme.Play();
-
-    alarmeTocando = true;
-    alarmeDesligado = false;
-}
-
-IEnumerator FazerFadeOutTelaPreta()
-{
-    if (telaPreta == null) yield break;
-    float tempo = 1.5f;
-    float t = 0f;
-    Image imagem = telaPreta.GetComponent<Image>();
-    Color cor = imagem.color;
-
-    while (t < tempo)
+    public void StopAlarm()
     {
-        t += Time.deltaTime;
-        float alpha = Mathf.Lerp(1f, 0f, t / tempo);
-        imagem.color = new Color(cor.r, cor.g, cor.b, alpha);
-        yield return null;
+        if (somAlarme != null && somAlarme.isPlaying)
+            somAlarme.Stop();
+
+        alarmeTocando = false;
     }
 
-    telaPreta.SetActive(false);
-}
-
-IEnumerator FazerFadeInTelaPreta()
-{
-    if (telaPreta == null) yield break;
-    telaPreta.SetActive(true);
-    float tempo = 1.5f;
-    float t = 0f;
-    Image imagem = telaPreta.GetComponent<Image>();
-    Color cor = imagem.color;
-
-    while (t < tempo)
+    public void PlayAlarm()
     {
-        t += Time.deltaTime;
-        float alpha = Mathf.Lerp(0f, 1f, t / tempo);
-        imagem.color = new Color(cor.r, cor.g, cor.b, alpha);
-        yield return null;
+        if (somAlarme != null && !somAlarme.isPlaying)
+            somAlarme.Play();
+
+        alarmeTocando = true;
+        alarmeDesligado = false;
     }
-}
+
+    IEnumerator FazerFadeOutTelaPreta()
+    {
+        if (telaPreta == null) yield break;
+        float tempo = 1.5f;
+        float t = 0f;
+        Image imagem = telaPreta.GetComponent<Image>();
+        Color cor = imagem.color;
+
+        while (t < tempo)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, t / tempo);
+            imagem.color = new Color(cor.r, cor.g, cor.b, alpha);
+            yield return null;
+        }
+
+        telaPreta.SetActive(false);
+    }
+
+    IEnumerator FazerFadeInTelaPreta()
+    {
+        if (telaPreta == null) yield break;
+        telaPreta.SetActive(true);
+        float tempo = 1.5f;
+        float t = 0f;
+        Image imagem = telaPreta.GetComponent<Image>();
+        Color cor = imagem.color;
+
+        while (t < tempo)
+        {
+            t += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, t / tempo);
+            imagem.color = new Color(cor.r, cor.g, cor.b, alpha);
+            yield return null;
+        }
+    }
 }

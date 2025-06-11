@@ -396,7 +396,7 @@ MonoBehaviour:
   duracaoFadeOut: 2
   tempoDigitacao: 20
   tempoExibicaoTexto: 10
-  proximaCena: Menu
+  proximaCena: Creditos
   textoCompleto: Texto dizendo o que aconteceu no final bom ebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 --- !u!1 &113703814 stripped
 GameObject:
@@ -9610,8 +9610,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Texto dizendo o que aconteceu no final bom ebaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: bb5a4790ca09f2b429b97ea43f5b86ea, type: 2}
+  m_sharedMaterial: {fileID: -94480266323364964, guid: bb5a4790ca09f2b429b97ea43f5b86ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
