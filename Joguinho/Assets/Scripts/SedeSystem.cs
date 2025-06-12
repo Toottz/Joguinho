@@ -42,10 +42,16 @@ public class SedeSystem : MonoBehaviour
         UpdateUI();
     }
 
-   void UpdateUI()
+    void UpdateUI()
     {
         float fill = Estatico.Social / maxSede;
         sedeBar.fillAmount = fill;
+    }
+
+    public void Resetar()
+    {
+        Estatico.Social = 0f;
+        UpdateUI();
     }
 
 }

@@ -25935,10 +25935,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 932f405d00af4204a8a119b67e3ce7a9, type: 3}
     m_FontSize: 50
     m_FontStyle: 1
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 0
     m_MaxSize: 70
     m_Alignment: 1
@@ -44936,7 +44936,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ca22161a5ad50f844b85d35a54fa3ce9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.536
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -79262,6 +79262,7 @@ GameObject:
   - component: {fileID: 7891387606128468086}
   - component: {fileID: 777896371361268030}
   - component: {fileID: 5317763802749660785}
+  - component: {fileID: 7891387606128468087}
   m_Layer: 0
   m_Name: Pedestais Supermercado.004
   m_TagString: Untagged
@@ -107305,6 +107306,7 @@ GameObject:
   - component: {fileID: 1816066475892293654}
   - component: {fileID: 481772951148568592}
   - component: {fileID: 5370172302546348237}
+  - component: {fileID: 5370172302546348238}
   m_Layer: 0
   m_Name: Paredes Supermercado.007
   m_TagString: Untagged
@@ -114469,6 +114471,7 @@ GameObject:
   - component: {fileID: 2141441419848674955}
   - component: {fileID: 4032372889330468915}
   - component: {fileID: 6775525065315612176}
+  - component: {fileID: 6775525065315612177}
   m_Layer: 0
   m_Name: Janelas Supermercado.007
   m_TagString: Untagged
@@ -115373,6 +115376,7 @@ GameObject:
   - component: {fileID: 1751991263225568043}
   - component: {fileID: 8122416682598870457}
   - component: {fileID: 8495090172747629823}
+  - component: {fileID: 8495090172747629824}
   m_Layer: 0
   m_Name: Janelas Supermercado.002
   m_TagString: Untagged
@@ -122591,6 +122595,7 @@ GameObject:
   - component: {fileID: 950267584557710063}
   - component: {fileID: 707051739953250677}
   - component: {fileID: 8324459637810466317}
+  - component: {fileID: 8324459637810466318}
   m_Layer: 0
   m_Name: Janelas Supermercado.005
   m_TagString: Untagged
@@ -123757,6 +123762,7 @@ GameObject:
   - component: {fileID: 6660495352552805991}
   - component: {fileID: 541632110035726210}
   - component: {fileID: 1120239393204785607}
+  - component: {fileID: 6660495352552805992}
   m_Layer: 0
   m_Name: Paredes Supermercado.002
   m_TagString: Untagged
@@ -131743,6 +131749,7 @@ GameObject:
   - component: {fileID: 1543727959115820271}
   - component: {fileID: 4646916640606227965}
   - component: {fileID: 4032222540412866112}
+  - component: {fileID: 4646916640606227966}
   m_Layer: 0
   m_Name: Pedestais Supermercado.005
   m_TagString: Untagged
@@ -146028,6 +146035,7 @@ GameObject:
   - component: {fileID: 143024894465228986}
   - component: {fileID: 3178714331057441307}
   - component: {fileID: 8330879643993021172}
+  - component: {fileID: 8330879643993021173}
   m_Layer: 0
   m_Name: Paredes Supermercado.006
   m_TagString: Untagged
@@ -148605,6 +148613,7 @@ GameObject:
   - component: {fileID: 2472266885450634682}
   - component: {fileID: 2187169619286592293}
   - component: {fileID: 9021748273794332417}
+  - component: {fileID: 9021748273794332418}
   m_Layer: 0
   m_Name: Janelas Supermercado.004
   m_TagString: Untagged
@@ -148955,6 +148964,7 @@ GameObject:
   - component: {fileID: 102132429952292298}
   - component: {fileID: 8800722774587224590}
   - component: {fileID: 2953432803541206949}
+  - component: {fileID: 8800722774587224591}
   m_Layer: 0
   m_Name: Janelas Supermercado.001
   m_TagString: Untagged
@@ -153121,6 +153131,7 @@ GameObject:
   - component: {fileID: 5623966281478798009}
   - component: {fileID: 6949024323892734128}
   - component: {fileID: 3257167199522683900}
+  - component: {fileID: 6949024323892734129}
   m_Layer: 0
   m_Name: Pedestais Supermercado.014
   m_TagString: Untagged
@@ -157942,6 +157953,7 @@ GameObject:
   - component: {fileID: 7619692171852782301}
   - component: {fileID: 5956707465670246116}
   - component: {fileID: 1142816050921380793}
+  - component: {fileID: 7619692171852782302}
   m_Layer: 0
   m_Name: Pedestais Supermercado.002
   m_TagString: Untagged
@@ -162409,6 +162421,7 @@ GameObject:
   - component: {fileID: 8681328647694209322}
   - component: {fileID: 3656535557898181188}
   - component: {fileID: 4964270448691285197}
+  - component: {fileID: 8681328647694209323}
   m_Layer: 0
   m_Name: Pedestais Supermercado.010
   m_TagString: Untagged
@@ -166849,6 +166862,7 @@ GameObject:
   - component: {fileID: 4429616702685528398}
   - component: {fileID: 2211074498479500269}
   - component: {fileID: 1444439630106797293}
+  - component: {fileID: 4429616702685528399}
   m_Layer: 0
   m_Name: Paredes Supermercado.005
   m_TagString: Untagged
@@ -175954,6 +175968,7 @@ GameObject:
   - component: {fileID: 8113145281465621263}
   - component: {fileID: 1420143724863656612}
   - component: {fileID: 7075800629936873922}
+  - component: {fileID: 8113145281465621264}
   m_Layer: 0
   m_Name: Paredes Supermercado
   m_TagString: Untagged
@@ -182960,6 +182975,7 @@ GameObject:
   - component: {fileID: 1895661200478087697}
   - component: {fileID: 4168992190068194261}
   - component: {fileID: 6139530013147956706}
+  - component: {fileID: 6139530013147956707}
   m_Layer: 0
   m_Name: Pedestais Supermercado.009
   m_TagString: Untagged
@@ -189969,6 +189985,7 @@ GameObject:
   - component: {fileID: 5036362508316336221}
   - component: {fileID: 5258637508928976912}
   - component: {fileID: 2900742991845690680}
+  - component: {fileID: 5258637508928976913}
   m_Layer: 0
   m_Name: Paredes Supermercado.008
   m_TagString: Untagged
@@ -192762,6 +192779,7 @@ GameObject:
   - component: {fileID: 129505374142692570}
   - component: {fileID: 1472672243912029635}
   - component: {fileID: 6787891316820370134}
+  - component: {fileID: 6787891316820370135}
   m_Layer: 0
   m_Name: Pedestais Supermercado.003
   m_TagString: Untagged
@@ -200328,6 +200346,7 @@ GameObject:
   - component: {fileID: 2364570744651231647}
   - component: {fileID: 297821327472103269}
   - component: {fileID: 8747247196990037721}
+  - component: {fileID: 8747247196990037722}
   m_Layer: 0
   m_Name: Paredes Supermercado.010
   m_TagString: Untagged
@@ -204044,6 +204063,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4429616702685528399
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093671485639828284}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2968036123812041623, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &4429945331820793058
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -205069,6 +205102,7 @@ GameObject:
   - component: {fileID: 5260284820079045230}
   - component: {fileID: 7586256881910387852}
   - component: {fileID: 4183547189610788521}
+  - component: {fileID: 7586256881910387853}
   m_Layer: 0
   m_Name: Pedestais Supermercado.015
   m_TagString: Untagged
@@ -206597,6 +206631,7 @@ GameObject:
   - component: {fileID: 7822426664128986975}
   - component: {fileID: 2253425606574432287}
   - component: {fileID: 5417418310633240046}
+  - component: {fileID: 7822426664128986976}
   m_Layer: 0
   m_Name: Pedestais Supermercado
   m_TagString: Untagged
@@ -207691,6 +207726,7 @@ GameObject:
   - component: {fileID: 4184610412937624991}
   - component: {fileID: 7506684561166835767}
   - component: {fileID: 5125474754943754484}
+  - component: {fileID: 7506684561166835768}
   m_Layer: 0
   m_Name: Janelas Supermercado.003
   m_TagString: Untagged
@@ -207990,6 +208026,7 @@ GameObject:
   - component: {fileID: 2634802893313586948}
   - component: {fileID: 1419354091987028813}
   - component: {fileID: 7153199870612083046}
+  - component: {fileID: 7153199870612083047}
   m_Layer: 0
   m_Name: Janelas Supermercado.006
   m_TagString: Untagged
@@ -210883,6 +210920,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1834665744109901006}
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &4646916640606227966
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834665744109901006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &4647033063508216905
 MeshRenderer:
@@ -214485,6 +214536,7 @@ GameObject:
   - component: {fileID: 1695804504826014694}
   - component: {fileID: 6591127334651412802}
   - component: {fileID: 8674263870094164358}
+  - component: {fileID: 8674263870094164359}
   m_Layer: 0
   m_Name: Paredes Supermercado.013
   m_TagString: Untagged
@@ -214724,6 +214776,7 @@ GameObject:
   - component: {fileID: 4587449576262825881}
   - component: {fileID: 6076340113974327214}
   - component: {fileID: 476372537093317451}
+  - component: {fileID: 6076340113974327215}
   m_Layer: 0
   m_Name: Pedestais Supermercado.013
   m_TagString: Untagged
@@ -228493,6 +228546,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3906888845026706013}
   m_Mesh: {fileID: -2868858879512637149, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &5258637508928976913
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906888845026706013}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2868858879512637149, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &5258902967645996820
 GameObject:
   m_ObjectHideFlags: 0
@@ -231062,6 +231129,7 @@ GameObject:
   - component: {fileID: 4810669975204598091}
   - component: {fileID: 4546797302483649381}
   - component: {fileID: 4676407870189514948}
+  - component: {fileID: 5351464356841206464}
   m_Layer: 0
   m_Name: Paredes Supermercado.003
   m_TagString: Untagged
@@ -231069,6 +231137,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &5351464356841206464
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5351464356841206463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8622098367394482705, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &5351849704358889314
 GameObject:
   m_ObjectHideFlags: 0
@@ -231586,6 +231668,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5370172302546348238
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985194218683288092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -206962809120144904, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &5370755009578873179
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -243893,6 +243989,7 @@ GameObject:
   - component: {fileID: 8728936441495072583}
   - component: {fileID: 3183128100240850}
   - component: {fileID: 7556848011193999784}
+  - component: {fileID: 8728936441495072584}
   m_Layer: 0
   m_Name: Paredes Supermercado.016
   m_TagString: Untagged
@@ -245748,6 +245845,7 @@ GameObject:
   - component: {fileID: 5594909190260732355}
   - component: {fileID: 4522314291253698490}
   - component: {fileID: 8230937821178922987}
+  - component: {fileID: 8230937821178922988}
   m_Layer: 0
   m_Name: Pedestais Supermercado.008
   m_TagString: Untagged
@@ -246239,6 +246337,7 @@ GameObject:
   - component: {fileID: 6300820510039606366}
   - component: {fileID: 8547826924496518773}
   - component: {fileID: 5636630295032743505}
+  - component: {fileID: 8547826924496518774}
   m_Layer: 0
   m_Name: Paredes Supermercado.012
   m_TagString: Untagged
@@ -250293,6 +250392,7 @@ GameObject:
   - component: {fileID: 2276030024708675531}
   - component: {fileID: 198068141906633490}
   - component: {fileID: 5000282886512872131}
+  - component: {fileID: 6024394954656502817}
   m_Layer: 0
   m_Name: Paredes Supermercado.014
   m_TagString: Untagged
@@ -250300,6 +250400,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6024394954656502817
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6024394954656502816}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4729020246941961693, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &6025692011772807057
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -251747,6 +251861,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4787659192064719336}
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &6076340113974327215
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4787659192064719336}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &6076716065709183234
 MeshRenderer:
@@ -253500,6 +253628,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6139530013147956707
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3662768764215967620}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &6140386083261846879
 Transform:
   m_ObjectHideFlags: 0
@@ -268390,6 +268532,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &6660495352552805992
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554739515086832225}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4543888149247640244, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &6662723991360120657
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -271251,6 +271407,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6775525065315612177
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233898414386527149}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 5229274617970315241, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &6776570948681246925
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -271668,6 +271838,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &6787891316820370135
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4011387679921105256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &6788275080104191142
 Transform:
   m_ObjectHideFlags: 0
@@ -273469,6 +273653,7 @@ GameObject:
   - component: {fileID: 4310436725917397104}
   - component: {fileID: 2619564339230914803}
   - component: {fileID: 73638489137213995}
+  - component: {fileID: 6852136891913414157}
   m_Layer: 0
   m_Name: Paredes Supermercado.015
   m_TagString: Untagged
@@ -273476,6 +273661,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &6852136891913414157
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6852136891913414156}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 8774076966286677998, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &6853118263451691944
 Transform:
   m_ObjectHideFlags: 0
@@ -276417,6 +276616,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2592850486265546402}
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &6949024323892734129
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592850486265546402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &6950417097750228194
 Transform:
@@ -282721,6 +282934,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &7153199870612083047
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4555987362300664052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 7771110113970767815, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &7153472203933168812
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -285782,6 +286009,7 @@ GameObject:
   - component: {fileID: 1517376416831503267}
   - component: {fileID: 8755182052071473510}
   - component: {fileID: 5870218259320037587}
+  - component: {fileID: 8755182052071473511}
   m_Layer: 0
   m_Name: Paredes Supermercado.011
   m_TagString: Untagged
@@ -295951,6 +296179,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4547700291566219633}
   m_Mesh: {fileID: -9157031083649179958, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &7506684561166835768
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547700291566219633}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -9157031083649179958, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &7506739304095806988
 Transform:
   m_ObjectHideFlags: 0
@@ -298473,6 +298715,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4468253818680611662}
   m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &7586256881910387853
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4468253818680611662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &7587328978452176013
 Transform:
   m_ObjectHideFlags: 0
@@ -299409,6 +299665,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7619692171852782302
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772887554278501389}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &7620918101641673882
 Transform:
   m_ObjectHideFlags: 0
@@ -301435,6 +301705,7 @@ GameObject:
   - component: {fileID: 7594368014138248487}
   - component: {fileID: 6951859142710268141}
   - component: {fileID: 8073400816745957030}
+  - component: {fileID: 8073400816745957031}
   m_Layer: 0
   m_Name: Janelas Supermercado
   m_TagString: Untagged
@@ -301595,6 +301866,7 @@ GameObject:
   - component: {fileID: 3043564487808294582}
   - component: {fileID: 8812215092356065994}
   - component: {fileID: 3268771204167872410}
+  - component: {fileID: 8812215092356065995}
   m_Layer: 0
   m_Name: Paredes Supermercado.009
   m_TagString: Untagged
@@ -304062,6 +304334,7 @@ GameObject:
   - component: {fileID: 3413844360390800370}
   - component: {fileID: 7704185831804737241}
   - component: {fileID: 7010220429408363487}
+  - component: {fileID: 7777542926479567105}
   m_Layer: 0
   m_Name: Pedestais Supermercado.007
   m_TagString: Untagged
@@ -304069,6 +304342,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7777542926479567105
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7777542926479567104}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &7777892505760810447
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -304263,6 +304550,7 @@ GameObject:
   - component: {fileID: 5706149525477752603}
   - component: {fileID: 3294207833923446759}
   - component: {fileID: 6853685438635506337}
+  - component: {fileID: 7779153146413023373}
   m_Layer: 0
   m_Name: Pedestais Supermercado.012
   m_TagString: Untagged
@@ -304270,6 +304558,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &7779153146413023373
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7779153146413023372}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &7779352533860394957
 Transform:
   m_ObjectHideFlags: 0
@@ -305707,6 +306009,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7822426664128986976
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516797598663465092}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &7824296083331587708
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -307909,6 +308225,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &7891387606128468087
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 12584446083071097}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &7891693652376344515
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -312168,6 +312498,7 @@ GameObject:
   - component: {fileID: 4417376130085190835}
   - component: {fileID: 3097841401803349788}
   - component: {fileID: 7534196361496128428}
+  - component: {fileID: 8061575911242832358}
   m_Layer: 0
   m_Name: Pedestais Supermercado.006
   m_TagString: Untagged
@@ -312175,6 +312506,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8061575911242832358
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8061575911242832357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &8061966588366185138
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -312621,6 +312966,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8073400816745957031
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690520906857775541}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2094716213314602460, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8074979890760218621
 GameObject:
   m_ObjectHideFlags: 0
@@ -313772,6 +314131,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8113145281465621264
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3396299198566800914}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -3959826413687383619, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &8113979179253262499
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -318294,6 +318667,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8230937821178922988
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5865800774697843052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &8231017214811513952
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -320947,6 +321334,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8324459637810466318
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1514746482870465763}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7924860307412639422, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &8324896835213750303
 Transform:
   m_ObjectHideFlags: 0
@@ -321207,6 +321608,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8330879643993021173
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2334788376410532722}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7158033120707210690, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &8331092459111252056
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -325752,6 +326167,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8495090172747629824
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274435773322050899}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2873626295831966602, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8496461988533829262
 GameObject:
   m_ObjectHideFlags: 0
@@ -326410,6 +326839,7 @@ GameObject:
   - component: {fileID: 7185013053749193828}
   - component: {fileID: 7103104493666355655}
   - component: {fileID: 8176438815104172968}
+  - component: {fileID: 8520958835425808776}
   m_Layer: 0
   m_Name: Paredes Supermercado.004
   m_TagString: Untagged
@@ -326417,6 +326847,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8520958835425808776
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8520958835425808775}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1676851298104874920, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &8521126845195976660
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -327154,6 +327598,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5879852439974907921}
   m_Mesh: {fileID: 3384954380293465051, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &8547826924496518774
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5879852439974907921}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3384954380293465051, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8548858544266768117
 GameObject:
   m_ObjectHideFlags: 0
@@ -327517,6 +327975,7 @@ GameObject:
   - component: {fileID: 5935599861278689926}
   - component: {fileID: 5120075395894427156}
   - component: {fileID: 5397517898146417445}
+  - component: {fileID: 8559064270879914219}
   m_Layer: 0
   m_Name: Porta Supermercado
   m_TagString: Untagged
@@ -327524,6 +327983,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8559064270879914219
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8559064270879914218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4538740546573753542, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &8559713405672839046
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -330037,6 +330510,7 @@ GameObject:
   - component: {fileID: 1690486751968838356}
   - component: {fileID: 5408685109725123764}
   - component: {fileID: 4753297668329092770}
+  - component: {fileID: 8659301779956273534}
   m_Layer: 0
   m_Name: Pedestais Supermercado.011
   m_TagString: Untagged
@@ -330044,6 +330518,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8659301779956273534
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8659301779956273533}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &8663371228471464101
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -330361,6 +330849,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8674263870094164359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4781395361064445073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -2913753046148709526, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &8675031772500094269
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -330552,6 +331054,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8681328647694209323
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2941328073925694160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6318478833158758041, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8682146644391145807
 GameObject:
   m_ObjectHideFlags: 0
@@ -332021,6 +332537,20 @@ Transform:
   m_Father: {fileID: 8057337415221869799}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &8728936441495072584
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5794738553404045731}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1143912260185245391, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!33 &8729040377590176316
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -332603,6 +333133,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8747247196990037722
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4274695133327630344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3083555263755238718, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &8749090298982233043
 Transform:
   m_ObjectHideFlags: 0
@@ -332710,6 +333254,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7277951564440618070}
+  m_Mesh: {fileID: -224202860863839928, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &8755182052071473511
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7277951564440618070}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -224202860863839928, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8756636750601240233
 GameObject:
@@ -334076,6 +334634,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2444468198971955134}
   m_Mesh: {fileID: -1388023691482783331, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &8800722774587224591
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2444468198971955134}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1388023691482783331, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &8801073120260855804
 Transform:
   m_ObjectHideFlags: 0
@@ -334403,6 +334975,20 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7694951420687022643}
+  m_Mesh: {fileID: 76517509824504121, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
+--- !u!64 &8812215092356065995
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694951420687022643}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 76517509824504121, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!23 &8812267173930965248
 MeshRenderer:
@@ -336393,6 +336979,7 @@ GameObject:
   - component: {fileID: 8519757907274498863}
   - component: {fileID: 787812821203422860}
   - component: {fileID: 1033095652627802953}
+  - component: {fileID: 8892963696325308503}
   m_Layer: 0
   m_Name: Paredes Supermercado.001
   m_TagString: Untagged
@@ -336400,6 +336987,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &8892963696325308503
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8892963696325308502}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7754733910693725443, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!1 &8893717941419219743
 GameObject:
   m_ObjectHideFlags: 0
@@ -339731,6 +340332,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &9021748273794332418
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2428098516294560671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -1368770246331407282, guid: 10db9e288faf9554f9402b7fd77e86de, type: 3}
 --- !u!4 &9023901949010613831
 Transform:
   m_ObjectHideFlags: 0

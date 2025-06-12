@@ -44,4 +44,11 @@ public class PlayerWallet : MonoBehaviour
         if (textoSaldo != null)
             textoSaldo.text = "R$ " + Estatico.Dinheiro.ToString("F2");
     }
+
+    public void Resetar()
+    {
+        Estatico.Dinheiro = 10f;
+        AtualizarUI();
+    }
+
 }

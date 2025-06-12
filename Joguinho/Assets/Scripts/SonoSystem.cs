@@ -6,23 +6,23 @@ using System.Collections;
 
 public class SonoSystem : MonoBehaviour
 {
-    [Header("Configurações UI")]
+    [Header("Configuraï¿½ï¿½es UI")]
     public Image sonoBar;
 
-    [Header("Parâmetros de Sono")]
+    [Header("Parï¿½metros de Sono")]
     public float maxSono = 100f;
     public float sonoAoAcordar = 20f;
     public float inicioRecuperacao = 480f;    // 8h em minutos
     public float fimRecuperacao = 1320f;      // 22h em minutos
-    public float taxaReducaoBase = 0.1f;      // Redução por minuto
+    public float taxaReducaoBase = 0.1f;      // Reduï¿½ï¿½o por minuto
 
-    [Header("Efeito Vignette (Piscadas Rápidas)")]
+    [Header("Efeito Vignette (Piscadas Rï¿½pidas)")]
     public float minVignette = 0.125f;
     public float maxVignette = 1f;
     public float duracaoFechar = 0.5f;       // Tempo para fechar os olhos
     public float duracaoAbrir = 0.5f;        // Tempo para abrir os olhos
     public float tempoEntrePiscadasBase = 3f; // Intervalo base entre piscadas
-    public float sonoMinimoParaEfeito = 80f;  // Sono necessário para ativar
+    public float sonoMinimoParaEfeito = 80f;  // Sono necessï¿½rio para ativar
 
     private VolumeProfile volumeProfile;
     private Vignette vignette;
@@ -65,12 +65,12 @@ public class SonoSystem : MonoBehaviour
 
     void UpdateSono()
     {
-        // Fora do período de recuperação: diminui o sono
+        // Fora do perï¿½odo de recuperaï¿½ï¿½o: diminui o sono
         if (Estatico.tempoEmMinutos < inicioRecuperacao || Estatico.tempoEmMinutos >= fimRecuperacao)
         {
             Estatico.Sono = Mathf.Max(sonoAoAcordar, Estatico.Sono - taxaReducaoBase * Time.deltaTime);
         }
-        // Dentro do período: aumenta baseado no tempo
+        // Dentro do perï¿½odo: aumenta baseado no tempo
         else
         {
             float progresso = Mathf.InverseLerp(inicioRecuperacao, fimRecuperacao, Estatico.tempoEmMinutos);
@@ -117,7 +117,7 @@ public class SonoSystem : MonoBehaviour
             yield return null;
         }
 
-        // Garante que chegou no máximo
+        // Garante que chegou no mï¿½ximo
         vignette.intensity.value = maxVignette;
 
         // Abrir os olhos (1 -> 0.125 em 0.5s)
@@ -130,10 +130,10 @@ public class SonoSystem : MonoBehaviour
             yield return null;
         }
 
-        // Garante que voltou ao mínimo
+        // Garante que voltou ao mï¿½nimo
         vignette.intensity.value = minVignette;
 
-        // Prepara próxima piscada
+        // Prepara prï¿½xima piscada
         timerPiscada = 0f;
         CalcularProximaPiscada();
         piscando = false;
@@ -163,6 +163,20 @@ public class SonoSystem : MonoBehaviour
     {
         if (sonoBar != null)
             sonoBar.fillAmount = Estatico.Sono / maxSono;
+    }
+
+    public void Resetar()
+    {
+        Estatico.Sono = sonoAoAcordar;
+        if (vignette != null) vignette.intensity.value = minVignette;
+        if (piscadaCoroutine != null)
+        {
+            StopCoroutine(piscadaCoroutine);
+            piscadaCoroutine = null;
+        }
+        piscando = false;
+
+        UpdateUI();
     }
 
     public void ResetarCicloSono()

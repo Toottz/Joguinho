@@ -5,10 +5,10 @@ using UnityEngine.Rendering.Universal;
 
 public class HungerSystem : MonoBehaviour
 {
-    [Header("Configurações UI")]
+    [Header("Configuraï¿½ï¿½es UI")]
     public Image hungerBar;
 
-    [Header("Parâmetros de Fome")]
+    [Header("Parï¿½metros de Fome")]
     public float maxHunger = 100f;
     public float hungerDecreaseRate = 5f;
     public float timeBetweenDecreases = 60f;
@@ -35,15 +35,15 @@ public class HungerSystem : MonoBehaviour
             volumeProfile = globalVolume.profile;
 
             if (!volumeProfile.TryGet(out chromaticAberration))
-                Debug.LogWarning("Chromatic Aberration não encontrado!");
+                Debug.LogWarning("Chromatic Aberration nï¿½o encontrado!");
             else
-                chromaticAberration.active = true; // Garante que está ativo
+                chromaticAberration.active = true; // Garante que estï¿½ ativo
         }
     }
 
     void Update()
     {
-        // Sistema de diminuição de fome
+        // Sistema de diminuiï¿½ï¿½o de fome
         timer += Time.deltaTime;
         if (timer >= timeBetweenDecreases)
         {
@@ -95,5 +95,13 @@ public class HungerSystem : MonoBehaviour
     public bool TaSemFome()
     {
         return Estatico.Fome <= 0f;
+    }
+
+    public void Resetar()
+    {
+        Estatico.Fome = maxHunger;
+        UpdateHungerUI();
+        if (chromaticAberration != null)
+            chromaticAberration.intensity.value = 0f;
     }
 }

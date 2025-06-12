@@ -3,8 +3,9 @@ using UnityEngine;
 public class MusicaController : MonoBehaviour
 {
     private AudioSource audioSource;
-
-    public float delayInicial = 10f; // tempo de espera em segundos
+    [Header("Configurações de Tempo")]
+    public float delayInicial = 10f;           // Tempo para começar a tocar
+    public float tempoDeDuracao = 0f;          // Tempo para parar a música (0 = toca até o fim)
 
     void Start()
     {
@@ -15,6 +16,20 @@ public class MusicaController : MonoBehaviour
     void TocarMusica()
     {
         if (!audioSource.isPlaying)
+        {
             audioSource.Play();
+
+            // Se tempoDeDuracao for maior que 0, agendar parada
+            if (tempoDeDuracao > 0f)
+            {
+                Invoke(nameof(PararMusica), tempoDeDuracao);
+            }
+        }
+    }
+
+    void PararMusica()
+    {
+        if (audioSource.isPlaying)
+            audioSource.Stop();
     }
 }

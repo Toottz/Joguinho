@@ -5,14 +5,14 @@ using UnityEngine.Rendering.Universal;
 
 public class AnsiedadeSystem : MonoBehaviour
 {
-    [Header("Configurações UI")]
+    [Header("Configuraï¿½ï¿½es UI")]
     public Image ansiedadeBar;
 
-    [Header("Parâmetros de Ansiedade")]
+    [Header("Parï¿½metros de Ansiedade")]
     public float maxAnsiedade = 100f;
     public float ansiedadeIncreaseRate = 5f;
     public float timeBetweenIncreases = 60f;
-    public float limiarEfeitos = 60f; // Ansiedade mínima para ativar efeitos
+    public float limiarEfeitos = 60f; // Ansiedade mï¿½nima para ativar efeitos
 
     [Header("Efeitos Visuais")]
     [Range(0, 1)] public float maxFilmGrain = 0.8f;
@@ -37,10 +37,10 @@ public class AnsiedadeSystem : MonoBehaviour
             volumeProfile = globalVolume.profile;
 
             if (!volumeProfile.TryGet(out filmGrain))
-                Debug.LogWarning("Film Grain não encontrado!");
+                Debug.LogWarning("Film Grain nï¿½o encontrado!");
 
             if (!volumeProfile.TryGet(out lensDistortion))
-                Debug.LogWarning("Lens Distortion não encontrado!");
+                Debug.LogWarning("Lens Distortion nï¿½o encontrado!");
         }
     }
 
@@ -103,4 +103,16 @@ public class AnsiedadeSystem : MonoBehaviour
             ansiedadeBar.fillAmount = Estatico.Ansiedade / maxAnsiedade;
         }
     }
+
+    public void Resetar()
+    {
+        Estatico.Ansiedade = 0f;
+        UpdateUI();
+        if (filmGrain != null)
+            filmGrain.intensity.value = 0f;
+
+        if (lensDistortion != null)
+            lensDistortion.intensity.value = 0f;
+    }
+    
 }
